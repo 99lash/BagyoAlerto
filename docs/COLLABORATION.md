@@ -11,10 +11,10 @@ This document describes how we collaborate as a team using Git and GitHub.
 - [Branching Strategy](#branching-strategy)
 - [Commit Message Conventions](#commit-message-conventions)
 - [Collaboration Workflow](#collaboration-workflow)
-- [Avoid Guidelines](#avoid)
+- [Guidelines](#guidelines)
 - [Project Issues/Feature Tracking Management (Kanban Board)](#project-issues-or-feature-tracking-management)
 
-
+---
 
 ### Branching Strategy
 
@@ -60,7 +60,12 @@ Use clear prefixes:
 
 ---
 
-### Avoid
+### Guidelines
+**DOs**
+
+- Having a merge conflict? error pulling/fetching? Resolve together and communicate early.
+
+**DON'Ts**
 
 - Committing directly to main / dev
 - Leaving commented-out code or unused files
