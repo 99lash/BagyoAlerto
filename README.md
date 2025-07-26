@@ -6,7 +6,7 @@ BagyoAlerto is a simple website application that supports mobile view and an ins
 
 ### Table of Contents
 
-- [Team Collaborators/Members](#branching-strategy)
+- [Team Collaborators/Members](#team-members)
 - [Live Demo](#live-demo)
 - [Project Objectives](#project-objectives)
 - [Core Features](#core-features)
