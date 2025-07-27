@@ -1,6 +1,6 @@
 # 🌪️ BagyoAlerto - Typhoon Emergency Checklist
 
-BagyoAlerto is a simple website application that supports mobile view and an installable web app that helps Filipino families stay prepared for typhoons. Users can manage a customizable emergency checklist, toggle dark/light mode, and receive smart weather-based reminders. The app works offline, stores data using localStorage, and includes a printable emergency contact section — all built using vanilla HTML, CSS, and JavaScript with PWA support.
+BagyoAlerto is a simple website application that supports mobile view and an installable web app that helps typhoon-prone families or individuals to stay prepared for typhoons. Users can manage a customizable emergency checklist, toggle dark/light mode, and receive smart weather-based reminders. The app works offline, stores data using localStorage, and includes emergency contact section — all built using vanilla HTML, CSS, and JavaScript with PWA support.
 
 ---
 

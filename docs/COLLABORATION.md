@@ -49,19 +49,20 @@ This guide ensures clear, consistent, and readable commit messages for your team
 
 ####  Common Commit Types
 
-| Type       | Purpose                                             | Example                                               |
-| ---------- | --------------------------------------------------- | ----------------------------------------------------- |
-| `feat`     | New feature                                         | `feat: add emergency contact print button`            |
-| `fix`      | Bug fix                                             | `fix: correct toggle bug on checklist`                |
-| `docs`     | Documentation updates                               | `docs: update README for hackathon`                   |
-| `style`    | Code formatting only (no logic change)              | `style: reformat CSS for mobile view`                 |
-| `refactor` | Code restructure/refactor, no new feature or fix    | `refactor: simplify checklist update logic`           |
-| `perf`     | Performance improvement                             | `perf: improve load speed by optimizing loop`         |
-| `test`     | Adding or updating tests                            | `test: add unit test for rain alert`                  |
-| `build`    | Build system or dependency changes                  | `build: include weather api config`                   |
-| `ci`       | Continuous Integration configuration changes        | `ci: update GitHub Actions workflow`                  |
-| `chore`    | Maintenance tasks (file rename, code cleanup, etc.) | `chore: rename checklist.js to emergencyChecklist.js` |
-| `revert`   | Revert a previous commit                            | `revert: feat: add dark mode toggle`                  |
+| Type       | Purpose                                             | Example                                               
+| ---------- | --------------------------------------------------- | ----------------------------------------------------- 
+| `feat`     | New feature                                         | `feat: add emergency contact print button`            
+| `fix`      | Bug fix                                             | `fix: correct toggle bug on checklist`                
+| `docs`     | Documentation updates                               | `docs: update README for hackathon`                   
+| `style`    | Code Formatting/Added New UI                        | `style: reformat CSS for mobile view`                 
+| `refactor` | Code restructure/refactor, no new feature or fix    | `refactor: simplify checklist update logic`           
+| `perf`     | Performance improvement                             | `perf: improve load speed by optimizing loop`         
+| `test`     | Adding or updating tests                            | `test: add unit test for rain alert`                  
+| `build`    | Build system or dependency changes                  | `build: include weather api config`                   
+| `ci`       | Continuous Integration configuration changes        | `ci: update GitHub Actions workflow`                  
+| `chore`    | Maintenance tasks (file rename, code cleanup, etc.) | `chore: rename checklist.js to emergencyChecklist.js` 
+| `revert`   | Revert a previous commit                            | `revert: "feat: add dark mode toggle"`                  
+| `enhance`  | Code/Feature Improvements                           | `enhance: improve mobile responsiveness of checlist`                         
 
 ---
 
