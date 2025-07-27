@@ -1,4 +1,4 @@
-# 🌪️ BagyoAlerto - Typhoon Emergency Checklist PWA
+# 🌪️ BagyoAlerto - Typhoon Emergency Checklist
 
 BagyoAlerto is a simple website application that supports mobile view and an installable web app that helps Filipino families stay prepared for typhoons. Users can manage a customizable emergency checklist, toggle dark/light mode, and receive smart weather-based reminders. The app works offline, stores data using localStorage, and includes a printable emergency contact section — all built using vanilla HTML, CSS, and JavaScript with PWA support.
 
@@ -9,7 +9,12 @@ BagyoAlerto is a simple website application that supports mobile view and an ins
 - [Team Collaborators/Members](#team-members)
 - [Live Demo](#live-demo)
 - [Project Objectives](#project-objectives)
-- [Core Features](#core-features)
+- [Main Features](#app-features)
+  - [Checklist Management](#features)
+  - [User Experience & Design](#features)
+  - [Weather Integration & Notifications](#features)
+  - [Emergency Contacts Section](#features)
+  - [Progressive Web App (PWA)](#features)
 - [Stretch Goals](#stretch-goals)
 - [Tech Stack](#tech-stack)
 
@@ -82,18 +87,38 @@ BagyoAlerto is a simple website application that supports mobile view and an ins
 
 ---
 
-### Core Features
+### Features
 
-- **Check/Uncheck Emergency Items**
-- **Add/Remove Custom Items**
-- **Save Checklist via `localStorage`**
-- **Mobile-first UI** (responsive layout)
-- **Dark/Light Mode Toggle**
-- **In-App Notification if Raining** (via free weather API)
-- **Offline-Ready & Mobile App-Like Ready via PWA**
-- **Printable Emergency Contacts Page**
-- **Tap-to-Call Hotlines**
-- **Reset Entire Checklist with One Click**
+#### 🗂️Checklist Management
+- **Check/Uncheck Emergency Items** – Mark items as packed or pending
+- **Add/Remove Custom Items** – Users can personalize the checklist
+- **Save Checklist using localStorage** – Data persists even when offline
+- **Categorize Items** – Items grouped by category (e.g., Food, Medical, Documents)
+- **Checklist Versions** – Switch between pre-defined packs (e.g., Personal Kit, Family Kit, Pet Kit)
+- **Check All/Uncheck All by Category or by Checklist** – Quickly manage item status by group
+- **Remove All Items in a Category** – Declutter with one click
+- **Import Checklist via File Upload/Export Checklist as .json file** – Sync data between devices
+
+#### 📱 User Experience & Design
+- **Mobile Responsive UI** – Seamless use on any device
+- **Dark/Light Mode Toggle** – Accessible in various lighting conditions
+- **Reset Entire Checklist** – Clear everything in one tap
+- **User Guide Page** - A dedicated help page with step-by-step on how to use this app
+
+
+#### 📡 Weather Integration & Notifications
+- **In-App Weather Alerts** – Get reminders if rain is detected in user’s area (via weather API)
+- **In-App Notifications** – Reminds user to review checklist before typhoon hits (PWA + Notification API)
+
+#### 📞 Emergency Contacts Section
+- **Export as PDF** – One-click export of contacts
+- **Tap-to-Call Hotlines (Mobile only)** – Directly call government/emergency agencies from the app
+- **Copy Contact Info Button** – Quick copy for text messaging or sharing
+
+#### 🧩 Progressive Web App (PWA)
+- **Add to Home Screen Support** – Works like a native app on mobile
+- **Offline-Ready** – View and manage checklist even without internet
+- **Data Stays Local** – Privacy-first approach, no account/login required
 
 ---
 
@@ -103,9 +128,7 @@ BagyoAlerto is a simple website application that supports mobile view and an ins
 
 - Suggest recommended items based on user location or typhoon severity.
 - Auto-detect city using Geolocation API for more accurate weather data.
-- Save multiple checklist versions (family pack, personal kit, etc.)
-- Use IndexedDB or alternative local storage for richer offline state.
-- Sync data between devices using QR code export/import.
+- Use IndexedDB or alternative local storage for richer offline state and for bigger storage capacity.
 
 ---
 
