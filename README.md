@@ -103,6 +103,7 @@ BagyoAlerto is a simple website application that supports mobile view and an ins
 - **Mobile Responsive UI** – Seamless use on any device
 - **Dark/Light Mode Toggle** – Accessible in various lighting conditions
 - **Reset Entire Checklist** – Clear everything in one tap
+- **User Guide Page** - A dedicated help page with step-by-step on how to use this app
 
 
 #### 📡 Weather Integration & Notifications
