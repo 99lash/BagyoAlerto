@@ -374,3 +374,111 @@ footer {
 .footer-content p {
   margin: 0;
 }
+/* FOOTER */
+
+
+
+
+/* THIS PART IS THE HEADER */
+
+header{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding: var(--space-1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#logo{
+  display: flex;
+  gap: 3px;
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-xl);
+  align-items: center;
+}
+#logo img{
+  width: auto;
+  height: clamp(20px, 4vw, 27px);
+  max-width: 100%;
+}
+
+#middle{
+  display:flex ;
+  gap: 10px;
+}
+#middle button{
+  display: flex;
+  align-items: center;
+  border-style: none;
+  background-color: inherit;
+  border-radius: 8px;
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-base);
+  gap: 4px;
+  padding: var(--space-3);
+}
+#middle button:hover{
+  background-color: var(--color-muted);
+  transform: translateY(-1px);
+}
+#middle button:active{
+  background-color: var(--color-accent-foreground);
+  transform: translateY(0);
+  color: var(--color-accent);
+}
+
+#right-side button{
+  border-style: none;
+  background-color: inherit;
+  border-radius: 8px;
+  padding: var(--space-3);
+  align-items: center;
+}
+
+#right-side button:hover{
+  background-color: var(--color-muted);
+  transform: translateY(-1px);
+}
+#right-side button:active{
+  background-color: var(--color-accent-foreground);
+  transform: translateY(0);
+  color: var(--color-accent);
+}
+
+/* THIS IS THE FUNCTION IF WE WANT THE TO ACTIVATE THE BUTTON TO MAKE IT ALWAYS GO BLACK IN CERTAIN PAGE */
+/* // Function to update content
+function showPage(pageContent) {
+    content.innerHTML = pageContent;
+}
+
+// Function to update active button styling
+function setActiveButton(activeBtn) {
+    // Remove active class from all buttons
+    document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    // Add active class to clicked button
+    activeBtn.classList.add('active');
+}
+
+// Add event listeners to buttons
+dashBtn.addEventListener('click', () => {
+    showPage(dash-button);
+    setActiveButton(dashBtn);
+});
+
+checkBtn.addEventListener('click', () => {
+    showPage(checklist);
+    setActiveButton(checkBtn);
+});
+
+EmegencyBtn.addEventListener('click', () => {
+    showPage(emegency);
+    setActiveButton(EmegencyBtn);
+})
+
+guideBtn.addEventListener('click', () => {
+    showPage(guide);
+    setActiveButton(guideBtn);
+}) */
+/* THIS PART IS THE HEADER */
