@@ -7,8 +7,9 @@
   <title>BagyoAlerto | Emergency</title>
   <link rel="manifest" href="manifest.json">
   <link rel="stylesheet" href="styles/index.css">
-<!-- PHOSPOR ICONS -->
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/regular/style.css" />
+  <!-- PHOSPOR ICONS -->
+  <link rel="stylesheet" type="text/css"
+    href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/regular/style.css" />
 </head>
 
 <body>
@@ -17,20 +18,54 @@
       <!-- HEADER/NAVIGATION CONTENT -->
       Header
     </header>
+</div>
     <main>
-      <!-- MAIN CONTENT -->
-      Main
-    </main>
-    <footer>
-      <div class="container">
-        <div class="footer-content">
-          <h3>BagyoAlerto</h3>
-          <p>Stay prepared, stay safe. Emergency preparedness for Filipino families.</p>
-          <p>Privacy-first • Offline-ready • No account required</p>
+
+      <!--Section Header Card-->
+      <div class="section-header">
+        <div class="section-header-text">
+          <h2 class="section-header-title">Emergency Contacts</h2>
+          <p class="section-header-description">
+            Essential hotlines for typhoon emergencies in the Philippines
+          </p>
         </div>
+        <button class="section-header-button">
+          <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+            viewBox="0 0 24 24">
+            <path d="M12 16l4-5h-3V4h-2v7H8l4 5z"></path>
+            <path d="M20 18H4v2h16v-2z"></path>
+          </svg>
+          <span>Export Contacts</span>
+        </button>
       </div>
-    </footer>
-  </div>
+
+      <!-- Warning Alert Box -->
+      
+      <div class="alert-banner">  
+        <span class="alert-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#ea5801" viewBox="0 0 256 256"><path d="M215.46,216H40.54C27.92,216,20,202.79,26.13,192.09L113.59,40.22c6.3-11,22.52-11,28.82,0l87.46,151.87C236,202.79,228.08,216,215.46,216Z" opacity="0.2"></path><path d="M236.8,188.09,149.35,36.22h0a24.76,24.76,0,0,0-42.7,0L19.2,188.09a23.51,23.51,0,0,0,0,23.72A24.35,24.35,0,0,0,40.55,224h174.9a24.35,24.35,0,0,0,21.33-12.19A23.51,23.51,0,0,0,236.8,188.09ZM222.93,203.8a8.5,8.5,0,0,1-7.48,4.2H40.55a8.5,8.5,0,0,1-7.48-4.2,7.59,7.59,0,0,1,0-7.72L120.52,44.21a8.75,8.75,0,0,1,15,0l87.45,151.87A7.59,7.59,0,0,1,222.93,203.8ZM120,144V104a8,8,0,0,1,16,0v40a8,8,0,0,1-16,0Zm20,36a12,12,0,1,1-12-12A12,12,0,0,1,140,180Z"></path></svg>
+          </span>
+          <div class="alert-content">
+            <strong>Emergency Guidelines</strong><br />
+            In case of immediate danger, call 911 first. Keep this list accessible even when power is out.
+            Some numbers may be busy during storms &#8209; try multiple contacts.
+          </div>
+        </div>
+      </main>
+
+
+      <!-- MAIN CONTENT -->
+
+    Main content
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <h3>BagyoAlerto</h3>
+        <p>Stay prepared, stay safe. Emergency preparedness for Filipino families.</p>
+        <p>Privacy-first • Offline-ready • No account required</p>
+      </div>
+    </div>
+  </footer>
 </body>
 
 </html>

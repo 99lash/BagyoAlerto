@@ -251,6 +251,92 @@ p {
   EMERGENCY-SPECIFIC COMPONENTS
 ==========================================================================
 */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-6);
+  background-color: var(--color-card);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+  max-width: var(--container-max-width);
+  margin: var(--space-6) auto;
+}
+
+.section-header-text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.section-header-title {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-card-foreground);
+  margin: 0;
+  line-height: var(--line-height-tight);
+}
+
+.section-header-description {
+  font-size: var(--font-size-sm);
+  color: var(--color-muted-foreground);
+  margin: 0;
+  line-height: var(--line-height-normal);
+}
+
+.section-header-button {
+  background-color: var(--color-background);
+  color: var(--color-secondary-foreground);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  padding: var(--space-1) var(--space-6);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.section-header-button:hover {
+  background-color: var(--color-accent);
+  color: var(--color-accent-foreground);
+}
+
+.section-header-button .icon {
+  width: 2rem; 
+  height: 2rem;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Warning Alert box */
+
+.alert-banner {
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+  gap: var(--space-3);
+  background-color: var(--color-medium-severity-bg);
+  color: var(--color-medium-severity);
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  box-shadow: var(--shadow-sm);
+  max-width: var(--container-max-width);
+  margin: var(--space-4) auto;
+}
+
+.alert-icon {
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-tight);
+  margin-top: 2px;
+}
+
+.alert-content {
+  line-height: var(--line-height-normal);
+  font-weight: var(--font-weight-normal);
+}
 
 /* Emergency Contact Card */
 
