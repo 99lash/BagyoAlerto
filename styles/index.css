@@ -381,7 +381,7 @@ footer {
 
 /* THIS PART IS THE HEADER */
 
-header{
+nav{
   display: flex;
   width: 100%;
   justify-content: space-between;
@@ -415,6 +415,7 @@ header{
   background-color: inherit;
   font-weight: var(--font-weight-semibold);
   font-size: var(--font-size-base);
+  border-radius: 8px;
   gap: 4px;
   padding: var(--space-3);
 }
@@ -423,6 +424,11 @@ header{
   transform: translateY(-1px);
 }
 #middle a:active{
+  background-color: var(--color-accent-foreground);
+  transform: translateY(0);
+  color: var(--color-accent);
+}
+#middle a.active{
   background-color: var(--color-accent-foreground);
   transform: translateY(0);
   color: var(--color-accent);
