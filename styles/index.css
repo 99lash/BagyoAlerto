@@ -381,11 +381,18 @@ footer {
 
 /* THIS PART IS THE HEADER */
 
+header{
+  position: sticky;
+  background-color: var(--color-background);
+  top: 0;
+  z-index: 1;
+}
+
 nav{
   display: flex;
   width: 100%;
   justify-content: space-between;
-  padding: var(--space-1);
+  padding: var(--space-4);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
