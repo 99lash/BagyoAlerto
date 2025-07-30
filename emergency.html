@@ -14,64 +14,175 @@
 
 <body>
   <div class="container">
-      <header>
-        <nav>
-          <div id="logo">
-            <img src="./assets/img/apple-touch-icon.png" alt="Logo">
-            BagyoAlerto
-          </div>
-
-          <div id="middle">
-            <a href="./index.html" id="dashboard" ><i class="ph ph-house"></i>Dashboard</a>
-            <a href="./checklist.html" id="checklist"><i class="ph ph-check-square"></i>Checklist</a>
-            <a href="./emergency.html" id="emergency" class="active"><i class="ph ph-phone"></i>Emergency</a>
-            <a href="./guide.html" id="guide"><i class="ph ph-question"></i>Guide</a>
-          </div>
-
-          <div id="right-side">
-            <button><i class="ph ph-moon"></i></button>
-          </div>
-        </nav>
-    </header>
-</div>
-    <main>
-
-      <!--Section Header Card-->
-      <div class="section-header">
-        <div class="section-header-text">
-          <h2 class="section-header-title">Emergency Contacts</h2>
-          <p class="section-header-description">
-            Essential hotlines for typhoon emergencies in the Philippines
-          </p>
+    <header>
+      <nav>
+        <div id="logo">
+          <img src="./assets/img/apple-touch-icon.png" alt="Logo">
+          BagyoAlerto
         </div>
-        <button class="section-header-button">
-          <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
-            viewBox="0 0 24 24">
-            <path d="M12 16l4-5h-3V4h-2v7H8l4 5z"></path>
-            <path d="M20 18H4v2h16v-2z"></path>
+
+        <div id="middle">
+          <a href="./index.html" id="dashboard"><i class="ph ph-house"></i>Dashboard</a>
+          <a href="./checklist.html" id="checklist"><i class="ph ph-check-square"></i>Checklist</a>
+          <a href="./emergency.html" id="emergency" class="active"><i class="ph ph-phone"></i>Emergency</a>
+          <a href="./guide.html" id="guide"><i class="ph ph-question"></i>Guide</a>
+        </div>
+
+        <div id="right-side">
+          <button><i class="ph ph-moon"></i></button>
+        </div>
+      </nav>
+    </header>
+  </div>
+  <main>
+
+    <!--Section Header Card-->
+    <div class="section-header">
+      <div class="section-header-text">
+        <h2 class="section-header-title">Emergency Contacts</h2>
+        <p class="section-header-description">
+          Essential hotlines for typhoon emergencies in the Philippines
+        </p>
+      </div>
+      <button class="section-header-button">
+        <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+          viewBox="0 0 24 24">
+          <path d="M12 16l4-5h-3V4h-2v7H8l4 5z"></path>
+          <path d="M20 18H4v2h16v-2z"></path>
+        </svg>
+        <span>Export Contacts</span>
+      </button>
+    </div>
+
+    <!-- Warning Alert Box -->
+
+    <div class="alert-banner">
+      <span class="alert-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#fce100" viewBox="0 0 256 256">
+          <path
+            d="M236.8,188.09,149.35,36.22h0a24.76,24.76,0,0,0-42.7,0L19.2,188.09a23.51,23.51,0,0,0,0,23.72A24.35,24.35,0,0,0,40.55,224h174.9a24.35,24.35,0,0,0,21.33-12.19A23.51,23.51,0,0,0,236.8,188.09ZM120,104a8,8,0,0,1,16,0v40a8,8,0,0,1-16,0Zm8,88a12,12,0,1,1,12-12A12,12,0,0,1,128,192Z">
+          </path>
+        </svg>
+      </span>
+      <div class="alert-content">
+        <strong>Emergency Guidelines</strong><br />
+        In case of immediate danger, call 911 first. Keep this list accessible even when power is out.
+        Some numbers may be busy during storms &#8209; try multiple contacts.
+      </div>
+    </div>
+  </main>
+
+
+  <!-- MAIN CONTENT -->
+  <!-- Goverment Section  -->
+  <section class="gov-section">
+    <h2 class="section-title">Government Services</h2>
+    <div class="gov-grid">
+      <!-- NDRRMC -->
+      <div class="card">
+        <div class="card-header">
+          <h3>NDRRMC Hotline</h3>
+          <span class="tag gov">government</span>
+        </div>
+        <p class="description">National Disaster Risk Reduction and Management Council</p>
+        <div class="contact">
+          <span class="number">911</span>
+          <div class="icons">
+            <button class="call">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#1eaf54" viewBox="0 0 256 256">
+                <path
+                  d="M224,154.8l-47.09-21.11-.18-.08a19.94,19.94,0,0,0-19,1.75,13.08,13.08,0,0,0-1.12.84l-22.31,19c-13-7.05-26.43-20.37-33.49-33.21l19.06-22.66a11.76,11.76,0,0,0,.85-1.15,20,20,0,0,0,1.66-18.83,1.42,1.42,0,0,1-.08-.18L101.2,32A20.06,20.06,0,0,0,80.42,20.15,60.27,60.27,0,0,0,28,80c0,81.61,66.39,148,148,148a60.27,60.27,0,0,0,59.85-52.42A20.06,20.06,0,0,0,224,154.8ZM176,204A124.15,124.15,0,0,1,52,80,36.29,36.29,0,0,1,80.48,44.46l18.82,42L80.14,109.28a12,12,0,0,0-.86,1.16A20,20,0,0,0,78,130.08c9.42,19.28,28.83,38.56,48.31,48A20,20,0,0,0,146,176.63a11.63,11.63,0,0,0,1.11-.85l22.43-19.07,42,18.81A36.29,36.29,0,0,1,176,204Z">
+                </path>
+              </svg>
+            </button>
+            <button class="copy">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#100f0f" viewBox="0 0 256 256">
+                <path
+                  d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z">
+                </path>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <button class="call-now"> <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#1eaf54"
+            viewBox="0 0 256 256">
+            <path
+              d="M224,154.8l-47.09-21.11-.18-.08a19.94,19.94,0,0,0-19,1.75,13.08,13.08,0,0,0-1.12.84l-22.31,19c-13-7.05-26.43-20.37-33.49-33.21l19.06-22.66a11.76,11.76,0,0,0,.85-1.15,20,20,0,0,0,1.66-18.83,1.42,1.42,0,0,1-.08-.18L101.2,32A20.06,20.06,0,0,0,80.42,20.15,60.27,60.27,0,0,0,28,80c0,81.61,66.39,148,148,148a60.27,60.27,0,0,0,59.85-52.42A20.06,20.06,0,0,0,224,154.8ZM176,204A124.15,124.15,0,0,1,52,80,36.29,36.29,0,0,1,80.48,44.46l18.82,42L80.14,109.28a12,12,0,0,0-.86,1.16A20,20,0,0,0,78,130.08c9.42,19.28,28.83,38.56,48.31,48A20,20,0,0,0,146,176.63a11.63,11.63,0,0,0,1.11-.85l22.43-19.07,42,18.81A36.29,36.29,0,0,1,176,204Z">
+            </path>
           </svg>
-          <span>Export Contacts</span>
-        </button>
+          <span>
+            Call Now  
+          </span></button>
       </div>
 
-      <!-- Warning Alert Box -->
-      
-      <div class="alert-banner">  
-        <span class="alert-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#ea5801" viewBox="0 0 256 256"><path d="M215.46,216H40.54C27.92,216,20,202.79,26.13,192.09L113.59,40.22c6.3-11,22.52-11,28.82,0l87.46,151.87C236,202.79,228.08,216,215.46,216Z" opacity="0.2"></path><path d="M236.8,188.09,149.35,36.22h0a24.76,24.76,0,0,0-42.7,0L19.2,188.09a23.51,23.51,0,0,0,0,23.72A24.35,24.35,0,0,0,40.55,224h174.9a24.35,24.35,0,0,0,21.33-12.19A23.51,23.51,0,0,0,236.8,188.09ZM222.93,203.8a8.5,8.5,0,0,1-7.48,4.2H40.55a8.5,8.5,0,0,1-7.48-4.2,7.59,7.59,0,0,1,0-7.72L120.52,44.21a8.75,8.75,0,0,1,15,0l87.45,151.87A7.59,7.59,0,0,1,222.93,203.8ZM120,144V104a8,8,0,0,1,16,0v40a8,8,0,0,1-16,0Zm20,36a12,12,0,1,1-12-12A12,12,0,0,1,140,180Z"></path></svg>
-          </span>
-          <div class="alert-content">
-            <strong>Emergency Guidelines</strong><br />
-            In case of immediate danger, call 911 first. Keep this list accessible even when power is out.
-            Some numbers may be busy during storms &#8209; try multiple contacts.
+      <!-- PAGASA -->
+      <div class="card">
+        <div class="card-header">
+          <h3>PAGASA Weather</h3>
+          <span class="tag gov">government</span>
+        </div>
+        <p class="description">Philippine Atmospheric, Geophysical and Astronomical Services Administration</p>
+        <div class="contact">
+          <span class="number">(02) 8284-0800</span>
+          <div class="icons">
+            <button class="call">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#1eaf54" viewBox="0 0 256 256">
+                <path
+                  d="M224,154.8l-47.09-21.11-.18-.08a19.94,19.94,0,0,0-19,1.75,13.08,13.08,0,0,0-1.12.84l-22.31,19c-13-7.05-26.43-20.37-33.49-33.21l19.06-22.66a11.76,11.76,0,0,0,.85-1.15,20,20,0,0,0,1.66-18.83,1.42,1.42,0,0,1-.08-.18L101.2,32A20.06,20.06,0,0,0,80.42,20.15,60.27,60.27,0,0,0,28,80c0,81.61,66.39,148,148,148a60.27,60.27,0,0,0,59.85-52.42A20.06,20.06,0,0,0,224,154.8ZM176,204A124.15,124.15,0,0,1,52,80,36.29,36.29,0,0,1,80.48,44.46l18.82,42L80.14,109.28a12,12,0,0,0-.86,1.16A20,20,0,0,0,78,130.08c9.42,19.28,28.83,38.56,48.31,48A20,20,0,0,0,146,176.63a11.63,11.63,0,0,0,1.11-.85l22.43-19.07,42,18.81A36.29,36.29,0,0,1,176,204Z">
+                </path>
+              </svg>
+            </button>
+            <button class="copy"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#100f0f"
+                viewBox="0 0 256 256">
+                <path
+                  d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z">
+                </path>
+              </svg></button>
           </div>
         </div>
-      </main>
+        <button class="call-now"> <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#1eaf54"
+            viewBox="0 0 256 256">
+            <path
+              d="M224,154.8l-47.09-21.11-.18-.08a19.94,19.94,0,0,0-19,1.75,13.08,13.08,0,0,0-1.12.84l-22.31,19c-13-7.05-26.43-20.37-33.49-33.21l19.06-22.66a11.76,11.76,0,0,0,.85-1.15,20,20,0,0,0,1.66-18.83,1.42,1.42,0,0,1-.08-.18L101.2,32A20.06,20.06,0,0,0,80.42,20.15,60.27,60.27,0,0,0,28,80c0,81.61,66.39,148,148,148a60.27,60.27,0,0,0,59.85-52.42A20.06,20.06,0,0,0,224,154.8ZM176,204A124.15,124.15,0,0,1,52,80,36.29,36.29,0,0,1,80.48,44.46l18.82,42L80.14,109.28a12,12,0,0,0-.86,1.16A20,20,0,0,0,78,130.08c9.42,19.28,28.83,38.56,48.31,48A20,20,0,0,0,146,176.63a11.63,11.63,0,0,0,1.11-.85l22.43-19.07,42,18.81A36.29,36.29,0,0,1,176,204Z">
+            </path>
+          </svg> Call Now</button>
+      </div>
 
+      <!-- DOH -->
+      <div class="card">
+        <div class="card-header">
+          <h3>DOH Health Emergency</h3>
+          <span class="tag gov">government</span>
+        </div>
+        <p class="description">Department of Health emergency hotline</p>
+        <div class="contact">
+          <span class="number">1555</span>
+          <div class="icons">
+            <button class="call"> <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#1eaf54"
+                viewBox="0 0 256 256">
+                <path
+                  d="M224,154.8l-47.09-21.11-.18-.08a19.94,19.94,0,0,0-19,1.75,13.08,13.08,0,0,0-1.12.84l-22.31,19c-13-7.05-26.43-20.37-33.49-33.21l19.06-22.66a11.76,11.76,0,0,0,.85-1.15,20,20,0,0,0,1.66-18.83,1.42,1.42,0,0,1-.08-.18L101.2,32A20.06,20.06,0,0,0,80.42,20.15,60.27,60.27,0,0,0,28,80c0,81.61,66.39,148,148,148a60.27,60.27,0,0,0,59.85-52.42A20.06,20.06,0,0,0,224,154.8ZM176,204A124.15,124.15,0,0,1,52,80,36.29,36.29,0,0,1,80.48,44.46l18.82,42L80.14,109.28a12,12,0,0,0-.86,1.16A20,20,0,0,0,78,130.08c9.42,19.28,28.83,38.56,48.31,48A20,20,0,0,0,146,176.63a11.63,11.63,0,0,0,1.11-.85l22.43-19.07,42,18.81A36.29,36.29,0,0,1,176,204Z">
+                </path>
+              </svg></button>
+            <button class="copy"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#100f0f"
+                viewBox="0 0 256 256">
+                <path
+                  d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z">
+                </path>
+              </svg></button>
+          </div>
+        </div>
+        <button class="call-now"> <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#1eaf54"
+            viewBox="0 0 256 256">
+            <path
+              d="M224,154.8l-47.09-21.11-.18-.08a19.94,19.94,0,0,0-19,1.75,13.08,13.08,0,0,0-1.12.84l-22.31,19c-13-7.05-26.43-20.37-33.49-33.21l19.06-22.66a11.76,11.76,0,0,0,.85-1.15,20,20,0,0,0,1.66-18.83,1.42,1.42,0,0,1-.08-.18L101.2,32A20.06,20.06,0,0,0,80.42,20.15,60.27,60.27,0,0,0,28,80c0,81.61,66.39,148,148,148a60.27,60.27,0,0,0,59.85-52.42A20.06,20.06,0,0,0,224,154.8ZM176,204A124.15,124.15,0,0,1,52,80,36.29,36.29,0,0,1,80.48,44.46l18.82,42L80.14,109.28a12,12,0,0,0-.86,1.16A20,20,0,0,0,78,130.08c9.42,19.28,28.83,38.56,48.31,48A20,20,0,0,0,146,176.63a11.63,11.63,0,0,0,1.11-.85l22.43-19.07,42,18.81A36.29,36.29,0,0,1,176,204Z">
+            </path>
+          </svg> Call Now</button>
+      </div>
 
-      <!-- MAIN CONTENT -->
+    </div>
+  </section>
 
-    Main content
   <footer>
     <div class="container">
       <div class="footer-content">
