@@ -381,20 +381,18 @@ footer {
 
 /* THIS PART IS THE HEADER */
 header {
+  position: sticky;
+  background-color: var(--color-background);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  top: 0;
+  z-index: 1;
 }
 
-nav{
+nav {
   display: flex;
   width: 100%;
   justify-content: space-between;
   padding-block: var(--space-3);
-  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
-  /* 
-    NOTICE: nilipat ko sa header element itong box-shadow.
-  
-    tignan mo itsura mo kapag wala sa header, tapos meron dito
-  - asher */
 }
 
 #logo{
