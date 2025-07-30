@@ -380,20 +380,19 @@ footer {
 
 
 /* THIS PART IS THE HEADER */
-
-header{
+header {
   position: sticky;
   background-color: var(--color-background);
   top: 0;
   z-index: 1;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-nav{
+nav {
   display: flex;
   width: 100%;
   justify-content: space-between;
-  padding: var(--space-4);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding-block: var(--space-3);
 }
 
 #logo{
@@ -402,6 +401,7 @@ nav{
   font-weight: var(--font-weight-semibold);
   font-size: var(--font-size-xl);
   align-items: center;
+  cursor: pointer; /*nilagyan ko pointer hehe*/
 }
 #logo img{
   width: auto;
