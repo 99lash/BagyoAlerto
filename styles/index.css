@@ -410,6 +410,7 @@ p {
   font-size: var(--font-size-xl);
   font-weight: var(--font-weight-semibold);
   margin-bottom: var(--space-4);
+  margin-left: var(--space-2);
 }
 
 .gov-grid,.emergency-grid,.local-grid {
@@ -500,18 +501,16 @@ p {
   transition: 0.2;
   padding: var(--space-1);
    border: 1px solid transparent;
+  font-size: var(--icon-size-md);
+  color: var(--color-green-600);
 }
 .icons button:hover{
   background-color: var(--color-green-100);
   border:1px solid var(--color-green-300);
 }
-
-.ph-phone{
-  font-size: var(--icon-size-md);
-  color: var(--color-green-600);
-}
 .ph-copy{
-  font-size: var(--icon-size-md);
+  font-size: var(--ico);
+  color: var(--color-);
 }
 
 .call-now {
