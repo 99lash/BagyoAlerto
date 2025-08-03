@@ -580,7 +580,7 @@ p {
   color: var(--success);
 }
 
-/* .call-now {
+.call-now {
   display: inline-flex;
   justify-content: center;
   width: 100%;
@@ -595,7 +595,7 @@ p {
   cursor: pointer;
   box-shadow: var(--shadow-sm);
   transition: background 0.2s;
-} */
+}
 
 .call-now:hover {
   background-color: var(--muted-foreground);
