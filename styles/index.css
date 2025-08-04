@@ -31,6 +31,15 @@
   --line-height-normal: 1.5;
   --line-height-relaxed: 1.625;
 
+  /* Icon Sizes*/
+  --icon-size-xs: 0.75rem;       /* 12px */
+  --icon-size-sm: 1rem;          /* 16px */
+  --icon-size-md: 1.25rem;       /* 20px */
+  --icon-size-lg: 1.5rem;        /* 24px */
+  --icon-size-xl: 2rem;          /* 32px */
+  --icon-size-2xl: 2.5rem;       /* 40px */
+  --icon-size-3xl: 3rem;         /* 48px */
+
   /* Core Theme Colors */
   --background: #ffffff;
   --foreground: oklch(0.145 0 0);
@@ -559,50 +568,35 @@ p {
   display: inline-flex;
   justify-content: center;
   cursor: pointer;
+  border: none;
+}
+.ph-copy {
+  cursor: pointer;
   border-radius: var(--radius-md);
   transition: 0.2;
   padding: var(--space-1);
   border: 1px solid transparent;
-  font-size: var(--icon-size-md);
   background-color: transparent;
+  font-size: var(--icon-size-md);
 }
-
-.icons button:hover {
-  background-color: var(--green-100);
-  border: 1px solid var(--green-300);
-}
-
-.ph-copy {
-  color: var(--foreground);
+.ph-copy:hover{
+  border:1px solid var(--foreground);
 }
 
 .call-icon {
+  cursor: pointer;
+  border-radius: var(--radius-md);
+  transition: 0.2;
+  padding: var(--space-1);
+  border: 1px solid transparent;
+  background-color: transparent;
+  font-size: var(--icon-size-md);
   color: var(--success);
 }
-
-.call-now {
-  display: inline-flex;
-  justify-content: center;
-  width: 100%;
-  gap: var(--space-2);
-  padding: var(--space-3);
-  background-color: var(--primary);
-  color: var(--primary-foreground);
-  font-weight: var(--font-weight-normal);
-  font-size: var(--font-size-base);
-  border: none;
-  border-radius: var(--radius-md);
-  cursor: pointer;
-  box-shadow: var(--shadow-sm);
-  transition: background 0.2s;
+.call-icon:hover{
+  border:1px solid var(--success);
+  background-color: var(--success-background);
 }
-
-.call-now:hover {
-  background-color: var(--muted-foreground);
-  color: var(--accent-foreground);
-}
-
-
 
 /* 
 ==========================================================================
