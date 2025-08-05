@@ -1,5 +1,8 @@
-alert = document.querySelector("alert warning").innerHTML = `<label for="alert-close" class="alert-close-btn" aria-label="Dismiss alert">&times;</label>
-
+// Wait for DOM to load
+document.addEventListener('DOMContentLoaded', function() {
+    const alertContainer = document.querySelector(".alert.warning");
+    if (alertContainer) {
+        alertContainer.innerHTML = `<label for="alert-close" class="alert-close-btn" aria-label="Dismiss alert">&times;</label>
           <div class="alert-icon">
             <i class="ph ph-warning"></i>
           </div>
@@ -12,13 +15,10 @@ alert = document.querySelector("alert warning").innerHTML = `<label for="alert-c
               Typhoon "Bagyo" is approaching Metro Manila. Expected landfall in 18 hours. Prepare your emergency kit now.
             </p>
             <span class="alert-timestamp">Jul 28, 2025, 09:22 PM</span>
-          </div>`
+          </div>`;
+    }
+});
 
 function SwitchMode(){
       document.documentElement.classList.toggle('dark');
-}
-
-
-function addAlert(){
-
 }
