@@ -19,6 +19,13 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-function SwitchMode(){
-      document.documentElement.classList.toggle('dark');
+// if lalabas tong function sa taas may ginagawa lang ako, nakalimutan ko pala mag palit ng branch kanina sorry.
+
+function SwitchMode() {
+  const html = document.documentElement;
+  const modeIcon = document.getElementById("mode");
+
+  const isDark = html.classList.toggle('dark');
+
+  isDark ? modeIcon.innerHTML = `<i class="ph ph-sun"></i>`: modeIcon.innerHTML = `<i class="ph ph-moon"></i>`;
 }
