@@ -569,6 +569,7 @@ p {
   justify-content: center;
   cursor: pointer;
   border: none;
+  background-color: inherit;/*made the background inherit to make the seemless*/
 }
 .ph-copy {
   cursor: pointer;
@@ -814,6 +815,11 @@ nav {
   background-color: var(--accent-foreground);
   transform: translateY(0);
   color: var(--accent);
+}
+
+html.dark #right-side button {
+  color: white; /* or whatever color you want in dark mode */
+  background-color: var(--dark-button-bg); /* if you have this variable */
 }
 
 /* THIS PART IS THE HEADER */
@@ -1270,6 +1276,10 @@ nav {
 
 .arrow i {
   font-weight: var(--font-weight-bold);
+}
+html.dark .arrow i {
+  font-weight: var(--font-weight-bold);
+  color: var(--foreground);
 }
 
 .arrow button {
