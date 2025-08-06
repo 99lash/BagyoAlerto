@@ -579,6 +579,7 @@ p {
   border: 1px solid transparent;
   background-color: transparent;
   font-size: var(--icon-size-md);
+  color: var(--foreground);
 }
 .ph-copy:hover{
   border:1px solid var(--foreground);
