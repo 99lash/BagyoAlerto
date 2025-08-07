@@ -1,54 +1,8 @@
-<<<<<<< HEAD
-// Wait for DOM to load
-document.addEventListener('DOMContentLoaded', function() {
-    const alertContainer = document.querySelector(".alert.warning");
-    if (alertContainer) {
-        alertContainer.innerHTML = `<label for="alert-close" class="alert-close-btn" aria-label="Dismiss alert">&times;</label>
-          <div class="alert-icon">
-            <i class="ph ph-warning"></i>
-          </div>
-
-          <div class="alert-content">
-            <div class="alert-header">
-              Typhoon Warning
-            </div>
-            <p>
-              Typhoon "Bagyo" is approaching Metro Manila. Expected landfall in 18 hours. Prepare your emergency kit now.
-            </p>
-            <span class="alert-timestamp">Jul 28, 2025, 09:22 PM</span>
-          </div>`;
-    }
-});
-
-// if lalabas tong function sa taas may ginagawa lang ako, nakalimutan ko pala mag palit ng branch kanina sorry.
-
-function SwitchMode() {
-  const html = document.documentElement;
-  const modeIcon = document.getElementById("mode");
-  const isDark = html.classList.toggle('dark');
-  isDark ? modeIcon.innerHTML = `<i class="ph ph-sun"></i>`: modeIcon.innerHTML = `<i class="ph ph-moon"></i>`;
-}
-
-
-
-//TOASTT
-const toastBox = document.getElementById('toastBox');
-
-
-function showToast(msg){
-    const toast = document.createElement('div');
-    toast.classList.add('toast');
-    toast.innerText = msg;
-    toastBox.appendChild(toast);
-
-    setTimeout(() =>
-    {  toast.remove();
-    }, 3000);
-}
-=======
+import { showToast } from "./features/toast.js";
 import { SwitchThemeMode } from "./features/theme.js";
 import { renderAlertReminder } from "./features/alert.js";
 
+
+window.showToast = showToast; // sher di ko alam if bakit di pwede yung normal na showToast(msg), if may possible solution na iba gawa nalang ng issue
 SwitchThemeMode();
 renderAlertReminder();
->>>>>>> 575ee091102207258385d45d786d8ac9c6c7c524
