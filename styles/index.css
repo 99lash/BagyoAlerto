@@ -1321,7 +1321,37 @@ html.dark .arrow i {
 .toast{
   width: 400px;
   height: 80px;
-  background-color: var(--muted-foreground);
+  background-color: var(--muted);
   margin: 15px 0;
   box-shadow:var(--shadow-lg) ;
+  font-weight: var(--font-weight-bold);
+  display: flex;
+  align-items: center;
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  position: relative;
+  transform: translateX(100%);
+  animation: movein 0.5s linear forwards;
+  
+}
+@keyframes movein {
+ 100%{
+  transform: translateX(0);
+ } 
+}
+
+.toast::after{
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 5px;
+  background: var(--accent-foreground);
+  animation: anim 3s linear forwards;
+}
+@keyframes anim {
+  100%{
+    width: 0;
+  }
 }
