@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // Wait for DOM to load
 document.addEventListener('DOMContentLoaded', function() {
     const alertContainer = document.querySelector(".alert.warning");
@@ -44,3 +45,10 @@ function showToast(msg){
     {  toast.remove();
     }, 3000);
 }
+=======
+import { SwitchThemeMode } from "./features/theme.js";
+import { renderAlertReminder } from "./features/alert.js";
+
+SwitchThemeMode();
+renderAlertReminder();
+>>>>>>> 575ee091102207258385d45d786d8ac9c6c7c524
