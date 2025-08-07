@@ -569,6 +569,7 @@ p {
   justify-content: center;
   cursor: pointer;
   border: none;
+  background-color: inherit;/*made the background inherit to make the seemless*/
 }
 .ph-copy {
   cursor: pointer;
@@ -578,6 +579,7 @@ p {
   border: 1px solid transparent;
   background-color: transparent;
   font-size: var(--icon-size-md);
+  color: var(--foreground);
 }
 .ph-copy:hover{
   border:1px solid var(--foreground);
@@ -814,6 +816,11 @@ nav {
   background-color: var(--accent-foreground);
   transform: translateY(0);
   color: var(--accent);
+}
+
+html.dark #right-side button {
+  color: white; /* or whatever color you want in dark mode */
+  background-color: var(--dark-button-bg); /* if you have this variable */
 }
 
 /* THIS PART IS THE HEADER */
@@ -1271,6 +1278,10 @@ nav {
 .arrow i {
   font-weight: var(--font-weight-bold);
 }
+html.dark .arrow i {
+  font-weight: var(--font-weight-bold);
+  color: var(--foreground);
+}
 
 .arrow button {
   border-style: none;
@@ -1293,4 +1304,24 @@ nav {
   font-weight: var(--font-weight-normal);
   color: var(--muted-foreground);
   margin: 0;
+}
+
+#toastBox{
+  position: fixed;
+  bottom: var(--space-3);
+  right: var(--space-4);
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  overflow: hidden;
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+  z-index: 1;
+}
+.toast{
+  width: 400px;
+  height: 80px;
+  background-color: var(--muted-foreground);
+  margin: 15px 0;
+  box-shadow:var(--shadow-lg) ;
 }

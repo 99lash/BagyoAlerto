@@ -30,7 +30,7 @@
           </div>
 
           <div id="right-side">
-            <button><i class="ph ph-moon"></i></button>
+            <button onclick="SwitchMode()" id="mode"><i class="ph ph-moon"></i></button>
           </div>
         </nav>
       </div>
@@ -77,7 +77,7 @@
             <div class="contact">
               <span class="number">911</span>
               <div class="icons">
-                <button class="call">
+                <button class="call" onclick="showToast()">
                   <i class="ph ph-phone call-icon"></i>
                 </button>
                 <button class="copy">
@@ -97,7 +97,7 @@
             <div class="contact">
               <span class="number">(02) 8284-0800</span>
               <div class="icons">
-                <button class="call">
+                <button class="call" onclick="showToast()">
                   <i class="ph ph-phone call-icon"></i>
                 </button>
                 <button class="copy"><i class="ph ph-copy"></i></button>
@@ -115,7 +115,7 @@
             <div class="contact">
               <span class="number">1555</span>
               <div class="icons">
-                <button class="call">
+                <button class="call" onclick="showToast()">
                   <i class="ph ph-phone call-icon"></i>
                 </button>
                 <button class="copy"><i class="ph ph-copy"></i></button>
@@ -139,7 +139,7 @@
             <div class="contact">
               <span class="number">143</span>
               <div class="icons">
-                <button class="call">
+                <button class="call" onclick="showToast()">
                   <i class="ph ph-phone call-icon"></i>
                 </button>
                 <button class="copy">
@@ -159,7 +159,7 @@
             <div class="contact">
               <span class="number">(02) 8527-8481</span>
               <div class="icons">
-                <button class="call">
+                <button class="call" onclick="showToast()">
                   <i class="ph ph-phone call-icon"></i>
                 </button>
                 <button class="copy"><i class="ph ph-copy"></i></button>
@@ -177,7 +177,7 @@
             <div class="contact">
               <span class="number">116</span>
               <div class="icons">
-                <button class="call">
+                <button class="call" onclick="showToast()">
                   <i class="ph ph-phone call-icon"></i>
                 </button>
                 <button class="copy"><i class="ph ph-copy"></i></button>
@@ -195,7 +195,8 @@
             <div class="contact">
               <span class="number">117</span>
               <div class="icons">
-                <button class="call"> <i class="ph ph-phone call-icon"></i>
+                <button class="call" onclick="showToast()"> 
+                  <i class="ph ph-phone call-icon"></i>
                 </button>
                 <button class="copy"><i class="ph ph-copy"></i></button>
               </div>
@@ -218,7 +219,7 @@
             <div class="contact">
               <span class="number">(02) 8527-5174</span>
               <div class="icons">
-                <button class="call">
+                <button class="call" onclick="showToast()">
                   <i class="ph ph-phone call-icon"></i>
                 </button>
                 <button class="copy">
@@ -238,7 +239,7 @@
             <div class="contact">
               <span class="number"> (02) 5310‑7536</span>
               <div class="icons">
-                <button class="call">
+                <button class="call" onclick="showToast()">
                   <i class="ph ph-phone call-icon"></i>
                 </button>
                 <button class="copy">
@@ -248,20 +249,22 @@
             </div>
           </div>
       </section>
+    <div id="toastBox"><h1>CHECKING</h1></div>
+    </div>
+  </main>
+  
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <h3>BagyoAlerto</h3>
+        <p>Stay prepared, stay safe. Emergency preparedness for families & individuals in typhoon-prone areas</p>
+        <p>Privacy-first &middot; Offline-ready &middot; No account required</p>
       </div>
-    </main>
-
-    <footer>
-      <div class="container">
-        <div class="footer-content">
-          <h3>BagyoAlerto</h3>
-          <p>Stay prepared, stay safe. Emergency preparedness for families & individuals in typhoon-prone areas</p>
-          <p>Privacy-first &middot; Offline-ready &middot; No account required</p>
-        </div>
-      </div>
-    </footer>
-  </div>
+    </div>
+  </footer>
+</div>
 </body>
 
+  <script src="./scripts/index.js"></script>
 
 </html>

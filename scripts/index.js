@@ -17,9 +17,6 @@ document.addEventListener('DOMContentLoaded', function() {
             <span class="alert-timestamp">Jul 28, 2025, 09:22 PM</span>
           </div>`;
     }
-
-
-    
 });
 
 // if lalabas tong function sa taas may ginagawa lang ako, nakalimutan ko pala mag palit ng branch kanina sorry.
@@ -31,4 +28,16 @@ function SwitchMode() {
   const isDark = html.classList.toggle('dark');
 
   isDark ? modeIcon.innerHTML = `<i class="ph ph-sun"></i>`: modeIcon.innerHTML = `<i class="ph ph-moon"></i>`;
+}
+
+
+
+//TOASTT
+const toastBox = document.getElementById('toastBox');
+
+function showToast(){
+    const toast = document.createElement('div');
+    toast.classList.add('toast');
+    toast.innerText = "HEllo bitch";
+    toastBox.appendChild(toast);
 }
