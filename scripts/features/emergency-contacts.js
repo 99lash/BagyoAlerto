@@ -13,3 +13,13 @@ export function copyButton() {
         });
     });
 }
+
+
+export function callButton() {
+    document.querySelectorAll(".call").forEach((btn, index) => {
+        btn.addEventListener("click", function () {
+            const number = document.querySelectorAll(".number")[index].textContent.trim();
+            window.location.href = `tel:${number}`;
+        });
+    });
+}
