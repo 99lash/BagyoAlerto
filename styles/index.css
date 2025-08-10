@@ -839,18 +839,58 @@ html.dark #right-side button {
   gap: var(--space-3);
   padding: var(--space-4);
   border-radius: var(--radius-md);
-  border: 1px solid var(--alert-high);
-  background-color: var(--alert-high-background);
-  color: var(--foreground);
   box-shadow: var(--shadow-sm);
   max-width: 100%;
   margin-top: var(--space-10);
+  color: var(--foreground);
 }
 
-.alert-icon {
+.weather-condition-info {
+  font-weight: var(--font-weight-medium);
+  font-style: italic;
+  color: var(--alert-low);
+}
+
+.weather-condition-warning {
+  font-style: italic;
+  font-weight: var(--font-weight-medium);
+  color: var(--alert-medium);
+}
+
+.weather-condition-danger {
+  font-style: italic;
+  font-weight: var(--font-weight-medium);
+  color: var(--alert-high);
+}
+
+.alert-info {
+  border: 1px solid var(--alert-low);
+  background-color: var(--alert-low-background);
+}
+
+.alert-warning {
+  border: 1px solid var(--alert-medium);
+  background-color: var(--alert-medium-background);
+}
+
+.alert-danger {
+  border: 1px solid var(--alert-high);
+  background-color: var(--alert-high-background);
+}
+
+.alert-icon-info {
+  font-size: var(--font-size-2xl);
+  color: var(--alert-low);
+}
+
+.alert-icon-warning {
+  font-size: var(--font-size-2xl);
+  color: var(--alert-medium);
+}
+
+.alert-icon-danger {
   font-size: var(--font-size-2xl);
   color: var(--alert-high);
-  margin-top: 2px;
 }
 
 .alert-content {
@@ -872,7 +912,6 @@ html.dark #right-side button {
   font-weight: var(--font-weight-semibold);
   font-size: var(--font-size-base);
 }
-
 
 .alert p {
   margin: 0;

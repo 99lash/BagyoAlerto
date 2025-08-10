@@ -1,5 +1,22 @@
 import { SwitchThemeMode } from "./features/theme.js";
-import { renderAlertReminder } from "./features/alert.js";
+import { dashboard } from "./features/dashboard.js";
 
 SwitchThemeMode();
-renderAlertReminder();
+
+switch (window.location.pathname) {
+  case '/index.html':
+    dashboard();
+    break;
+
+  case '/checlist.html':
+    break;
+
+  case '/emergency.html':
+    break;
+
+  case '/guide.html':
+    break;
+
+  default:
+    break;
+}
