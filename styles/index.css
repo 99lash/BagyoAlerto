@@ -1359,3 +1359,8 @@ html.dark .arrow i {
     width: 0;
   }
 }
+
+.toast i{
+  font-size: 50px;
+  margin: 10px;
+}
