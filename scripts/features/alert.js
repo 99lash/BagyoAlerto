@@ -2,7 +2,7 @@ import { getFormattedDateTime } from "../utils/date.js";
 
 export const renderAlertReminder = ({severity, name, desc, isLocationAllowed}) => {
   const alertContainer = document.querySelector(".alert-inside-wrapper");
-  if (alertContainer && isLocationAllowed) {
+  if (alertContainer) {
     alertContainer.innerHTML = `
     <div class="alert alert-${severity}">
       <label for="alert-close" class="alert-close-btn" aria-label="Dismiss alert">&times;</label>
