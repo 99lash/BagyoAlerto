@@ -147,6 +147,9 @@
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  /* Custom Shadow */
+  --shadow-buttons: 0 0 2px 1px rgb(0 0 0 / 1);
+  /* --shadow-button-call: 0 0 3px 1px rgb(22 167 96 / 0.5); */
 
   /* Breakpoints */
   --breakpoint-sm: 640px;
@@ -576,13 +579,15 @@ p {
   border-radius: var(--radius-md);
   transition: 0.2;
   padding: var(--space-1);
-  border: 1px solid transparent;
+  border: none;
   background-color: transparent;
   font-size: var(--icon-size-md);
   color: var(--foreground);
+  
 }
 .ph-copy:hover{
-  border:1px solid var(--foreground);
+  /* border:1px solid var(--foreground); */
+  box-shadow: var(--shadow-buttons);
 }
 
 .call-icon {
@@ -590,14 +595,13 @@ p {
   border-radius: var(--radius-md);
   transition: 0.2;
   padding: var(--space-1);
-  border: 1px solid transparent;
+  border: none;
   background-color: transparent;
   font-size: var(--icon-size-md);
   color: var(--success);
 }
 .call-icon:hover{
-  border:1px solid var(--success);
-  background-color: var(--success-background);
+  box-shadow: var(--shadow-buttons);
 }
 
 /* 

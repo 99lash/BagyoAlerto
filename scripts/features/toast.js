@@ -1,16 +1,31 @@
-const toastBox = document.getElementById('toastBox');
-export const showToast = (msg) => {
-    if (!toastBox) {
-        console.error('toastBox element not found');
-        return;
-    }
-    
-    const toast = document.createElement('div');
-    toast.classList.add('toast');
-    toast.innerText = msg;
-    toastBox.appendChild(toast);
+export function showToast(){
+    document.querySelectorAll(".copy").forEach((btn, index) => { 
+        btn.addEventListener("click", () => {
+            const text = document.querySelectorAll(".number")[index].textContent.trim();
 
-    setTimeout(() => {
-        toast.remove();
-    }, 3000);
+            const toast = document.createElement('div');
+            toast.classList.add('toast');
+            toast.innerText = "SUCCESSFULLY COPIED " + text;
+            toastBox.appendChild(toast);
+
+            setTimeout(() => {
+                toast.remove();
+            }, 3000);
+        })
+    });
+
+    document.querySelectorAll(".call").forEach((btn, index) => { 
+        btn.addEventListener("click", () => {
+            const text = document.querySelectorAll(".number")[index].textContent.trim();
+
+            const toast = document.createElement('div');
+            toast.classList.add('toast');
+            toast.innerText = "CALLING " + text;
+            toastBox.appendChild(toast);
+
+            setTimeout(() => {
+                toast.remove();
+            }, 3000);
+        })
+    });
 }
