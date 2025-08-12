@@ -1089,7 +1089,6 @@ html.dark #right-side button {
   
 }
 
-
 .kit-progress {
   text-align: right;
 }
@@ -1217,6 +1216,22 @@ html.dark #right-side button {
   border: 1px solid var(--border);
 }
 
+.progress-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 8px; /* para hindi dikit sa dulo */
+}
+
+.label-name {
+  flex: 1; /* para name nasa left */
+}
+
+.label-value {
+  color: var(--muted-foreground);
+  margin-left: 12px; /* dagdag space mula sa name */
+  white-space: nowrap; /* para di mag-break line */
+}
 .progress-subtext {
   font-size: var(--font-size-sm);
   color: var(--muted-foreground);
@@ -1263,6 +1278,7 @@ html.dark #right-side button {
   padding: 0;
   margin-top: var(--space-4);
 }
+
 
 .progress-label {
   display: flex;
