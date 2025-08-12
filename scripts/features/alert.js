@@ -1,26 +1,44 @@
-// Wait for DOM to load
-export const renderAlertReminder = () => {
+import { getFormattedDateTime } from "../utils/date.js";
 
-  document.addEventListener('DOMContentLoaded', () => {
-    const alertContainer = document.querySelector(".alert.warning");
-    if (alertContainer) {
-      alertContainer.innerHTML = `
-        <label for="alert-close" class="alert-close-btn" aria-label="Dismiss alert">&times;</label>
-        <div class="alert-icon">
-          <i class="ph ph-warning"></i>
+export const renderAlertReminder = ({severity, name, desc, isLocationAllowed}) => {
+  const alertContainer = document.querySelector(".alert-inside-wrapper");
+  if (alertContainer) {
+    alertContainer.innerHTML = `
+    <div class="alert alert-${severity}">
+      <label for="alert-close" class="alert-close-btn" aria-label="Dismiss alert">&times;</label>
+      <div class="alert-icon-${severity}">
+        <i class="ph ph-info"></i>
+      </div>
+      
+      <div class="alert-content">
+        <div class="alert-header">
+          Weather Reminder
         </div>
-        
-        <div class="alert-content">
-          <div class="alert-header">
-          Typhoon Warning
-          </div>
-          <p>
-            Typhoon "Bagyo" is approaching Metro Manila. Expected landfall in 18 hours. Prepare your emergency kit now.
-          </p>
-          <span class="alert-timestamp">Jul 28, 2025, 09:22 PM</span>
-        </div>`;
-      }
-  });
+        <p>
+         <span class="weather-condition-${severity}">${name}</span>; ${desc}
+        </p>
+        <span class="alert-timestamp">${getFormattedDateTime()}</span>
+      </div>
+    </div>`;
+  } else {
+    alertContainer.innerHTML = `
+    <div class="alert alert-info">
+      <label for="alert-close" class="alert-close-btn" aria-label="Dismiss alert">&times;</label>
+      <div class="alert-icon-info">
+        <i class="ph ph-info"></i>
+      </div>
+      
+      <div class="alert-content">
+        <div class="alert-header">
+          Weather Reminder
+        </div>
+        <p>
+          <span class="weather-condition-info">Location is blocked;</span> Please allow location for better app experience.
+        </p>
+        <span class="alert-timestamp">${getFormattedDateTime()}</span>
+      </div>
+    </div>`;
+  }
 }
 
 // if lalabas tong function sa taas may ginagawa lang ako, nakalimutan ko pala mag palit ng branch kanina sorry.

@@ -4,8 +4,6 @@ export function showToast() {
             const text = document.querySelectorAll(".number")[index].textContent.trim();
             const msg = " Copied " + text;
 
-
-
             const toast = document.createElement('div');
             toast.classList.add('toast');
             const icon = document.createElement('i');
