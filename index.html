@@ -43,6 +43,42 @@
           </div>
         </div>
 
+        <div class="emergency-kit">
+          <div class="emergency-kit-header">
+            <div class="header-info">
+              <i class="ph ph-gear"></i>
+              <div class="emergency-kit-header-text">
+                <h3>Active Emergency Kit</h3>
+                <p>Choose which emergency kit you want to track and manage</p>
+              </div>
+            </div>
+            <div class="header-action">
+              <label for="kit-dropdown-btn">Kit:</label>
+              <button id="kit-dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
+                Personal Kit
+                <span class="arrow">▾</span>
+              </button>
+              <ul id="kit-dropdown-menu" hidden>
+                <li role="option" data-value="personal" aria-selected="true" >Personal Kit</li>
+                <li role="option" data-value="family">Family Kit</li>
+                <li role="option" data-value="pet">Pet Kit</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="kit-details">
+            <div class="kit-info" id="kit-info">
+              <strong>Personal Kit</strong>
+              <p>Essential items for one person (72‑hour survival)</p>
+            </div>
+            <div class="kit-progress">
+              <div class="progress-percent">0%</div>
+              <div class="progress-text">Complete</div>
+            </div>
+          </div>
+        </div>
+
+        
         <div class="grid-overview">
           <div class="overview-card">
             <h4 class="readiness-header">Overall Readiness <i class="ph ph-check-circle"></i></h4>
@@ -60,9 +96,9 @@
           </div>
 
           <div class="overview-card">
-            <h4 class="readiness-header">Active Kit <i class="ph ph-warning-circle"></i></h4>
-            <div class="overview-value">Personal Kit</div>
-            <p class="overview-subtext">Essential items for one person (72-hour survival)</p>
+            <h4 class="readiness-header active-kit-overview-card-header">Active Kit <i class="ph ph-warning-circle"></i></h4>
+            <div class="overview-value active-kit-overview-card-title">Personal Kit</div>
+            <p class="overview-subtext active-kit-overview-card-p">Essential items for one person (72-hour survival)</p>
           </div>
 
           <div class="overview-card">
@@ -185,6 +221,7 @@
     </footer>
   </div>
   <script src="./scripts/index.js" type="module"></script>
+  <script src="./scripts/features/dashboard.js" type="module"></script>
 </body>
 
 </html>

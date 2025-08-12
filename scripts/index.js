@@ -22,3 +22,10 @@ switch (window.location.pathname) {
   default:
     break;
 }
+
+import { renderAlertReminder } from "./features/alert.js";
+import { initKitSwitcher } from "./features/dashboard.js";
+
+initKitSwitcher();
+renderAlertReminder();
+SwitchThemeMode();
