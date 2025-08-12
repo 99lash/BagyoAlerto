@@ -1,7 +1,7 @@
 import { showToast } from "./features/toast.js";
 import { SwitchThemeMode } from "./features/theme.js";
 import { dashboard } from "./features/dashboard.js";
-// import { emergency } from "./features/emergency-contacts.js"; uncaught error saken, walang exported na function na name "emergency" meron lang yung call and copy
+import { emergency } from "./features/emergency-contacts.js";
 import { renderAlertReminder } from "./features/alert.js";
 import { copyButton ,callButton} from "./features/emergency-contacts.js";
 
@@ -17,10 +17,8 @@ switch (window.location.pathname) {
     break;
 
   case '/emergency.html':
-    // emergency(); tinangal ko muna since wala namang caught named function na emergency.
+    emergency();
     showToast();
-    callButton();
-    copyButton();
     break;
 
   case '/guide.html':

@@ -1,3 +1,8 @@
+export const emergency = () => {
+  copyButton();
+  callButton(); 
+}
+
 export function copyButton() {
     document.querySelectorAll(".copy").forEach((btn, index) => {
         btn.addEventListener("click", function () {
