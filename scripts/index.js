@@ -29,9 +29,4 @@ switch (window.location.pathname.split('/').pop()) {
     break;
 }
 
-import { renderAlertReminder } from "./features/alert.js";
-import { initKitSwitcher } from "./features/dashboard.js";
 
-initKitSwitcher();
-renderAlertReminder();
-SwitchThemeMode();

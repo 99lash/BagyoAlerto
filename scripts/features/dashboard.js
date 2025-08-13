@@ -28,11 +28,10 @@ const kitCategories = {
 export const dashboard = async () => {
   try {
     const { isAllowed, data } = await getUserLocation();
-    if (isAllowed) {
-      const { lat, lon } = data;
-      const response = await getWeather(lat, lon);
-      renderAlertReminder(response);
-    }
+    const { lat, lon } = data;
+    const response = await getWeather(lat, lon);
+    renderAlertReminder(response);
+    initKitSwitcher();
   } catch (error) {
     console.error(error);
   }
@@ -78,7 +77,7 @@ function renderCategoryProgress(kitType) {
   });
 }
 
-export function initKitSwitcher() {
+function initKitSwitcher() {
   const kits = {
     personal: {
       title: "Personal Kit",
