@@ -748,6 +748,7 @@ nav {
   display: flex;
   width: 100%;
   justify-content: space-between;
+  align-items: center;
   padding-block: var(--space-3);
 }
 
@@ -806,9 +807,13 @@ nav {
 #right-side button {
   border-style: none;
   background-color: inherit;
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   padding: var(--space-3);
-  align-items: center;
+}
+
+html.dark #right-side button:hover {
+  background-color: var(--accent);
+  transform: translateY(-1px);
 }
 
 #right-side button:hover {
