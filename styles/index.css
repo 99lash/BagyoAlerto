@@ -809,7 +809,6 @@ nav {
   background-color: inherit;
   border-radius: var(--radius-md);
   padding: var(--space-3);
-  align-items: center;
 }
 
 html.dark #right-side button:hover {
