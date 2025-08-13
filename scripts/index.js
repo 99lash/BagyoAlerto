@@ -10,6 +10,7 @@ if (!loadAppData()) {
 SwitchThemeMode();
 
 switch (window.location.pathname.split('/').pop()) {
+  case '':
   case 'index.html':
     dashboard();
     break;
