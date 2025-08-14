@@ -1,7 +1,8 @@
-import { showToast } from "./features/toast.js";
 import { SwitchThemeMode } from "./features/theme.js";
 import { dashboard } from "./features/dashboard.js";
 import { emergency } from "./features/emergency-contacts.js";
+import { loadAppData } from "./core/appData.js";
+
 
 if (!loadAppData()) {
   //kapag walang data, initialized the fixed data.
