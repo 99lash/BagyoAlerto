@@ -2,26 +2,27 @@ import { showToast } from "./features/toast.js";
 import { SwitchThemeMode } from "./features/theme.js";
 import { dashboard } from "./features/dashboard.js";
 import { emergency } from "./features/emergency-contacts.js";
-import { renderAlertReminder } from "./features/alert.js";
-import { copyButton ,callButton} from "./features/emergency-contacts.js";
 
+if (!loadAppData()) {
+  //kapag walang data, initialized the fixed data.
+  resetAppData();
+}
 SwitchThemeMode();
 
-switch (window.location.pathname) {
-  case '/index.html':
+switch (window.location.pathname.split('/').pop()) {
+  case '':
+  case 'index.html':
     dashboard();
     break;
 
-  case './checklist.html':
-    showToast();
+  case 'checklist.html':
     break;
 
-  case '/emergency.html':
+  case 'emergency.html':
     emergency();
-    showToast();
     break;
 
-  case '/guide.html':
+  case 'guide.html':
     break;
 
   default:
