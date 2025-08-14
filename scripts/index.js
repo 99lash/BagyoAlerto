@@ -1,7 +1,7 @@
 import { SwitchThemeMode } from "./features/theme.js";
 import { dashboard } from "./features/dashboard.js";
 import { emergency } from "./features/emergency-contacts.js";
-import { loadAppData } from "./core/appData.js";
+import { resetAppData, loadAppData } from "./core/appData.js";
 
 
 if (!loadAppData()) {
