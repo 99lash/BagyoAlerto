@@ -15,7 +15,7 @@ export const renderAlertReminder = ({severity, name, desc, isLocationAllowed}) =
           Weather Reminder
         </div>
         <p>
-         <span class="weather-condition-${severity}">${name}</span>; ${desc}
+         <span class="weather-condition-${severity}">${name}</span> ${desc}
         </p>
         <span class="alert-timestamp">${getFormattedDateTime()}</span>
       </div>
@@ -41,4 +41,3 @@ export const renderAlertReminder = ({severity, name, desc, isLocationAllowed}) =
   }
 }
 
-// if lalabas tong function sa taas may ginagawa lang ako, nakalimutan ko pala mag palit ng branch kanina sorry.
