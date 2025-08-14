@@ -210,7 +210,7 @@
   --accent-foreground: oklch(0.985 0 0);
   --destructive: oklch(0.396 0.141 25.723);
   --destructive-foreground: oklch(0.637 0.237 25.331);
-  --border: oklch(0.269 0 0);
+  --border: oklch(0.38 0 0);
   --input: oklch(0.269 0 0);
   --input-background: oklch(0.269 0 0);
   --switch-background: #cbced4;
@@ -386,6 +386,10 @@ p {
 /* Alert Component */
 
 /* Progress Component */
+
+progress {
+  width: 100%;
+}
 
 /* Badge Component */
 
@@ -1636,3 +1640,42 @@ html.dark .arrow i {
   font-size: var(--icon-size-md);
   margin: var(--space-4);
 }
+
+/*=============================================
+=            Checklist comment block            =
+=============================================*/
+
+.checklist-header, .checklist-actions, .checklist-list {
+  margin-top: var(--space-10);
+}
+
+.checklist-actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.actions-tablist {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+  gap: var(--space-1);
+  background-color: var(--secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+
+.actions-tablist-item {
+  padding-inline: var(--space-4);
+  padding-block: var(--space-1);
+  border: 1px solid var(--border);
+  background-color: var(--accent);
+  border-radius: var(--radius-md);
+  text-align: center;
+  font-weight: var(--font-weight-medium);
+}
+
+.active-tab {
+  background-color: var(--primary-foreground);
+}
+
+/*=====  End of Checklist comment block  ======*/

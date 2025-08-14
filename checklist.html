@@ -35,7 +35,57 @@
     <main>
       <div class="container">
         <!-- MAIN CONTENT -->
-        Content
+        <section class="checklist-header">
+          <div class="card">
+            <div class="card-header checklist-top">
+              <div class="checklist-top-left">
+                <h3>Emergency Checklist</h3>
+                <p class="active-kit-progress">
+                  <!-- DYNAMIC DAPAT ITO -->
+                  0 of 24 items completed (0%)
+                </p>
+              </div>
+              <div class="checklist-top-right">
+                <label for="kitVersion">
+                  Kit Version:
+                </label>
+                <select name="kitVersion" id="kitVersion">
+                  <!-- DYNAMIC DAPAT ANG OPTIONS -->
+                  <option value="1">Personal Kit</option>
+                  <option value="2">Family Kit</option>
+                  <option value="3">Pet Kit</option>
+                </select>
+              </div>
+            </div>
+            <div class="active-kit-description">
+              <!-- DYNAMIC DAPAT ITO -->
+              Essential items for one person (72-hour survival)
+            </div>
+            <!-- <progress value="20" max="100" class="active-kit-progress">Active Kit Progress Bar</progress> -->
+            <div class="progress-bar active-kit-progress">
+              <div class="progress-bar-fill"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="checklist-actions">
+          <div class="actions-tablist">
+            <div class="actions-tablist-item active-tab">Items</div>
+            <div class="actions-tablist-item">Kits</div>
+            <div class="actions-tablist-item">Categories</div>
+            <div class="actions-tablist-item">Quick Actions</div>
+          </div>
+          <div class="actions-active-content">
+            <div class="card"></div>
+            <div class="card"></div>
+          </div>
+        </section>
+
+        <section class="checklist-list">
+          <div class="card">
+
+          </div>
+        </section>
       </div>
     </main>
     <footer>
