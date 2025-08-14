@@ -116,18 +116,18 @@ export const getWeather = async (lat, lon) => {
     };
   }
   const apiKey = "69b2e9264b704d43830115918252607";
-  // const forecastEndpoint = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${lat},${lon}&aqi=no`;
+  const forecastEndpoint = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${lat},${lon}&aqi=no`;
 
   // !Uncomment mo 'to kung gusto mo ma-test yung location is allowed only in the PH.
-  const cityName = 'Shantou'
-  const forecastEndpoint = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${cityName}&aqi=no`;
+  // const cityName = 'Shantou'
+  // const forecastEndpoint = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${cityName}&aqi=no`;
   try {
     let forecastWeatherData = await fetch(forecastEndpoint);
     forecastWeatherData = await forecastWeatherData.json();
     const { current, forecast, location } = forecastWeatherData;
     // block countries outside ng PH
     // isCountryPH(location);
-    if (isCountryPH(location)) {
+    if (!isCountryPH(location)) {
       // console.log('test: location is not allowed');
       return {
         isLocationAllowed: false,
