@@ -1,7 +1,8 @@
+import { SwitchThemeMode } from "./features/theme.js";
 import { dashboard } from "./features/dashboard.js";
 import { emergency } from "./features/emergency-contacts.js";
-import { SwitchThemeMode } from "./features/theme.js";
 import { resetAppData, loadAppData } from "./core/appData.js";
+
 
 if (!loadAppData()) {
   //kapag walang data, initialized the fixed data.
@@ -15,7 +16,7 @@ switch (window.location.pathname.split('/').pop()) {
     dashboard();
     break;
 
-  case 'checlist.html':
+  case 'checklist.html':
     break;
 
   case 'emergency.html':
@@ -28,5 +29,3 @@ switch (window.location.pathname.split('/').pop()) {
   default:
     break;
 }
-
-
