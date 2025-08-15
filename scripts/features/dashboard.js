@@ -45,7 +45,7 @@ function renderCategoryProgress(selectedKitId) {
   list.innerHTML = "";
 
   Object.values(categoryMap).forEach(cat => {
-    const percent = cat.total ? Math.round((cat.current / cat.total) * 100) : 0;
+    const percent = 0; // pang compute ko lang to pag meron ng progress talaga
 
     const li = document.createElement("li");
     const labelContainer = document.createElement("div");
