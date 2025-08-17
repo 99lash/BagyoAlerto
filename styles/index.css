@@ -772,6 +772,10 @@ nav {
   display: flex;
   gap: 10px;
 }
+@media (max-width: 768px) {
+  #middle{ display: none;}
+}
+
 
 #middle a {
   display: flex;
@@ -1407,4 +1411,17 @@ html.dark .arrow i {
 .toast i{
   font-size: var(--icon-size-md);
   margin: var(--space-4);
+}
+
+#burger{
+  position: fixed;
+  bottom: var(--space-1);
+  right: var(--space-1);
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  overflow: hidden;
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+  z-index: 1;
 }
