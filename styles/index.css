@@ -1672,10 +1672,86 @@ html.dark .arrow i {
   border-radius: var(--radius-md);
   text-align: center;
   font-weight: var(--font-weight-medium);
+  cursor: pointer;
 }
 
 .active-tab {
   background-color: var(--primary-foreground);
+}
+
+/* add item form */
+
+.form {
+  padding: var(--space-5);
+}
+
+.form-header h3 {
+  font-size: var(--font-size-2xl);
+}
+
+.form-header p {
+  color: var(--muted-foreground);
+}
+
+.form-fields {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.form-fields label {
+  font-weight: var(--font-weight-medium);
+}
+
+.field-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+/* emergency-kits-list */
+
+.card-list {
+  padding: var(--space-5);
+}
+
+.card-list-header h4 {
+  font-weight: var(--font-weight-medium);
+}
+
+/* mga resuable components hahah */
+
+input[type="text"] {
+  background-color: var(--muted);
+  color: var(--primary);
+  padding: var(--space-2);
+  outline: none;
+  border: var(--border);
+  border-radius: var(--radius-md);
+}
+
+select {
+  background-color: var(--muted);
+  color: var(--primary);
+  padding: var(--space-2);
+  border-radius: var(--radius-md);
+  border: transparent;
+}
+
+select[name="kitVersion"] {
+  border-radius: var(--radius-lg);
+  min-width: 100px;
+}
+
+option {
+  color: var(--primary);
+}
+
+button[type="submit"] {
+  padding: var(--space-2);
+  border-radius: var(--radius-lg);
+  border: transparent;
+  cursor: pointer;
 }
 
 /*=====  End of Checklist comment block  ======*/

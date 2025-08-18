@@ -11,6 +11,7 @@
   <link rel="stylesheet" type="text/css"
     href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/regular/style.css" />
 </head>
+
 <body>
   <div class="app">
     <header>
@@ -70,14 +71,70 @@
 
         <section class="checklist-actions">
           <div class="actions-tablist">
-            <div class="actions-tablist-item active-tab">Items</div>
-            <div class="actions-tablist-item">Kits</div>
-            <div class="actions-tablist-item">Categories</div>
-            <div class="actions-tablist-item">Quick Actions</div>
+            <div class="actions-tablist-item active-tab" role="button">Manage Items</div>
+            <div class="actions-tablist-item" role="button">Manage Kits</div>
+            <div class="actions-tablist-item" role="button">Manage Categories</div>
+            <div class="actions-tablist-item" role="button">Quick Actions</div>
           </div>
+          <!-- Dynamic content base on active tab -->
+           <!-- Manage Items Card -->
           <div class="actions-active-content">
-            <div class="card"></div>
-            <div class="card"></div>
+            <div class="card">
+              <div class="form add-item-form">
+                <div class="form-header">
+                  <h3>Add Item</h3>
+                  <p>Add a custom item to your current emergency kit.</p>
+                </div>
+                <div class="form-fields">
+                  <div class="field-container">
+                    <label for="itemName">Item Name </label>
+                    <input type="text" name="itemName" id="itemName" placeholder="e.g., Rice sack">
+                  </div>
+                  <div class="field-container">
+                    <label for="itemCategory">Item Category </label>
+                    <select name="itemCategory" id="itemCategory">
+                      <option value="id-1" selected>Food & Water</option>
+                      <option value="id-2">Medical & Health</option>
+                      <option value="id-3">Documents</option>
+                    </select>
+                  </div>
+                  <button type="submit" id="addItem">+ Add item</button>
+                </div>
+              </div>
+            </div>
+          </div>
+           <!-- Manage Kits Card -->
+          <div class="actions-active-content">
+            <div class="card">
+              <div class="form add-item-form">
+                <div class="form-header">
+                  <h3>Create New Kit</h3>
+                  <p>Create and manage specialized emergency kits for different scenarios.</p>
+                </div>
+                <div class="form-fields">
+                  <div class="field-container">
+                    <label for="kitName">Kit Name </label>
+                    <input type="text" name="kitName" id="kitName" placeholder="e.g., Office Kit">
+                  </div>
+                  <div class="field-container">
+                    <label for="kitDescription">Kit Description </label>
+                    <input type="text" name="kitDescription" id="kitDescription" placeholder="e.g., Emergency supplies for workplace">
+                  </div>
+                  <button type="submit" id="addKit">+ Create Kit</button>
+                </div>
+              </div>
+              <div class="card-list emergency-kits-list">
+                <div class="card-list-header">
+                  <h4>Your Emergency Kits</h4>
+                </div>
+                <div class="card-list-body">
+                  <!-- template list repeatable 'to' -->
+                  <div class="card emergency-kit-card">
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -90,12 +147,12 @@
     </main>
     <footer>
       <div class="container">
-          <div class="footer-content">
-            <h3>BagyoAlerto</h3>
-            <p>Stay prepared, stay safe. Emergency preparedness for families & individuals in typhoon-prone areas</p>
-            <p>Privacy-first &middot; Offline-ready &middot; No account required</p>
-          </div>
+        <div class="footer-content">
+          <h3>BagyoAlerto</h3>
+          <p>Stay prepared, stay safe. Emergency preparedness for families & individuals in typhoon-prone areas</p>
+          <p>Privacy-first &middot; Offline-ready &middot; No account required</p>
         </div>
+      </div>
     </footer>
   </div>
   <script src="./scripts/index.js" type="module"></script>
