@@ -1,7 +1,7 @@
 import { getUserLocation } from "../core/geolocation.js";
 import { getWeather } from "../core/weather.js";
 import { renderAlertReminder } from "./alert.js";
-import { loadAppData } from "../core/appdata.js";
+import { loadAppData } from "../core/appData.js";
 
 export const dashboard = async () => {
   try {
