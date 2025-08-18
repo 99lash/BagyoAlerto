@@ -58,7 +58,7 @@ const appData = {
     {}
   ],
   emergencyTypes: [
-    // mga fixed/default emergency types sa PH
+    // mga fixed/default emergency types sa PHperso
     { 
       id: 'de2624bd-8763-4a0e-bb98-35eed735b291',
       name: 'Government',
