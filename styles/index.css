@@ -1438,11 +1438,18 @@ html.dark .arrow i {
   text-decoration: none;
   color: var(--accent-foreground);
   padding: var(--space-3);
-  width: 100%;
   border-radius: var(--radius-md);
   transition: background-color 0.2s ease;
+}
+.burger-item a:active{
+  background-color: var(--accent-foreground);
 }
 
 .burger-item a:hover {
   background-color: var(--muted);
+}
+.burger-item a.active {
+  background-color: var(--accent-foreground);
+  transform: translateY(0);
+  color: var(--accent);
 }

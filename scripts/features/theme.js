@@ -7,7 +7,6 @@ export const SwitchThemeMode = () => {
     const html = document.documentElement;
     const data = loadAppData();
     const { appSettings } = data;
-    console.log(appSettings);
 
     if (appSettings.theme === 'dark') {
       switchThemeBtn.innerHTML = `<i class="ph ph-sun"></i>`;

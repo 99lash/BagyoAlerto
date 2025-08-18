@@ -24,20 +24,56 @@ function handleHamburgerMenu() {
         if (burger) {
           if (!isMobileMenuOpen) {
             // Open menu
+
             const prop = document.createElement('div');
             prop.classList.add('burger-item');
 
-            prop.innerHTML = `
-        <a href="./index.html" id="dashboard"><i class="ph ph-house"></i>Dashboard</a>
-        <a href="./checklist.html" id="checklist"><i class="ph ph-check-square"></i>Checklist</a>
-        <a href="./emergency.html" id="emergency"><i class="ph ph-phone"></i>Emergency</a>
-        <a href="./guide.html" id="guide"><i class="ph ph-question"></i>Guide</a>
-      `;
+            switch (window.location.pathname.split('/').pop()) {
+              case '':
+              case 'index.html':
+                prop.innerHTML = `
+                <a href="./index.html" id="dashboard" class="active"><i class="ph ph-house" ></i>Dashboard</a>
+                <a href="./checklist.html" id="checklist"><i class="ph ph-check-square"></i>Checklist</a>
+                <a href="./emergency.html" id="emergency"><i class="ph ph-phone"></i>Emergency</a>
+                <a href="./guide.html" id="guide"><i class="ph ph-question"></i>Guide</a>
+              `; burger.appendChild(prop);
+                isMobileMenuOpen = true;
+                break;
 
-            setActiveMenuItemByHref();
+              case 'checklist.html':
+                prop.innerHTML = `
+                <a href="./index.html" id="dashboard" ><i class="ph ph-house" ></i>Dashboard</a>
+                <a href="./checklist.html" id="checklist" class="active"><i class="ph ph-check-square"></i>Checklist</a>
+                <a href="./emergency.html" id="emergency"><i class="ph ph-phone"></i>Emergency</a>
+                <a href="./guide.html" id="guide"><i class="ph ph-question"></i>Guide</a>
+              `; burger.appendChild(prop);
+                isMobileMenuOpen = true;
+                break;
 
-            burger.appendChild(prop);
-            isMobileMenuOpen = true;
+              case 'emergency.html':
+                prop.innerHTML = `
+                <a href="./index.html" id="dashboard" ><i class="ph ph-house" ></i>Dashboard</a>
+                <a href="./checklist.html" id="checklist"><i class="ph ph-check-square"></i>Checklist</a>
+                <a href="./emergency.html" id="emergency" class="active"><i class="ph ph-phone"></i>Emergency</a>
+                <a href="./guide.html" id="guide"><i class="ph ph-question"></i>Guide</a>
+              `; burger.appendChild(prop);
+                isMobileMenuOpen = true;
+                break;
+
+              case 'guide.html':
+                prop.innerHTML = `
+                <a href="./index.html" id="dashboard" ><i class="ph ph-house" ></i>Dashboard</a>
+                <a href="./checklist.html" id="checklist"><i class="ph ph-check-square"></i>Checklist</a>
+                <a href="./emergency.html" id="emergency"><i class="ph ph-phone"></i>Emergency</a>
+                <a href="./guide.html" id="guide" class="active"><i class="ph ph-question"></i>Guide</a>
+              `; burger.appendChild(prop);
+                isMobileMenuOpen = true;
+                break;
+
+              default:
+                break;
+            }
+
           } else {
             // Close menu
             burger.innerHTML = '';
@@ -61,15 +97,4 @@ function initHamburgerMenu() {
   // Run on window resize
   window.addEventListener('resize', handleHamburgerMenu);
 }
-function setActiveMenuItemByHref() {
-  const currentURL = window.location.href;
-  
-  document.querySelectorAll('.burger-item a').forEach(link => {
-    link.classList.remove('active');
-    
-    // Check if current URL ends with the link's href
-    if (currentURL.includes(link.getAttribute('href').replace('./', ''))) {
-      link.classList.add('active');
-    }
-  });
-}
+
