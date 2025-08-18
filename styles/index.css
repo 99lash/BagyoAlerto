@@ -681,6 +681,7 @@ p {
 */
 
 @media print {
+   
   .button {
     border: 1px solid #000;
     background: #fff !important;
@@ -695,7 +696,7 @@ p {
   .emergency-contact {
     page-break-inside: avoid;
     margin-bottom: 1rem;
-  }
+}
 }
 
 

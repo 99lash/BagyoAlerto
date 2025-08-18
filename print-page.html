@@ -1,56 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BagyoAlerto | Emergency</title>
+  <title>BagyoAlerto | Emergency Contact list</title>
   <link rel="manifest" href="manifest.json">
   <link rel="stylesheet" href="styles/index.css">
   <!-- PHOSPOR ICONS -->
   <link rel="stylesheet" type="text/css"
     href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/regular/style.css" />
 </head>
-
 <body>
-  <div class="app">
-    <header>
-      <div class="container">
-        <nav>
-          <div id="logo">
-            <img src="./assets/img/apple-touch-icon.png" alt="Logo">
-            BagyoAlerto
-          </div>
-
-          <div id="middle">
-            <a href="./index.html" id="dashboard"><i class="ph ph-house"></i>Dashboard</a>
-            <a href="./checklist.html" id="checklist"><i class="ph ph-check-square"></i>Checklist</a>
-            <a href="./emergency.html" id="emergency" class="active"><i class="ph ph-phone"></i>Emergency</a>
-            <a href="./guide.html" id="guide"><i class="ph ph-question"></i>Guide</a>
-          </div>
-
-          <div id="right-side">
-            <button id="mode"><i class="ph ph-moon"></i></button>
-          </div>
-        </nav>
-      </div>
-    </header>
-
     <main>
-      <div class="container">
-        <!--Section Header Card-->
-        <div class="section-header">
-          <div class="section-header-text">
-            <h2 class="section-header-title">Emergency Contacts</h2>
-            <p class="section-header-description">
-              Essential hotlines for typhoon emergencies in the Philippines
-            </p>
-          </div>
-          <button class="section-header-button" onclick="window.location.href='print-page.html'">
-            <i class="ph ph-download-simple"></i>
-            <span>Export Contacts</span>
-          </button>
-        </div>
+        <div class="container">
         <!-- Warning Alert Box -->
         <div class="alert-banner">
           <span class="alert-icon">
@@ -76,17 +38,8 @@
               <p class="description">National Disaster Risk Reduction and Management Council</p>
               <div class="contact">
                 <span class="number">911</span>
-                <div class="icons">
-                  <button class="call">
-                    <i class="ph ph-phone call-icon"></i>
-                  </button>
-                  <button class="copy">
-                    <i class="ph ph-copy"></i>
-                  </button>
-                </div>
               </div>
             </div>
-
             <!-- PAGASA -->
             <div class="card">
               <div class="card-header">
@@ -96,15 +49,8 @@
               <p class="description">Philippine Atmospheric, Geophysical and Astronomical Services Administration</p>
               <div class="contact">
                 <span class="number">(02) 8284-0800</span>
-                <div class="icons">
-                  <button class="call">
-                    <i class="ph ph-phone call-icon"></i>
-                  </button>
-                  <button class="copy"><i class="ph ph-copy"></i></button>
-                </div>
               </div>
             </div>
-
             <!-- DOH -->
             <div class="card">
               <div class="card-header">
@@ -114,12 +60,6 @@
               <p class="description">Department of Health emergency hotline</p>
               <div class="contact">
                 <span class="number">1555</span>
-                <div class="icons">
-                  <button class="call">
-                    <i class="ph ph-phone call-icon"></i>
-                  </button>
-                  <button class="copy"><i class="ph ph-copy"></i></button>
-                </div>
               </div>
             </div>
           </div>
@@ -138,14 +78,6 @@
               <p class="description">Emergency assistance and rescue operations</p>
               <div class="contact">
                 <span class="number">143</span>
-                <div class="icons">
-                  <button class="call">
-                    <i class="ph ph-phone call-icon"></i>
-                  </button>
-                  <button class="copy">
-                    <i class="ph ph-copy"></i>
-                  </button>
-                </div>
               </div>
             </div>
 
@@ -158,12 +90,6 @@
               <p class="description">Maritime emergencies and rescue</p>
               <div class="contact">
                 <span class="number">(02) 8527-8481</span>
-                <div class="icons">
-                  <button class="call">
-                    <i class="ph ph-phone call-icon"></i>
-                  </button>
-                  <button class="copy"><i class="ph ph-copy"></i></button>
-                </div>
               </div>
             </div>
 
@@ -176,12 +102,6 @@
               <p class="description">Fire emergencies and rescue</p>
               <div class="contact">
                 <span class="number">116</span>
-                <div class="icons">
-                  <button class="call">
-                    <i class="ph ph-phone call-icon"></i>
-                  </button>
-                  <button class="copy"><i class="ph ph-copy"></i></button>
-                </div>
               </div>
             </div>
 
@@ -194,12 +114,6 @@
               <p class="description">Police emergency response</p>
               <div class="contact">
                 <span class="number">117</span>
-                <div class="icons">
-                  <button class="call">
-                    <i class="ph ph-phone call-icon"></i>
-                  </button>
-                  <button class="copy"><i class="ph ph-copy"></i></button>
-                </div>
               </div>
             </div>
           </div>
@@ -218,14 +132,6 @@
               <p class="description">Manila Disaster Risk Reduction and Management Office</p>
               <div class="contact">
                 <span class="number">(02) 8527-5174</span>
-                <div class="icons">
-                  <button class="call">
-                    <i class="ph ph-phone call-icon"></i>
-                  </button>
-                  <button class="copy">
-                    <i class="ph ph-copy"></i>
-                  </button>
-                </div>
               </div>
             </div>
 
@@ -238,32 +144,18 @@
               <p class="description">Caloocan Disaster Risk Reduction and Management Office</p>
               <div class="contact">
                 <span class="number"> (02) 5310‑7536</span>
-                <div class="icons">
-                  <button class="call">
-                    <i class="ph ph-phone call-icon"></i>
-                  </button>
-                  <button class="copy">
-                    <i class="ph ph-copy"></i>
-                  </button>
-                </div>
               </div>
             </div>
         </section>
-        <div id="toastBox"></div>
-      </div>
-    </main>
-
-    <footer>
-      <div class="container">
-        <div class="footer-content">
-          <h3>BagyoAlerto</h3>
-          <p>Stay prepared, stay safe. Emergency preparedness for families & individuals in typhoon-prone areas</p>
-          <p>Privacy-first &middot; Offline-ready &middot; No account required</p>
         </div>
-      </div>
-    </footer>
-  </div>
-  <script src="./scripts/index.js" type="module"></script>
+    </main>
+    <script>
+  window.onload = function () {
+    window.print();
+    window.onafterprint = function () {
+      window.location.href = "emergency.html";
+    };
+  };
+</script>
 </body>
-
 </html>
