@@ -22,7 +22,13 @@ function handleHamburgerMenu() {
         if (burger) { // Check if element exists
           const prop = document.createElement('div');
           prop.classList.add('burger-item');
-          prop.appendChild(document.createTextNode("what"));
+          let index = '';
+          let guide = '';
+          let emergency = '';
+          let checklist = '';
+          
+          
+          prop.appendChild(document.createTextNode(""));
           burger.appendChild(prop);
         }
       });
