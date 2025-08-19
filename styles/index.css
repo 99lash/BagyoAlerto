@@ -1639,7 +1639,6 @@ html.dark .arrow i {
 .toast i {
   font-size: var(--icon-size-md);
   margin: var(--space-4);
-<<<<<<< HEAD
 }
 
 #burger{
@@ -1682,6 +1681,4 @@ html.dark .arrow i {
   transform: translateY(0);
   color: var(--accent);
 }
-=======
-}
->>>>>>> 55b1b4b9500a7ad04c4b33278ab943d9b81dee34
+
