@@ -808,6 +808,10 @@ nav {
   display: flex;
   gap: 10px;
 }
+@media (max-width: 768px) {
+  #middle{ display: none;}
+}
+
 
 #middle a {
   display: flex;
@@ -1636,3 +1640,45 @@ html.dark .arrow i {
   font-size: var(--icon-size-md);
   margin: var(--space-4);
 }
+
+#burger{
+  position: sticky;
+  top: var(--space-1);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+  z-index: 1;
+}
+.burger-item{
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-3);
+  box-shadow: 0 -3px 2px rgba(0, 0, 0, 0.1);
+}
+
+.burger-item a {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  text-decoration: none;
+  color: var(--accent-foreground);
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+  transition: background-color 0.2s ease;
+}
+.burger-item a:active{
+  background-color: var(--accent-foreground);
+}
+
+.burger-item a:hover {
+  background-color: var(--muted);
+}
+.burger-item a.active {
+  background-color: var(--accent-foreground);
+  transform: translateY(0);
+  color: var(--accent);
+}
+
