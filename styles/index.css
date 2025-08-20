@@ -808,8 +808,11 @@ nav {
   display: flex;
   gap: 10px;
 }
+
 @media (max-width: 768px) {
-  #middle{ display: none;}
+  #middle {
+    display: none;
+  }
 }
 
 
@@ -1070,7 +1073,7 @@ html.dark #right-side button {
   justify-content: space-between;
   min-width: 150px;
   user-select: none;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 #kit-dropdown-btn .arrow {
@@ -1087,7 +1090,7 @@ html.dark #right-side button {
   background: var(--card, #fff);
   border: 1px solid var(--border, #ccc);
   border-radius: var(--radius-md, 8px);
-  box-shadow: var(--shadow-sm, 0 2px 8px rgba(0,0,0,0.1));
+  box-shadow: var(--shadow-sm, 0 2px 8px rgba(0, 0, 0, 0.1));
   list-style: none;
   padding: 4px 0;
   width: 150px;
@@ -1127,13 +1130,14 @@ html.dark #right-side button {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: relative; /* Add this just in case */
+  position: relative;
+  /* Add this just in case */
 }
 
 .kit-info {
   display: flex;
   flex-direction: column;
-  
+
 }
 
 .kit-progress {
@@ -1267,18 +1271,23 @@ html.dark #right-side button {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-right: 8px; /* para hindi dikit sa dulo */
+  padding-right: 8px;
+  /* para hindi dikit sa dulo */
 }
 
 .label-name {
-  flex: 1; /* para name nasa left */
+  flex: 1;
+  /* para name nasa left */
 }
 
 .label-value {
   color: var(--muted-foreground);
-  margin-left: 12px; /* dagdag space mula sa name */
-  white-space: nowrap; /* para di mag-break line */
+  margin-left: 12px;
+  /* dagdag space mula sa name */
+  white-space: nowrap;
+  /* para di mag-break line */
 }
+
 .progress-subtext {
   font-size: var(--font-size-sm);
   color: var(--muted-foreground);
@@ -1528,8 +1537,8 @@ html.dark #right-side button {
   padding: var(--space-4);
   box-shadow: var(--shadow-sm);
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  flex-direction: column;
+  align-items: left;
   margin-top: var(--space-4);
 }
 
@@ -1541,6 +1550,8 @@ html.dark #right-side button {
 
 
 .info-box {
+  display: flex;
+  flex-direction: row;
   margin-top: var(--space-4);
 }
 
@@ -1597,7 +1608,7 @@ html.dark .arrow i {
 }
 
 .toast {
-  width: 20vw;
+  width: 21vw;
   height: 6vh;
   background-color: var(--muted);
   margin: var(--space-1) 0;
@@ -1606,7 +1617,7 @@ html.dark .arrow i {
   font-weight: var(--font-weight-bold);
   display: flex;
   align-items: center;
-  padding-block: var(--space-4);
+  padding: var(--space-4) var(--space-1) var(--space-4) 0;
   border-radius: var(--radius-md);
   position: relative;
   transform: translateX(100%);
@@ -1641,7 +1652,7 @@ html.dark .arrow i {
   margin: var(--space-4);
 }
 
-#burger{
+#burger {
   position: sticky;
   top: var(--space-1);
   display: flex;
@@ -1651,7 +1662,8 @@ html.dark .arrow i {
   border-radius: var(--radius-md);
   z-index: 1;
 }
-.burger-item{
+
+.burger-item {
   display: flex;
   flex-direction: column;
   gap: var(--space-2);
@@ -1669,16 +1681,28 @@ html.dark .arrow i {
   border-radius: var(--radius-md);
   transition: background-color 0.2s ease;
 }
-.burger-item a:active{
+
+.burger-item a:active {
   background-color: var(--accent-foreground);
 }
 
 .burger-item a:hover {
   background-color: var(--muted);
 }
+
 .burger-item a.active {
   background-color: var(--accent-foreground);
   transform: translateY(0);
   color: var(--accent);
 }
 
+.guideDrops {
+  display: flex;
+  flex-direction: column;
+  padding-top: var(--space-5);
+}
+.guideDrops p{
+  display: flex;
+  align-items: center;
+  margin: 0;
+}
