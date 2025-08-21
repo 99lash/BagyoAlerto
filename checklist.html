@@ -245,9 +245,32 @@
         </section>
 
         <section class="checklist-list">
-          <div class="card">
-            
+          <div class="category-card">
+            <!-- Header -->
+            <div class="category-header">
+              <h3>Food & Water <span class="category-progress">(0 of 5 items, 0%)</span></h3>
+              <div class="category-actions">
+                <button class="btn-check"><i class="ph ph-check"></i></button>
+                <button class="btn-uncheck"><i class="ph ph-x"></i></button>
+                <button class="btn-delete"><i class="ph ph-trash"></i></button>
+              </div>
+            </div>
+
+            <!-- Progress bar -->
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 0%;"></div>
+            </div>
+
+            <!-- Items list -->
+            <ul class="category-items">
+              <li><label><input type="checkbox"> 3 days water supply (1 gallon per day)</label></li>
+              <li><label><input type="checkbox"> Canned goods (corned beef, sardines)</label></li>
+              <li><label><input type="checkbox"> Instant noodles</label></li>
+              <li><label><input type="checkbox"> Rice (3 days worth)</label></li>
+              <li><label><input type="checkbox"> Energy bars/biscuits</label></li>
+            </ul>
           </div>
+
         </section>
       </div>
     </main>

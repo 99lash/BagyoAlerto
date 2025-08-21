@@ -1768,9 +1768,11 @@ button[type="submit"] {
   flex-direction: row;
 }
 
-/* .checklist-actions {
-
-} */
+.checklist-actions {
+  display: flex;
+  align-items: start;
+  gap: var(--space-2);
+}
 
 .btn-edit {
   background-color: var(--background);
@@ -1782,15 +1784,15 @@ button[type="submit"] {
 }
 
 .btn-delete {
-  background-color: var(--background);
-  border: 1px solid var(--border);
   color: var(--error);
-  cursor: pointer;
   border-radius: var(--radius-sm);
   padding: var(--space-2);
+  background-color: var(--background);
+  border: 1px solid var(--border);
 }
 
-.btn-delete > i, .btn-edit > i {
+.btn-delete>i,
+.btn-edit>i {
   vertical-align: middle;
   font-size: var(--font-size-xl);
 }
@@ -1806,8 +1808,9 @@ button[type="submit"] {
   white-space: nowrap;
 }
 
-.checklist-desc, .checklist-progress {
-  color: var(--muted-foreground);  
+.checklist-desc,
+.checklist-progress {
+  color: var(--muted-foreground);
 }
 
 .actions-grid {
@@ -1866,7 +1869,8 @@ button[type="submit"] {
   color: var(--error-foreground);
 }
 
-.btn.export, .btn.import {
+.btn.export,
+.btn.import {
   flex: 1;
   background-color: var(--primary);
   color: var(--primary-foreground);
@@ -1884,5 +1888,82 @@ button[type="submit"] {
   color: var(--muted-foreground);
 }
 
+.category-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background-color: var(--card);
+}
+
+.category-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: .5rem;
+}
+
+.category-header h3 {
+  font-size: 1rem;
+  display: flex;
+  gap: .5rem;
+  align-items: center;
+}
+
+.category-actions button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-left: .3rem;
+  font-size: 1.1rem;
+}
+
+.category-progress {
+  font-size: .85rem;
+  color: var(--muted-foreground);
+}
+
+.progress-bar {
+  height: 6px;
+  border-radius: 3px;
+  background-color: var(--muted);
+  margin: .5rem 0;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: var(--primary);
+  width: 0;
+}
+
+.category-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.category-items li {
+  margin: .4rem 0;
+  background-color: var(--muted);
+  border-radius: var(--radius-md);
+  padding: .5rem;
+}
+
+.category-items input[type="checkbox"] {
+  margin-right: .5rem;
+}
+
+.btn-check {
+  color: var(--success);
+  border-radius: var(--radius-sm);
+  padding: var(--space-2);
+}
+
+.btn-uncheck {
+  color: var(--error);
+  border-radius: var(--radius-sm);
+  padding: var(--space-2);
+}
 
 /*=====  End of Checklist comment block  ======*/
