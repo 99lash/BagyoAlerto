@@ -1477,6 +1477,7 @@ html.dark #right-side button {
   grid-template-areas:
     "item1 item2"
     "item3 item4";
+  padding: var(--space-2);
 }
 
 .guide-start {
@@ -1562,7 +1563,9 @@ html.dark #right-side button {
   right: 10px;
 }
 
-.arrow i {
+
+.arrow .ph{
+  font-size: 10px;
   font-weight: var(--font-weight-bold);
 }
 
@@ -1705,4 +1708,12 @@ html.dark .arrow i {
   display: flex;
   align-items: center;
   margin: 0;
+  padding-bottom: var(--space-3);
+}
+
+.guideDrops {
+  display: none;
+}
+.guideDrops.open {
+  display: block;
 }
