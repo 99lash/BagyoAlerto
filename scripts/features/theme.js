@@ -7,7 +7,6 @@ export const SwitchThemeMode = () => {
     const html = document.documentElement;
     const data = loadAppData();
     const { appSettings } = data;
-    console.log(appSettings);
 
     if (appSettings.theme === 'dark') {
       switchThemeBtn.innerHTML = `<i class="ph ph-sun"></i>`;
@@ -22,7 +21,7 @@ export const SwitchThemeMode = () => {
       appSettings.theme = isDark ? 'dark' : 'light';
       data.appSettings = appSettings;
       switchThemeBtn.innerHTML = isDark ? `<i class="ph ph-sun"></i>` : `<i class="ph ph-moon"></i>`;
-      saveAppData(data);
+      saveAppData(data);  
     });
   } catch (error) {
     console.error(error);

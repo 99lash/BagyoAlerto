@@ -6,7 +6,7 @@ export const emergency = () => {
 }
 
 let preText;
-export function copyButton() {
+ function copyButton() {
     document.querySelectorAll(".copy").forEach((btn, index) => {
         btn.addEventListener("click", function () {
             const text = document.querySelectorAll(".number")[index].textContent.trim();
@@ -24,7 +24,7 @@ export function copyButton() {
 // REMOVE THE ALERT FEATURE SINCE MAS MAGANDA PAG TOAST NALANG LALABAS
 
 let preNum;
-export function callButton() {
+ function callButton() {
     document.querySelectorAll(".call").forEach((btn, index) => {
         btn.addEventListener("click", function () {
             const number = document.querySelectorAll(".number")[index].textContent.trim();

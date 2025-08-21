@@ -125,7 +125,7 @@ export const getWeather = async (lat, lon) => {
     let forecastWeatherData = await fetch(forecastEndpoint);
     forecastWeatherData = await forecastWeatherData.json();
     const { current, forecast, location } = forecastWeatherData;
-    // block countries outside ng PH
+    // block countries outside ng PHuuuu
     // isCountryPH(location);
     if (!isCountryPH(location)) {
       // console.log('test: location is not allowed');
