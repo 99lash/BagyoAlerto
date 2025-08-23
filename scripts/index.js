@@ -3,6 +3,7 @@ import { dashboard } from "./features/dashboard.js";
 import { emergency } from "./features/emergency-contacts.js";
 import { resetAppData, loadAppData } from "./core/appData.js";
 import { hamburger } from "./features/hamburger.js";
+import {guide } from "./features/guide.js";
 
 if (!loadAppData()) {
   //kapag walang data, initialized the fixed data.
@@ -25,6 +26,7 @@ switch (window.location.pathname.split('/').pop()) {
     break;
 
   case 'guide.html':
+    guide();
     break;
 
   default:
