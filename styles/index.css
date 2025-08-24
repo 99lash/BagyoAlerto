@@ -1319,11 +1319,12 @@ html.dark #right-side button {
   background-color: #d1d1d6;
   border-radius: var(--radius-full);
   overflow: hidden;
+  margin-bottom: var(--space-4);
 }
 
 .progress-bar-fill {
   height: 100%;
-  background-color: var(--chart-1);
+  background-color: var(--chart-2);
   width: 0%;
   transition: width 0.3s ease-in-out;
   border-radius: var(--radius-full);
@@ -1350,21 +1351,6 @@ html.dark #right-side button {
 
 .label-value {
   color: var(--muted-foreground);
-}
-
-.progress-bar {
-  height: 0.5rem;
-  background-color: var(--muted);
-  border-radius: var(--radius-full);
-  overflow: hidden;
-}
-
-.progress-bar-fill {
-  height: 100%;
-  background-color: var(--foreground);
-  width: 0%;
-  border-radius: var(--radius-full);
-  transition: width 0.3s ease-in-out;
 }
 
 .preparedness-section {
@@ -1663,6 +1649,10 @@ html.dark .arrow i {
   margin-top: var(--space-10);
 }
 
+.checklist-header > .card {
+  gap: var(--space-3);
+}
+
 .actions-tablist-content {
   display: none;
   visibility: hidden;
@@ -1755,6 +1745,9 @@ html.dark .arrow i {
   padding-inline: var(--space-2);
 }
 
+.item-details {
+  flex: 1;
+}
 /* mga resuable components hahah */
 
 input[type="text"] {
@@ -1962,20 +1955,6 @@ button {
 .category-progress {
   font-size: .85rem;
   color: var(--muted-foreground);
-}
-
-.progress-bar {
-  height: 6px;
-  border-radius: 3px;
-  background-color: var(--muted);
-  margin: .5rem 0;
-  overflow: hidden;
-}
-
-.progress-fill {
-  height: 100%;
-  background-color: var(--primary);
-  width: 0;
 }
 
 .category-items {

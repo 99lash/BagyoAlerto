@@ -24,9 +24,14 @@ export const checklist = () => {
   });
 
   function renderKitDetails() {
-    const currentChecklist = getCurrentSelectedChecklist()
-    // document.querySelector('.active-kit-progress').innerHTML = progress;
+    const currentChecklist = getCurrentSelectedChecklist();
+    // console.log(currentChecklist);
+    document.querySelector('.active-kit-progress').innerHTML = `${currentChecklist.totalCheckedItems} of ${currentChecklist.totalItems} completed (${currentChecklist.progressInPercent}%)`;
     document.querySelector('.active-kit-description').innerHTML = currentChecklist.desc;
+    // document.querySelector('#active-kit-progress-bar-fill').style.width = currentChecklist.progressInPercent;
+    console.log(parseInt(currentChecklist.progressInPercent));
+    document.querySelector('#active-kit-progress-bar-fill').style.width = `${parseInt(currentChecklist.progressInPercent)}%`;
+
   }
   // initialized selected kit version
   initializeSelectedKit();
@@ -134,16 +139,14 @@ export const checklist = () => {
     saveAppData(data);
     renderChecklist();
     e.target.reset();
+    renderKitDetails();
     // console.log(checklistItems);
   });
-
-
-
 
   renderChecklist();
   function renderChecklist() {
     const checklistItemsByCategories = getAllChecklistItemsByCategories();
-    console.log(checklistItemsByCategories);
+    // console.log(checklistItemsByCategories);
     let checklistTemplateHTML = '';
     for (const list of Object.values(checklistItemsByCategories)) {
       const { category, items } = list;
@@ -155,7 +158,7 @@ export const checklist = () => {
         itemsTemplateHTML += `
         <li>
           <div class="item-container">
-            <label>
+            <label class="item-details">
               <input type="checkbox" class="item" id="${item.id}" data-id="${item.id}" ${item.isChecked && 'checked' || ''} >
               ${item.name}
             </label>
@@ -184,7 +187,7 @@ export const checklist = () => {
 
         <!-- Progress bar -->
         <div class="progress-bar">
-          <div class="progress-fill" style="width: 0%;"></div>
+          <div class="progress-bar-fill"></div>
         </div>
 
         <!-- Items list -->
@@ -197,6 +200,23 @@ export const checklist = () => {
     document.querySelector('.checklist-list').innerHTML = checklistTemplateHTML;
     checklistTemplateHTML = '';
     isChecklistDoneHandler();
+    deleteItemHandler();
+  }
+
+  function deleteItemHandler() {
+    const itemsDeleteBtn = document.querySelectorAll('.btn-delete-item');
+    itemsDeleteBtn.forEach(itemDeleteBtn => {
+      itemDeleteBtn.addEventListener('click', e => {
+        const data = loadAppData();
+        const { checklistItems } = data;
+        const itemId = e.currentTarget.dataset.id;
+        // console.log(itemId);
+        data.checklistItems = checklistItems.filter(i => i.id !== itemId);
+        saveAppData(data);
+        renderChecklist();
+        renderKitDetails();
+      });
+    });
   }
 
   // isChecked listener para sa checklist items
@@ -218,6 +238,7 @@ export const checklist = () => {
         // console.log(itemCheckbox.checked);
         saveAppData(data);
         renderChecklist();
+        renderKitDetails();
       });
     });
   }
