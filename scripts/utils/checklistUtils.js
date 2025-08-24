@@ -7,9 +7,8 @@ export const getCurrentSelectedChecklist = () => {
   const currentChecklistItems = checklistItems.filter(i => i.checklistVersionId === appSettings.selectedChecklistVersionId)
   const totalItems = currentChecklistItems.length;
   const totalCheckedItems = checklistItems.filter(i => i.checklistVersionId === appSettings.selectedChecklistVersionId && i.isChecked === true).length;
-  
-  const progressInPercent = totalItems > 0 ? (totalCheckedItems / totalItems * 100).toFixed(2) : 0;
 
+  const progressInPercent = totalItems > 0 ? Number((totalCheckedItems / totalItems * 100).toFixed(2)) : 0;
   return {
     ...currentChecklistKit,
     currentChecklistItems,
@@ -36,12 +35,20 @@ export const getAllChecklistItems = () => {
 
 export const getAllChecklistItemsByCategories = () => {
   const { categories, checklistItems, appSettings } = loadAppData();
-
   let ChecklistGroupedByCategories = {};
+
   categories.forEach((category, index) => {
+    const items = checklistItems.filter((item) => item.categoryId === category.id && item.checklistVersionId === appSettings.selectedChecklistVersionId);
+    const totalItems = items.length;
+    const totalCheckedItems = checklistItems.filter((item) => item.isChecked === true && item.categoryId === category.id && item.checklistVersionId === appSettings.selectedChecklistVersionId).length
+    const progressInPercent = totalItems > 0 ? Number((totalCheckedItems / totalItems * 100).toFixed(2)) : 0;
+    
     ChecklistGroupedByCategories[index] = {
       category,
-      items: checklistItems.filter((item) => item.categoryId === category.id && item.checklistVersionId === appSettings.selectedChecklistVersionId)
+      items,
+      totalItems,
+      totalCheckedItems,
+      progressInPercent
     };
     if (!ChecklistGroupedByCategories[index].items.length)
       delete ChecklistGroupedByCategories[index];

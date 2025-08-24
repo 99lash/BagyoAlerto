@@ -25,12 +25,11 @@ export const checklist = () => {
 
   function renderKitDetails() {
     const currentChecklist = getCurrentSelectedChecklist();
-    // console.log(currentChecklist);
     document.querySelector('.active-kit-progress').innerHTML = `${currentChecklist.totalCheckedItems} of ${currentChecklist.totalItems} completed (${currentChecklist.progressInPercent}%)`;
     document.querySelector('.active-kit-description').innerHTML = currentChecklist.desc;
     // document.querySelector('#active-kit-progress-bar-fill').style.width = currentChecklist.progressInPercent;
-    console.log(parseInt(currentChecklist.progressInPercent));
-    document.querySelector('#active-kit-progress-bar-fill').style.width = `${parseInt(currentChecklist.progressInPercent)}%`;
+    // console.log(parseInt(currentChecklist.progressInPercent));
+    document.querySelector('#active-kit-progress-bar-fill').style.width = `${currentChecklist.progressInPercent}%`;
 
   }
   // initialized selected kit version
@@ -147,14 +146,25 @@ export const checklist = () => {
   function renderChecklist() {
     const checklistItemsByCategories = getAllChecklistItemsByCategories();
     // console.log(checklistItemsByCategories);
-    let checklistTemplateHTML = '';
-    for (const list of Object.values(checklistItemsByCategories)) {
-      const { category, items } = list;
-      let itemsTemplateHTML = '';
-      let checkedCount = 0;
 
+    const prevWidths = {};
+    document.querySelectorAll('.progress-bar-fill-category').forEach(bar => {
+      console.log(bar.style.width);
+      prevWidths[bar.id] = bar.style.width || '0%';
+    });
+
+    let checklistTemplateHTML = '';
+    let categories = [];
+    let categoryIndex = 0;
+
+    for (const list of Object.values(checklistItemsByCategories)) {
+      const { category, items, progressInPercent, totalCheckedItems, totalItems } = list;
+      let itemsTemplateHTML = '';
+      categories[categoryIndex++] = {
+        id: category.id,
+        progressInPercent
+      };
       items.forEach(item => {
-        checkedCount += item.isChecked ? 1 : 0
         itemsTemplateHTML += `
         <li>
           <div class="item-container">
@@ -175,7 +185,7 @@ export const checklist = () => {
         <div class="category-header">
           <h3>${category.name}
             <span class="category-progress">
-              (${checkedCount} of ${items.length} items, ${((checkedCount / items.length) * 100).toFixed(2)}%)
+              (${totalCheckedItems} of ${totalItems} items, ${progressInPercent}%)
             </span>
           </h3>
           <div class="category-actions">
@@ -187,18 +197,31 @@ export const checklist = () => {
 
         <!-- Progress bar -->
         <div class="progress-bar">
-          <div class="progress-bar-fill"></div>
+          <div 
+            class="progress-bar-fill progress-bar-fill-category"
+            id="category-progress-bar-fill-${category.id}"
+            style="width: ${prevWidths[`category-progress-bar-fill-${category.id}`] || '0%'}">
+          </div>
         </div>
 
         <!-- Items list -->
         <ul class="category-items">
           ${itemsTemplateHTML}
         </ul>
-      </div>
-    \n`;
+      </div>\n
+    `;
     }
     document.querySelector('.checklist-list').innerHTML = checklistTemplateHTML;
-    checklistTemplateHTML = '';
+
+    requestAnimationFrame(() => {
+      // document.querySelector(`#category-progress-bar-fill-${category.id}`).style.width = `${progressInPercent}%`;
+      categories.forEach(category => {
+        const progressBar = document.querySelector(`#category-progress-bar-fill-${category.id}`);
+        progressBar.style.width = `${category.progressInPercent}%`;
+        console.log(progressBar);
+      });
+    });
+    // checklistTemplateHTML = '';
     isChecklistDoneHandler();
     deleteItemHandler();
   }
