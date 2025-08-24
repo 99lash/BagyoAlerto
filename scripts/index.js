@@ -3,6 +3,7 @@ import { dashboard } from "./features/dashboard.js";
 import { emergency } from "./features/emergency-contacts.js";
 import { resetAppData, loadAppData } from "./core/appData.js";
 import { hamburger } from "./features/hamburger.js";
+import { checklist } from "./features/checklist.js";
 
 if (!loadAppData()) {
   //kapag walang data, initialized the fixed data.
@@ -18,6 +19,7 @@ switch (window.location.pathname.split('/').pop()) {
     break;
 
   case 'checklist.html':
+    checklist();
     break;
 
   case 'emergency.html':

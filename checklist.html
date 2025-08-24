@@ -53,9 +53,6 @@
                 </label>
                 <select name="kitVersion" id="kitVersion">
                   <!-- DYNAMIC DAPAT ANG OPTIONS -->
-                  <option value="1">Personal Kit</option>
-                  <option value="2">Family Kit</option>
-                  <option value="3">Pet Kit</option>
                 </select>
               </div>
             </div>
@@ -79,9 +76,9 @@
           </div>
           <!-- Dynamic content base on active tab -->
           <!-- Manage Items Tab -->
-          <div class="actions-active-content">
+          <div class="actions-tablist-content active-tab-content">
             <div class="card">
-              <div class="form add-item-form">
+              <form class="form" id="add-item-form">
                 <div class="form-header">
                   <h3>Add Item</h3>
                   <p>Add a custom item to your current emergency kit.</p>
@@ -89,26 +86,27 @@
                 <div class="form-fields">
                   <div class="field-container">
                     <label for="itemName">Item Name </label>
-                    <input type="text" name="itemName" id="itemName" placeholder="e.g., Rice sack">
+                    <input type="text" name="itemName" id="itemName" placeholder="e.g., Rice sack" required>
                   </div>
                   <div class="field-container">
                     <label for="itemCategory">Item Category </label>
-                    <select name="itemCategory" id="itemCategory">
-                      <option value="id-1" selected>Food & Water</option>
+                    <select name="itemCategory" id="itemCategory" required>
+                      <!-- dynamic options -->
+                      <!-- <option value="id-1" selected>Food & Water</option>
                       <option value="id-2">Medical & Health</option>
-                      <option value="id-3">Documents</option>
+                      <option value="id-3">Documents</option> -->
                     </select>
                   </div>
                   <button type="submit" id="addItem">+ Add item</button>
                 </div>
-              </div>
+              </form>
             </div>
           </div>
 
           <!-- Manage Kits Tab -->
-          <div class="actions-active-content">
+          <div class="actions-tablist-content">
             <div class="card">
-              <div class="form add-item-form">
+              <div class="form" id="add-kit-form">
                 <div class="form-header">
                   <h3>Create New Kit</h3>
                   <p>Create and manage specialized emergency kits for different scenarios.</p>
@@ -126,13 +124,13 @@
                   <button type="submit" id="addKit">+ Create Kit</button>
                 </div>
               </div>
-              <div class="card-list emergency-kits-list">
+              <div class="card-list">
                 <div class="card-list-header">
                   <h4>Your Emergency Kits</h4>
                 </div>
-                <div class="card-list-body">
+                <div class="card-list-body emergency-kits-list">
                   <!-- template list repeatable 'to' -->
-                  <div class="card emergency-kit-card">
+                  <!-- <div class="card emergency-kit-card">
                     <div class="checklist-info">
                       <h3 class="checklist-title">
                         Ah List
@@ -154,7 +152,7 @@
                         <i class="ph ph-trash"></i>
                       </button>
                     </div>
-                  </div>
+                  </div> -->
 
                 </div>
               </div>
@@ -162,7 +160,7 @@
           </div>
 
           <!-- Manage Categories Tab -->
-          <div class="actions-active-content">
+          <div class="actions-tablist-content">
             <div class="card">
               <div class="form add-category-form">
                 <div class="form-header">
@@ -181,13 +179,13 @@
                   <button type="submit" id="addKit">+ Create Kit</button>
                 </div>
               </div>
-              <div class="card-list emergency-kits-list">
+              <div class="card-list">
                 <div class="card-list-header">
                   <h4>Categories</h4>
                 </div>
-                <div class="card-list-body">
+                <div class="card-list-body categories-list">
                   <!-- template list repeatable 'to' -->
-                  <div class="card emergency-kit-card">
+                  <!-- <div class="card emergency-kit-card">
                     <div class="checklist-info">
                       <h3 class="checklist-title">
                         Ah List
@@ -202,7 +200,7 @@
                         <i class="ph ph-trash"></i>
                       </button>
                     </div>
-                  </div>
+                  </div> -->
 
                 </div>
               </div>
@@ -210,7 +208,7 @@
           </div>
 
           <!-- Quick Actions Tab -->
-          <div class="actions-active-content">
+          <div class="actions-tablist-content">
             <div class="actions-grid">
               <!-- Bulk Actions -->
               <div class="card">
@@ -246,31 +244,31 @@
         </section>
 
         <section class="checklist-list">
-          <div class="category-card">
+          <!-- <div class="category-card"> -->
             <!-- Header -->
-            <div class="category-header">
+            <!-- <div class="category-header">
               <h3>Food & Water <span class="category-progress">(0 of 5 items, 0%)</span></h3>
               <div class="category-actions">
                 <button class="btn-check"><i class="ph ph-check"></i></button>
                 <button class="btn-uncheck"><i class="ph ph-x"></i></button>
                 <button class="btn-delete"><i class="ph ph-trash"></i></button>
               </div>
-            </div>
+            </div> -->
 
             <!-- Progress bar -->
-            <div class="progress-bar">
+            <!-- <div class="progress-bar">
               <div class="progress-fill" style="width: 0%;"></div>
-            </div>
+            </div> -->
 
             <!-- Items list -->
-            <ul class="category-items">
+            <!-- <ul class="category-items">
               <li><label><input type="checkbox"> 3 days water supply (1 gallon per day)</label></li>
               <li><label><input type="checkbox"> Canned goods (corned beef, sardines)</label></li>
               <li><label><input type="checkbox"> Instant noodles</label></li>
               <li><label><input type="checkbox"> Rice (3 days worth)</label></li>
               <li><label><input type="checkbox"> Energy bars/biscuits</label></li>
             </ul>
-          </div>
+          </div> -->
 
         </section>
       </div>

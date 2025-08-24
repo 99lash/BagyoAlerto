@@ -303,7 +303,6 @@ body {
   font-weight: var(--font-weight-normal);
   font-size: var(--font-size-base);
   line-height: var(--line-height-normal);
-  min-height: 100vh;
 }
 
 /* 
@@ -342,6 +341,10 @@ h4 {
 p {
   margin-bottom: var(--space-4);
   line-height: var(--line-height-normal);
+}
+
+main {
+  min-height: 100vh;  
 }
 
 /* 
@@ -1660,6 +1663,16 @@ html.dark .arrow i {
   margin-top: var(--space-10);
 }
 
+.actions-tablist-content {
+  display: none;
+  visibility: hidden;
+}
+
+.active-tab-content {
+  display: contents;
+  visibility: visible;
+}
+
 .checklist-tabs {
   display: flex;
   flex-direction: column;
@@ -1729,6 +1742,18 @@ html.dark .arrow i {
 .card-list-header h4 {
   font-weight: var(--font-weight-medium);
 }
+.card-list-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.item-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-inline: var(--space-2);
+}
 
 /* mga resuable components hahah */
 
@@ -1767,6 +1792,10 @@ button[type="submit"] {
   color: var(--secondary);
 }
 
+button {
+  cursor: pointer;
+}
+
 .emergency-kit-card {
   display: flex;
   flex-direction: row;
@@ -1793,6 +1822,14 @@ button[type="submit"] {
   padding: var(--space-2);
   background-color: var(--background);
   border: 1px solid var(--border);
+}
+
+.btn-delete-item {
+  color: var(--error);
+  border-radius: var(--radius-sm);
+  padding: var(--space-2);
+  background-color: transparent;
+  border: none;
 }
 
 .btn-delete>i,
@@ -1864,8 +1901,8 @@ button[type="submit"] {
 }
 
 .btn-reset {
-  background-color: var(--muted);
-  color: var(--primary);
+  background-color: var(--error);
+  color: var(--error-foreground);
 }
 
 .btn-danger {
