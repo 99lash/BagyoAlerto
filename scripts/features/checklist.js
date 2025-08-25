@@ -189,8 +189,8 @@ export const checklist = () => {
             </span>
           </h3>
           <div class="category-actions">
-            <button class="btn-check"><i class="ph ph-check"></i></button>
-            <button class="btn-uncheck"><i class="ph ph-x"></i></button>
+            <button class="btn-check btn-check-category" data-id="${category.id}"><i class="ph ph-check"></i></button>
+            <button class="btn-uncheck btn-uncheck-category" data-id="${category.id}"><i class="ph ph-x"></i></button>
             <button class="btn-delete btn-delete-category" data-id="${category.id}"><i class="ph ph-trash"></i></button>
           </div>
         </div>
@@ -225,6 +225,8 @@ export const checklist = () => {
     isChecklistDoneHandler();
     deleteItemHandler();
     deleteAllCategoryItemsHandler();
+    checkAllChecklistItemsByCategoryHandler();
+    uncheckAllChecklistItemsByCategoryHandler();
   }
 
   function deleteItemHandler() {
@@ -250,10 +252,10 @@ export const checklist = () => {
         const data = loadAppData();
         let { checklistItems, appSettings } = data;
         const categoryId = e.currentTarget.dataset.id;
-        const unwantedChecklistItems = checklistItems.filter(i => i.categoryId === categoryId && i.checklistVersionId === appSettings.selectedChecklistVersionId)
-        console.log(unwantedChecklistItems);
-        unwantedChecklistItems.forEach(j => {
-          checklistItems = checklistItems.filter(i => i.id !== j.id);
+        const categoryChecklistItems = checklistItems.filter(i => i.categoryId === categoryId && i.checklistVersionId === appSettings.selectedChecklistVersionId)
+        // console.log(categoryChecklistItems);
+        categoryChecklistItems.forEach(i => {
+          checklistItems = checklistItems.filter(j => j.id !== i.id);
         });
         data.checklistItems = checklistItems;
         saveAppData(data);
@@ -263,7 +265,47 @@ export const checklist = () => {
     })
   }
 
-  // isChecked listener para sa checklist items
+  function checkAllChecklistItemsByCategoryHandler() {
+    const categoriesCheckBtn = document.querySelectorAll('.btn-check-category');
+    categoriesCheckBtn.forEach(categoryCheckBtn => {
+      categoryCheckBtn.addEventListener('click', e => {
+        const data = loadAppData();
+        let { checklistItems, appSettings } = data;
+        const categoryId = e.currentTarget.dataset.id;
+        data.checklistItems = checklistItems.map(i => {
+          if (i.categoryId === categoryId && i.checklistVersionId === appSettings.selectedChecklistVersionId) {
+            i.isChecked = true;
+          }
+          return i;
+        });
+        saveAppData(data);
+        renderChecklist();
+        renderKitDetails();
+      });
+    });
+  }
+
+  function uncheckAllChecklistItemsByCategoryHandler() {
+    const categoriesUncheckBtn = document.querySelectorAll('.btn-uncheck-category');
+    categoriesUncheckBtn.forEach(categoryCheckBtn => {
+      categoryCheckBtn.addEventListener('click', e => {
+        const data = loadAppData();
+        let { checklistItems, appSettings } = data;
+        const categoryId = e.currentTarget.dataset.id;
+        data.checklistItems = checklistItems.map(i => {
+          if (i.categoryId === categoryId && i.checklistVersionId === appSettings.selectedChecklistVersionId) {
+            i.isChecked = false;
+          }
+          return i;
+        });
+        saveAppData(data);
+        renderChecklist();
+        renderKitDetails();
+      });
+    });
+  }
+
+  // checkbox listener para sa checklist items
   function isChecklistDoneHandler() {
     const items = document.querySelectorAll('.item');
     // console.log(items);
