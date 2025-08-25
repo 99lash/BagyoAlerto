@@ -191,7 +191,7 @@ export const checklist = () => {
           <div class="category-actions">
             <button class="btn-check"><i class="ph ph-check"></i></button>
             <button class="btn-uncheck"><i class="ph ph-x"></i></button>
-            <button class="btn-delete"><i class="ph ph-trash"></i></button>
+            <button class="btn-delete btn-delete-category" data-id="${category.id}"><i class="ph ph-trash"></i></button>
           </div>
         </div>
 
@@ -224,6 +224,7 @@ export const checklist = () => {
     // checklistTemplateHTML = '';
     isChecklistDoneHandler();
     deleteItemHandler();
+    deleteAllCategoryItemsHandler();
   }
 
   function deleteItemHandler() {
@@ -240,6 +241,26 @@ export const checklist = () => {
         renderKitDetails();
       });
     });
+  }
+
+  function deleteAllCategoryItemsHandler() {
+    const categoriesDeleteBtn = document.querySelectorAll('.btn-delete-category');
+    categoriesDeleteBtn.forEach(categoryDeleteBtn => {
+      categoryDeleteBtn.addEventListener('click', e => {
+        const data = loadAppData();
+        let { checklistItems, appSettings } = data;
+        const categoryId = e.currentTarget.dataset.id;
+        const unwantedChecklistItems = checklistItems.filter(i => i.categoryId === categoryId && i.checklistVersionId === appSettings.selectedChecklistVersionId)
+        console.log(unwantedChecklistItems);
+        unwantedChecklistItems.forEach(j => {
+          checklistItems = checklistItems.filter(i => i.id !== j.id);
+        });
+        data.checklistItems = checklistItems;
+        saveAppData(data);
+        renderChecklist();
+        renderKitDetails();
+      });
+    })
   }
 
   // isChecked listener para sa checklist items

@@ -42,7 +42,7 @@ export const getAllChecklistItemsByCategories = () => {
     const totalItems = items.length;
     const totalCheckedItems = checklistItems.filter((item) => item.isChecked === true && item.categoryId === category.id && item.checklistVersionId === appSettings.selectedChecklistVersionId).length
     const progressInPercent = totalItems > 0 ? Number((totalCheckedItems / totalItems * 100).toFixed(2)) : 0;
-    
+
     ChecklistGroupedByCategories[index] = {
       category,
       items,
