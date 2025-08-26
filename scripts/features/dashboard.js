@@ -1,7 +1,7 @@
 import { getUserLocation } from "../core/geolocation.js";
 import { getWeather } from "../core/weather.js";
 import { renderAlertReminder } from "./alert.js";
-import { loadAppData, saveAppData } from "../core/appData.js";
+import { loadAppData, saveAppData, resetAppData } from "../core/appData.js";
 
 export const dashboard = async () => {
   try {
@@ -10,10 +10,12 @@ export const dashboard = async () => {
     const response = await getWeather(lat, lon);
 
     renderAlertReminder(response);
-
+    
     const appData = loadAppData();
+    
     renderOverview(appData, response);
     initKitSwitcher();
+    resetAppData();
   } catch (error) {
     console.error(error);
   }
@@ -121,7 +123,7 @@ function renderCategoryProgress(selectedKitId) {
   const categoryIds = Object.keys(categoryMap);
   for (let i = 0; i < categoryIds.length; i++) {
     const cat = categoryMap[categoryIds[i]];
-    const percent = cat.total > 0 ? Math.round((cat.current / cat.total) * 100) : 0; // wwala pa to
+    const percent = cat.total > 0 ? Math.round((cat.current / cat.total) * 100) : 0; 
 
     const li = document.createElement("li");
 
