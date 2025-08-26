@@ -781,7 +781,7 @@ footer {
 header {
   position: sticky;
   background-color: var(--background);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px var(--muted) ;
   top: 0;
   z-index: 1;
 }
@@ -820,7 +820,6 @@ nav {
     display: none;
   }
 }
-
 
 #middle a {
   display: flex;
@@ -1469,6 +1468,7 @@ html.dark #right-side button {
   grid-template-areas:
     "item1 item2"
     "item3 item4";
+  padding: var(--space-2);
 }
 
 .guide-start {
@@ -1529,8 +1529,8 @@ html.dark #right-side button {
   padding: var(--space-4);
   box-shadow: var(--shadow-sm);
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  flex-direction: column;
+  align-items: left;
   margin-top: var(--space-4);
 }
 
@@ -1542,6 +1542,8 @@ html.dark #right-side button {
 
 
 .info-box {
+  display: flex;
+  flex-direction: row;
   margin-top: var(--space-4);
 }
 
@@ -1552,7 +1554,9 @@ html.dark #right-side button {
   right: 10px;
 }
 
-.arrow i {
+
+.arrow .ph{
+  font-size: 10px;
   font-weight: var(--font-weight-bold);
 }
 
@@ -1598,7 +1602,7 @@ html.dark .arrow i {
 }
 
 .toast {
-  width: 20vw;
+  width: 21vw;
   height: 6vh;
   background-color: var(--muted);
   margin: var(--space-1) 0;
@@ -1607,7 +1611,7 @@ html.dark .arrow i {
   font-weight: var(--font-weight-bold);
   display: flex;
   align-items: center;
-  padding-block: var(--space-4);
+  padding: var(--space-4) var(--space-1) var(--space-4) 0;
   border-radius: var(--radius-md);
   position: relative;
   transform: translateX(100%);
@@ -2194,4 +2198,67 @@ button {
   background-color: var(--accent-foreground);
   transform: translateY(0);
   color: var(--accent);
+}
+
+#burger {
+  position: sticky;
+  top: var(--space-1);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+  z-index: 1;
+}
+
+.burger-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-3);
+  box-shadow: 0 -2px 0px var(--muted);
+}
+
+.burger-item a {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  text-decoration: none;
+  color: var(--accent-foreground);
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+  transition: background-color 0.2s ease;
+}
+
+.burger-item a:active {
+  background-color: var(--accent-foreground);
+}
+
+.burger-item a:hover {
+  background-color: var(--muted);
+}
+
+.burger-item a.active {
+  background-color: var(--accent-foreground);
+  transform: translateY(0);
+  color: var(--accent);
+}
+
+.guideDrops {
+  display: flex;
+  flex-direction: column;
+  padding-top: var(--space-5);
+}
+.guideDrops p{
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding-bottom: var(--space-3);
+}
+
+.guideDrops {
+  display: none;
+}
+.guideDrops.open {
+  display: block;
 }
