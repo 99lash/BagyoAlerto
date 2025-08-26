@@ -1976,8 +1976,26 @@ button {
   color: var(--error-foreground);
 }
 
-.btn.export,
-.btn.import {
+.btn-check-all {
+  background-color: var(--background);
+  color: var(--success);
+  border: 1px solid var(--success);
+}
+
+.btn-uncheck-all {
+  background-color: var(--background);
+  color: var(--info);
+  border: 1px solid var(--info);
+}
+
+.btn-delete-all {
+  background-color: var(--background);
+  color: var(--error);
+  border: 1px solid var(--error);
+}
+
+.btn-export,
+.btn-import {
   flex: 1;
   background-color: var(--primary);
   color: var(--primary-foreground);

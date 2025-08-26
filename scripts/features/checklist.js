@@ -420,12 +420,12 @@ export const checklist = () => {
 
           saveAppData(data);
           renderKitVersions();
-          renderKitDetails(); 
+          renderKitDetails();
         });
 
         // cancel handler
         cancelBtn.addEventListener('click', () => {
-          renderKitVersions(); 
+          renderKitVersions();
         });
       });
     });
@@ -599,10 +599,8 @@ export const checklist = () => {
         const categoryItems = checklistItems.filter(i => i.categoryId === categoryId);
 
         if (categoryItems.length > 0) {
-          showConfirmModal(
-            `This category has ${categoryItems.length} items.\nDo you really want to delete it?`,
-            () => proceedDeleteCategory(data, categoryId)
-          );
+          const msg = `This category has ${categoryItems.length} items.\nDo you really want to delete it?`;
+          showConfirmModal(msg, () => proceedDeleteCategory(data, categoryId));
         } else {
           proceedDeleteCategory(data, categoryId);
         }
@@ -619,13 +617,15 @@ export const checklist = () => {
     }
   }
 
-  function showConfirmModal(message, onConfirm) {
+  function showConfirmModal(message = '', onConfirm = () => {}, { yesBtn = 'Yes, Delete', noBtn = 'Cancel' } = {}) {
     const modal = document.querySelector('#confirmModal');
     const messageBox = document.querySelector('#confirmMessage');
     const btnYes = document.querySelector('#confirmYes');
     const btnNo = document.querySelector('#confirmNo');
 
     messageBox.textContent = message;
+    btnYes.textContent = yesBtn;
+    btnNo.text = noBtn;
     modal.classList.remove('hidden');
 
     // // remove old listeners
@@ -640,6 +640,131 @@ export const checklist = () => {
     });
     btnNo.addEventListener('click', () => {
       modal.classList.add('hidden');
+    });
+  }
+
+  /* Quick Actions */
+  document.querySelector('.btn-check-all').addEventListener('click', e => {
+    const data = loadAppData();
+    const { checklistItems, appSettings } = data;
+    // console.log(e.currentTarget);
+    checklistItems.forEach(i => {
+      if (i.checklistVersionId === appSettings.selectedChecklistVersionId) {
+        i.isChecked = true;
+      }
+    });
+    data.checklistItems = checklistItems;
+    saveAppData(data);
+    renderChecklist();
+    renderKitDetails();
+  });
+
+  document.querySelector('.btn-uncheck-all').addEventListener('click', e => {
+    const data = loadAppData();
+    const { checklistItems, appSettings } = data;
+    // console.log(e.currentTarget);
+    checklistItems.forEach(i => {
+      if (i.checklistVersionId === appSettings.selectedChecklistVersionId) {
+        i.isChecked = false;
+      }
+    });
+    data.checklistItems = checklistItems;
+    saveAppData(data);
+    renderChecklist();
+    renderKitDetails();
+  });
+
+  document.querySelector('.btn-delete-all').addEventListener('click', e => {
+    const data = loadAppData();
+    const { checklistItems, appSettings } = data;
+    // console.log(e.currentTarget);
+    data.checklistItems = checklistItems.filter(i => i.checklistVersionId !== appSettings.selectedChecklistVersionId);
+    saveAppData(data);
+    renderChecklist();
+    renderKitDetails();
+  });
+
+  // --- Import & Export (JSON) ---
+  addImportExportHandlers();
+
+  function addImportExportHandlers() {
+    const exportBtn = document.querySelector('.btn-export');
+    const importBtn = document.querySelector('.btn-import');
+
+    // EXPORT: dump entire app data to a JSON file
+    exportBtn.addEventListener('click', () => {
+      const data = loadAppData();
+      const pretty = JSON.stringify(data, null, 2);
+      const blob = new Blob([pretty], { type: 'application/json' });
+      const ts = new Date().toISOString().replace(/[:.]/g, '-');
+      const a = document.createElement('a');
+
+      a.href = URL.createObjectURL(blob);
+      a.download = `checklist-backup-${ts}.json`;
+      document.body.appendChild(a);
+      a.click();
+      URL.revokeObjectURL(a.href);
+      a.remove();
+    });
+
+    const askConfirm = (message) => new Promise((resolve) => {
+      if (typeof showConfirmModal === 'function') {
+        const modal = document.querySelector('#confirmModal');
+        const btnNo = modal?.querySelector('#confirmNo');
+
+        const onNo = () => resolve(false);
+        if (btnNo) btnNo.addEventListener('click', onNo);
+
+        showConfirmModal(message, () => resolve(true), {yesBtn: 'Yes, Import'});
+      } else {
+        resolve(window.confirm(message));
+      }
+    });
+
+    // IMPORT: read JSON, validate, confirm, then replace data
+    importBtn.addEventListener('click', async () => {
+      const input = document.createElement('input');
+      input.type = 'file';
+      input.accept = 'application/json';
+      input.addEventListener('change', async () => {
+        const file = input.files?.[0];
+        if (!file) return;
+
+        try {
+          const text = await file.text();
+          const json = JSON.parse(text);
+
+          // basic validation
+          const required = ['appSettings', 'checklistVersions', 'categories', 'checklistItems'];
+          if (!json || typeof json !== 'object') throw new Error('Invalid JSON file.');
+          for (const k of required) {
+            if (!Object.prototype.hasOwnProperty.call(json, k)) {
+              throw new Error(`Missing key: "${k}"`);
+            }
+          }
+
+          const proceed = await askConfirm(
+            `Import "${file.name}"?\nThis will replace your current data.`
+          );
+          if (!proceed) return;
+
+          // (optional) normalize arrays
+          json.checklistVersions = Array.isArray(json.checklistVersions) ? json.checklistVersions : [];
+          json.categories = Array.isArray(json.categories) ? json.categories : [];
+          json.checklistItems = Array.isArray(json.checklistItems) ? json.checklistItems : [];
+
+          // save & refresh UI
+          saveAppData(json);
+          renderKitDetails();
+          renderKitVersions();
+          if (typeof renderCategories === 'function') renderCategories();
+          renderChecklist();
+        } catch (err) {
+          alert(`Import failed: ${err.message}`);
+        }
+      });
+
+      input.click();
     });
   }
 }
