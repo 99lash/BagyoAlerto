@@ -49,7 +49,7 @@
               </div>
               <div class="checklist-top-right">
                 <label for="kitVersion">
-                  Kit Version:
+                  Selected Kit:
                 </label>
                 <select name="kitVersion" id="kitVersion">
                   <!-- DYNAMIC DAPAT ANG OPTIONS -->
@@ -97,7 +97,7 @@
                       <option value="id-3">Documents</option> -->
                     </select>
                   </div>
-                  <button type="submit" id="addItem">+ Add item</button>
+                  <button type="submit" class="submit-btn" id="addItem">+ Add Item</button>
                 </div>
               </form>
             </div>
@@ -106,7 +106,7 @@
           <!-- Manage Kits Tab -->
           <div class="actions-tablist-content">
             <div class="card">
-              <div class="form" id="add-kit-form">
+              <form class="form" id="add-kit-form">
                 <div class="form-header">
                   <h3>Create New Kit</h3>
                   <p>Create and manage specialized emergency kits for different scenarios.</p>
@@ -114,16 +114,16 @@
                 <div class="form-fields">
                   <div class="field-container">
                     <label for="kitName">Kit Name </label>
-                    <input type="text" name="kitName" id="kitName" placeholder="e.g., Office Kit">
+                    <input type="text" name="kitName" id="kitName" placeholder="e.g., Office Kit" required>
                   </div>
                   <div class="field-container">
                     <label for="kitDescription">Kit Description </label>
                     <input type="text" name="kitDescription" id="kitDescription"
-                      placeholder="e.g., Emergency supplies for workplace">
+                      placeholder="e.g., Emergency supplies for workplace" required>
                   </div>
-                  <button type="submit" id="addKit">+ Create Kit</button>
+                  <button type="submit" class="submit-btn" id="addKit">+ Create Kit</button>
                 </div>
-              </div>
+              </form>
               <div class="card-list">
                 <div class="card-list-header">
                   <h4>Your Emergency Kits</h4>
@@ -162,7 +162,7 @@
           <!-- Manage Categories Tab -->
           <div class="actions-tablist-content">
             <div class="card">
-              <div class="form add-category-form">
+              <form class="form add-category-form">
                 <div class="form-header">
                   <h3>
                     Create New Category
@@ -173,12 +173,12 @@
                 </div>
                 <div class="form-fields">
                   <div class="field-container">
-                    <label for="kitCategory">Kit Name </label>
-                    <input type="text" name="kitCategory" id="kitCategory" placeholder="e.g., Office Kit">
+                    <label for="kitCategory">Category Name </label>
+                    <input type="text" name="kitCategory" id="kitCategory" placeholder="e.g., Electronics">
                   </div>
-                  <button type="submit" id="addKit">+ Create Kit</button>
+                  <button type="submit" class="submit-btn" id="addCategory">+ Create Category</button>
                 </div>
-              </div>
+              </form>
               <div class="card-list">
                 <div class="card-list-header">
                   <h4>Categories</h4>

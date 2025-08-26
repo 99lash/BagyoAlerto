@@ -32,86 +32,6 @@ export const checklist = () => {
     document.querySelector('#active-kit-progress-bar-fill').style.width = `${currentChecklist.progressInPercent}%`;
 
   }
-  // initialized selected kit version
-  initializeSelectedKit();
-  function initializeSelectedKit() {
-    const { appSettings, checklistVersions } = loadAppData();
-    const { selectedChecklistVersionId } = appSettings;
-
-    const kitVersionSelectInput = document.querySelector('#kitVersion');
-    checklistVersions.forEach(e => {
-      kitVersionSelectInput.innerHTML += `
-      <option class="kit-options" value="${e.id}" ${e.id === selectedChecklistVersionId ? 'selected' : ''}>${e.name}</option>
-    `;
-    });
-    renderKitDetails();
-    // handle on change of kit version dropdown selection
-    kitVersionSelectInput.addEventListener('change', e => {
-      const data = loadAppData(); // need to retrieve the data from localStorage again baka kasi updated,
-      data.appSettings.selectedChecklistVersionId = e.target.value;
-      saveAppData(data);
-      renderKitDetails();
-      renderChecklist();
-    });
-  }
-
-  // initialize kit versions
-  const checklistKitVersions = getAllChecklistKitVersions();
-  checklistKitVersions.forEach(c => {
-    document.querySelector('.emergency-kits-list').innerHTML += `
-      <div class="card emergency-kit-card">
-        <div class="checklist-info">
-          <h3 class="checklist-title">
-            ${c.name}
-          </h3>
-          <p class="checklist-desc">
-            ${c.desc}
-          </p>
-          <div class="checklist-progress">
-            <span>0 items</span> • <span>0 completed</span>
-          </div>
-        </div>
-
-        <div class="checklist-actions">
-          <span class="status-badge active">Active</span>
-          <button class="btn-edit">
-            <i class="ph ph-pencil"></i>
-          </button>
-          <button class="btn-delete">
-            <i class="ph ph-trash"></i>
-          </button>
-        </div>
-      </div>
-    `;
-  });
-
-
-  // initialize item categories
-  const checklistCategories = getAllChecklistCategories();
-  checklistCategories.forEach(c => {
-    document.querySelector('.categories-list').innerHTML += `
-      <div class="card emergency-kit-card">
-        <div class="checklist-info">
-          <h3 class="checklist-title">
-            ${c.name}
-          </h3>
-        </div>
-
-        <div class="checklist-actions">
-          <button class="btn-edit">
-            <i class="ph ph-pencil"></i>
-          </button>
-          <button class="btn-delete">
-            <i class="ph ph-trash"></i>
-          </button>
-        </div>
-      </div>
-    `;
-    document.querySelector('#itemCategory').innerHTML += `
-      <option value="${c.id}">${c.name}</option>
-    `;
-  });
-
 
   // handle add item form
   const addItemForm = document.querySelector('#add-item-form');
@@ -241,6 +161,7 @@ export const checklist = () => {
         saveAppData(data);
         renderChecklist();
         renderKitDetails();
+        renderKitVersions();
       });
     });
   }
@@ -261,6 +182,7 @@ export const checklist = () => {
         saveAppData(data);
         renderChecklist();
         renderKitDetails();
+        renderKitVersions();
       });
     })
   }
@@ -281,6 +203,7 @@ export const checklist = () => {
         saveAppData(data);
         renderChecklist();
         renderKitDetails();
+        renderKitVersions();
       });
     });
   }
@@ -301,6 +224,7 @@ export const checklist = () => {
         saveAppData(data);
         renderChecklist();
         renderKitDetails();
+        renderKitVersions();
       });
     });
   }
@@ -325,7 +249,227 @@ export const checklist = () => {
         saveAppData(data);
         renderChecklist();
         renderKitDetails();
+        renderKitVersions();
       });
     });
   }
+
+  // initialized selected kit version
+  initializeSelectedKit();
+  function initializeSelectedKit() {
+    const { appSettings, checklistVersions } = loadAppData();
+    const { selectedChecklistVersionId } = appSettings;
+
+    const kitVersionSelectInput = document.querySelector('#kitVersion');
+    let kitVersionSelectInputHTML = '';
+    checklistVersions.forEach(e => {
+      kitVersionSelectInputHTML += `
+      <option class="kit-options" value="${e.id}" ${e.id === selectedChecklistVersionId ? 'selected' : ''}>${e.name}</option>
+    `;
+    });
+    kitVersionSelectInput.innerHTML = kitVersionSelectInputHTML;
+    renderKitDetails();
+  }
+
+  // handle on change of kit version dropdown selection
+  document.querySelector('#kitVersion').addEventListener('change', e => {
+    const data = loadAppData(); // need to retrieve the data from localStorage again baka kasi updated,
+    data.appSettings.selectedChecklistVersionId = e.target.value;
+    saveAppData(data);
+    renderKitDetails();
+    renderChecklist();
+    renderKitVersions();
+  });
+
+
+  const addKitForm = document.querySelector('#add-kit-form');
+  addKitForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const checklistKitVersions = getAllChecklistKitVersions();
+    const addKitFormData = new FormData(addKitForm);
+    const kitName = addKitFormData.get('kitName');
+    const kitDescription = addKitFormData.get('kitDescription');
+    const data = loadAppData();
+    const today = new Date();
+
+    checklistKitVersions.push({
+      id: crypto.randomUUID(),
+      name: kitName,
+      desc: kitDescription,
+      createdAt: today,
+      updatedAt: today,
+    });
+    console.log(data);
+    data.checklistVersions = checklistKitVersions;
+    saveAppData(data);
+    renderChecklist();
+    e.target.reset();
+    renderKitDetails();
+    renderKitVersions();
+  });
+
+  // initialize kit versions
+  renderKitVersions();
+  function renderKitVersions() {
+    const checklistKitVersions = getAllChecklistKitVersions();
+    const { appSettings } = loadAppData();
+    let checklistKitVersionsHTML = '';
+
+    checklistKitVersions.forEach(c => {
+      checklistKitVersionsHTML += `
+      <div class="card emergency-kit-card" data-id="${c.id}">
+        <div class="checklist-info">
+          <h3 class="checklist-title">${c.name}</h3>
+          <p class="checklist-desc">${c.desc}</p>
+          <div class="checklist-progress">
+            <span>${c.totalItems} items</span> • <span>${c.totalCheckedItems} completed</span>
+          </div>
+        </div>
+
+        <div class="checklist-actions">
+          ${appSettings.selectedChecklistVersionId === c.id
+          ? '<span class="status-badge active">Selected</span>'
+          : ''}
+          <button class="btn-edit btn-edit-kit" data-id="${c.id}">
+            <i class="ph ph-pencil"></i>
+          </button>
+          <button class="btn-delete btn-delete-kit" data-id="${c.id}">
+            <i class="ph ph-trash"></i>
+          </button>
+        </div>
+      </div>
+    `;
+    });
+
+    document.querySelector('.emergency-kits-list').innerHTML = checklistKitVersionsHTML;
+
+    initializeSelectedKit();
+    deleteKitHandler();
+    editKitHandler(); // 👈 attach edit logic
+  }
+
+  function editKitHandler() {
+    const kitsEditBtn = document.querySelectorAll('.btn-edit-kit');
+
+    kitsEditBtn.forEach(editBtn => {
+      editBtn.addEventListener('click', e => {
+        const data = loadAppData();
+        const { checklistVersions } = data;
+        const kitId = e.currentTarget.dataset.id;
+        const kit = checklistVersions.find(k => k.id === kitId);
+        if (!kit) return;
+
+        // find the card element
+        const card = e.currentTarget.closest('.emergency-kit-card');
+
+        // replace inner HTML with edit form
+        card.innerHTML = `
+        <form class="edit-kit-form">
+          <div class="form-fields">
+            <div class="kit-form-input">
+              <div class="field-container kit-field-container">
+                <label>Kit Name</label>
+                <input type="text" name="kitName" value="${kit.name}" required />
+              </div>
+              <div class="field-container kit-field-container">
+                <label>Kit Description</label>
+                <input type="text" name="kitDescription" value="${kit.desc}" required />
+              </div>
+            </div>
+            <div class="kit-form-action">
+              <div class="form-actions">
+                <button type="submit" class="btn btn-success">Save</button>
+                <button type="button" class="btn btn-danger btn-cancel-edit">Cancel</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      `;
+
+        const form = card.querySelector('.edit-kit-form');
+        const cancelBtn = card.querySelector('.btn-cancel-edit');
+
+        // save handler
+        form.addEventListener('submit', ev => {
+          ev.preventDefault();
+          const formData = new FormData(form);
+          kit.name = formData.get('kitName').trim();
+          kit.desc = formData.get('kitDescription').trim();
+          kit.updatedAt = new Date();
+
+          saveAppData(data);
+          renderKitVersions(); // re-render full list
+          renderKitDetails(); // update details header
+        });
+
+        // cancel handler
+        cancelBtn.addEventListener('click', () => {
+          renderKitVersions(); // restore original card
+        });
+      });
+    });
+  }
+
+  function deleteKitHandler() {
+    const kitsDeleteBtn = document.querySelectorAll('.btn-delete-kit');
+    kitsDeleteBtn.forEach(kitDeleteBtn => {
+      kitDeleteBtn.addEventListener('click', e => {
+        const data = loadAppData();
+        const { checklistVersions, checklistItems, appSettings } = data;
+
+        if (checklistVersions.length <= 1) {
+          console.log('Cannot delete kit any more')
+          return;
+        };
+        const kitId = e.currentTarget.dataset.id;
+
+        if (appSettings.selectedChecklistVersionId === kitId) {
+          const availableKits = document.querySelectorAll('.kit-options');
+          if (availableKits[0].value === appSettings.selectedChecklistVersionId) {
+            appSettings.selectedChecklistVersionId = availableKits[1].value;
+          } else {
+            appSettings.selectedChecklistVersionId = availableKits[0].value;
+          }
+        }
+        console.log(kitId);
+        data.checklistVersions = checklistVersions.filter(i => i.id !== kitId);
+
+        // TODO: delete confirmation
+        // TODO: toast notification (delete success, delete canceled)
+
+        // TODO: remove items of deleted kit
+        data.checklistItems = checklistItems.filter(i => i.checklistVersionId !== kitId);
+        saveAppData(data);
+        renderChecklist();
+        renderKitDetails();
+        renderKitVersions();
+      });
+    });
+  }
+
+  // initialize item categories
+  const checklistCategories = getAllChecklistCategories();
+  checklistCategories.forEach(c => {
+    document.querySelector('.categories-list').innerHTML += `
+      <div class="card emergency-kit-card">
+        <div class="checklist-info">
+          <h3 class="checklist-title">
+            ${c.name}
+          </h3>
+        </div>
+
+        <div class="checklist-actions">
+          <button class="btn-edit">
+            <i class="ph ph-pencil"></i>
+          </button>
+          <button class="btn-delete">
+            <i class="ph ph-trash"></i>
+          </button>
+        </div>
+      </div>
+    `;
+    document.querySelector('#itemCategory').innerHTML += `
+      <option value="${c.id}">${c.name}</option>
+    `;
+  });
 }

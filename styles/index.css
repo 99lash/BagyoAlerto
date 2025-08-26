@@ -1707,6 +1707,32 @@ html.dark .arrow i {
   color: var(--muted-foreground);
 }
 
+.edit-kit-form {
+  flex: 1;
+}
+
+.kit-field-container {
+  flex: 1;
+}
+
+.kit-form-input {
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-2);
+}
+
+.kit-form-action {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+}
+
+.kit-form-action > .form-actions {
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-2);
+}
+
 .form-fields {
   display: flex;
   flex-direction: column;
@@ -1777,7 +1803,7 @@ option {
 }
 
 button[type="submit"] {
-  padding: var(--space-2);
+  padding: var(--space-2) var(--space-4);
   border-radius: var(--radius-lg);
   border: transparent;
   cursor: pointer;
@@ -1787,6 +1813,10 @@ button[type="submit"] {
 
 button {
   cursor: pointer;
+}
+
+.submit-btn {
+  font-weight: var(--font-weight-semibold);
 }
 
 .emergency-kit-card {

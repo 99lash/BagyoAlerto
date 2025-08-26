@@ -1,14 +1,22 @@
-import { loadAppData } from "../core/appData.js"
+// checklistUtils.js
+import { loadAppData } from "../core/appData.js";
 
-
+/**
+ * Get currently selected checklist (kit) details with items and progress.
+ */
 export const getCurrentSelectedChecklist = () => {
   const { appSettings, checklistVersions, checklistItems } = loadAppData();
-  const currentChecklistKit = checklistVersions.find(k => k.id === appSettings.selectedChecklistVersionId);
-  const currentChecklistItems = checklistItems.filter(i => i.checklistVersionId === appSettings.selectedChecklistVersionId)
-  const totalItems = currentChecklistItems.length;
-  const totalCheckedItems = checklistItems.filter(i => i.checklistVersionId === appSettings.selectedChecklistVersionId && i.isChecked === true).length;
+  const selectedId = appSettings.selectedChecklistVersionId;
 
-  const progressInPercent = totalItems > 0 ? Number((totalCheckedItems / totalItems * 100).toFixed(2)) : 0;
+  const currentChecklistKit = checklistVersions.find(k => k.id === selectedId);
+  const currentChecklistItems = checklistItems.filter(i => i.checklistVersionId === selectedId);
+
+  const totalItems = currentChecklistItems.length;
+  const totalCheckedItems = currentChecklistItems.filter(i => i.isChecked).length;
+  const progressInPercent = totalItems > 0
+    ? Number(((totalCheckedItems / totalItems) * 100).toFixed(2))
+    : 0;
+
   return {
     ...currentChecklistKit,
     currentChecklistItems,
@@ -16,43 +24,60 @@ export const getCurrentSelectedChecklist = () => {
     totalCheckedItems,
     progressInPercent
   };
-}
+};
 
+/** Return all checklist kit versions */
 export const getAllChecklistKitVersions = () => {
-  const { checklistVersions } = loadAppData();
-  return checklistVersions;
-}
+  const { checklistVersions, checklistItems } = loadAppData();
 
-export const getAllChecklistCategories = () => {
-  const { categories } = loadAppData();
-  return categories;
-}
+  return checklistVersions.map(kit => {
+    const items = checklistItems.filter(i => i.checklistVersionId === kit.id);
+    const totalItems = items.length;
+    const totalCheckedItems = items.filter(i => i.isChecked).length;
 
-export const getAllChecklistItems = () => {
-  const { checklistItems } = loadAppData();
-  return checklistItems;
-}
+    return {
+      ...kit,
+      totalItems,
+      totalCheckedItems
+    };
+  });
+};
 
+
+/** Return all categories */
+export const getAllChecklistCategories = () => loadAppData().categories;
+
+/** Return all checklist items */
+export const getAllChecklistItems = () => loadAppData().checklistItems;
+
+/**
+ * Return checklist items grouped by categories (only for selected kit).
+ */
 export const getAllChecklistItemsByCategories = () => {
   const { categories, checklistItems, appSettings } = loadAppData();
-  let ChecklistGroupedByCategories = {};
+  const selectedId = appSettings.selectedChecklistVersionId;
 
-  categories.forEach((category, index) => {
-    const items = checklistItems.filter((item) => item.categoryId === category.id && item.checklistVersionId === appSettings.selectedChecklistVersionId);
+  return categories.reduce((grouped, category, index) => {
+    const items = checklistItems.filter(
+      item => item.categoryId === category.id && item.checklistVersionId === selectedId
+    );
+
+    if (items.length === 0) return grouped;
+
     const totalItems = items.length;
-    const totalCheckedItems = checklistItems.filter((item) => item.isChecked === true && item.categoryId === category.id && item.checklistVersionId === appSettings.selectedChecklistVersionId).length
-    const progressInPercent = totalItems > 0 ? Number((totalCheckedItems / totalItems * 100).toFixed(2)) : 0;
+    const totalCheckedItems = items.filter(item => item.isChecked).length;
+    const progressInPercent = totalItems > 0
+      ? Number(((totalCheckedItems / totalItems) * 100).toFixed(2))
+      : 0;
 
-    ChecklistGroupedByCategories[index] = {
+    grouped[index] = {
       category,
       items,
       totalItems,
       totalCheckedItems,
       progressInPercent
     };
-    if (!ChecklistGroupedByCategories[index].items.length)
-      delete ChecklistGroupedByCategories[index];
-  });
-  // console.log(ChecklistGroupedByCategories);
-  return ChecklistGroupedByCategories;
-}
+
+    return grouped;
+  }, {});
+};
