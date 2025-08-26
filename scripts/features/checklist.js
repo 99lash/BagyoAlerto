@@ -59,6 +59,7 @@ export const checklist = () => {
     renderChecklist();
     e.target.reset();
     renderKitDetails();
+    renderKitVersions();
     // console.log(checklistItems);
   });
 
@@ -314,6 +315,7 @@ export const checklist = () => {
     const checklistKitVersions = getAllChecklistKitVersions();
     const { appSettings } = loadAppData();
     let checklistKitVersionsHTML = '';
+    const isDisabled = checklistKitVersions.length <= 1 ? 'disabled' : '';
 
     checklistKitVersions.forEach(c => {
       checklistKitVersionsHTML += `
@@ -333,7 +335,10 @@ export const checklist = () => {
           <button class="btn-edit btn-edit-kit" data-id="${c.id}">
             <i class="ph ph-pencil"></i>
           </button>
-          <button class="btn-delete btn-delete-kit" data-id="${c.id}">
+          <button 
+            class="btn-delete btn-delete-kit ${isDisabled}"
+            data-id="${c.id}"
+            ${isDisabled}>
             <i class="ph ph-trash"></i>
           </button>
         </div>
@@ -362,7 +367,6 @@ export const checklist = () => {
         // find the card element
         const card = e.currentTarget.closest('.emergency-kit-card');
 
-        // replace inner HTML with edit form
         card.innerHTML = `
         <form class="edit-kit-form">
           <div class="form-fields">
@@ -398,13 +402,13 @@ export const checklist = () => {
           kit.updatedAt = new Date();
 
           saveAppData(data);
-          renderKitVersions(); // re-render full list
-          renderKitDetails(); // update details header
+          renderKitVersions();
+          renderKitDetails(); 
         });
 
         // cancel handler
         cancelBtn.addEventListener('click', () => {
-          renderKitVersions(); // restore original card
+          renderKitVersions(); 
         });
       });
     });
@@ -416,60 +420,213 @@ export const checklist = () => {
       kitDeleteBtn.addEventListener('click', e => {
         const data = loadAppData();
         const { checklistVersions, checklistItems, appSettings } = data;
-
-        if (checklistVersions.length <= 1) {
-          console.log('Cannot delete kit any more')
-          return;
-        };
         const kitId = e.currentTarget.dataset.id;
 
-        if (appSettings.selectedChecklistVersionId === kitId) {
-          const availableKits = document.querySelectorAll('.kit-options');
-          if (availableKits[0].value === appSettings.selectedChecklistVersionId) {
-            appSettings.selectedChecklistVersionId = availableKits[1].value;
-          } else {
-            appSettings.selectedChecklistVersionId = availableKits[0].value;
-          }
+        if (checklistVersions.length <= 1) {
+          console.log('Cannot delete last remaining kit');
+          return;
         }
-        console.log(kitId);
-        data.checklistVersions = checklistVersions.filter(i => i.id !== kitId);
 
-        // TODO: delete confirmation
-        // TODO: toast notification (delete success, delete canceled)
+        const kitItems = checklistItems.filter(i => i.checklistVersionId === kitId);
 
-        // TODO: remove items of deleted kit
-        data.checklistItems = checklistItems.filter(i => i.checklistVersionId !== kitId);
-        saveAppData(data);
-        renderChecklist();
-        renderKitDetails();
-        renderKitVersions();
+        if (kitItems.length > 0) {
+          showConfirmModal(
+            `This kit has ${kitItems.length} items.\nDo you really want to delete it?`,
+            () => {
+              proceedDeleteKit(data, kitId);
+            }
+          );
+        } else {
+          proceedDeleteKit(data, kitId);
+        }
       });
     });
+
+    function proceedDeleteKit(data, kitId) {
+      let { checklistVersions, checklistItems, appSettings } = data;
+
+      if (appSettings.selectedChecklistVersionId === kitId) {
+        const availableKits = checklistVersions.filter(k => k.id !== kitId);
+        appSettings.selectedChecklistVersionId = availableKits[0]?.id || null;
+      }
+
+      data.checklistVersions = checklistVersions.filter(i => i.id !== kitId);
+      data.checklistItems = checklistItems.filter(i => i.checklistVersionId !== kitId);
+
+      saveAppData(data);
+      renderChecklist();
+      renderKitDetails();
+      renderKitVersions();
+    }
   }
 
-  // initialize item categories
-  const checklistCategories = getAllChecklistCategories();
-  checklistCategories.forEach(c => {
-    document.querySelector('.categories-list').innerHTML += `
-      <div class="card emergency-kit-card">
+  // initialize categories
+  renderCategories();
+  function renderCategories() {
+    const categories = getAllChecklistCategories();
+    let categoriesHTML = '';
+    let categoriesOptionsHTML = '';
+    categories.forEach(c => {
+      categoriesHTML += `
+      <div class="card emergency-category-card" data-id="${c.id}">
         <div class="checklist-info">
-          <h3 class="checklist-title">
-            ${c.name}
-          </h3>
+          <h3 class="checklist-title">${c.name}</h3>
         </div>
 
         <div class="checklist-actions">
-          <button class="btn-edit">
+          <button class="btn-edit btn-edit-category" data-id="${c.id}">
             <i class="ph ph-pencil"></i>
           </button>
-          <button class="btn-delete">
+          <button class="btn-delete btn-delete-category" data-id="${c.id}">
             <i class="ph ph-trash"></i>
           </button>
         </div>
       </div>
     `;
-    document.querySelector('#itemCategory').innerHTML += `
-      <option value="${c.id}">${c.name}</option>
-    `;
+      // also refresh dropdown options
+      categoriesOptionsHTML += `
+        <option value="${c.id}">${c.name}</option>
+      `;
+    });
+    document.querySelector('#itemCategory').innerHTML = categoriesOptionsHTML;
+    document.querySelector('.categories-list').innerHTML = categoriesHTML;
+
+    editCategoryHandler();
+    deleteCategoryHandler();
+  }
+
+  const addCategoryForm = document.querySelector('#add-category-form');
+  addCategoryForm.addEventListener('submit', e => {
+    e.preventDefault();
+    const data = loadAppData();
+    const { categories } = data;
+    const addCategoryFormData = new FormData(addCategoryForm);
+    const categoryName = addCategoryFormData.get('categoryName');
+    const today = new Date();
+
+    categories.push({
+      id: crypto.randomUUID(),
+      name: categoryName,
+      createdAt: today,
+      updatedAt: today,
+    });
+
+    data.categories = categories;
+    saveAppData(data);
+    renderCategories();
+    addCategoryForm.reset();
   });
+
+  function editCategoryHandler() {
+    const editBtns = document.querySelectorAll('.btn-edit-category');
+
+    editBtns.forEach(editBtn => {
+      editBtn.addEventListener('click', e => {
+        const data = loadAppData();
+        const { categories } = data;
+        const categoryId = e.currentTarget.dataset.id;
+        const category = categories.find(c => c.id === categoryId);
+        if (!category) return;
+
+        const card = e.currentTarget.closest('.emergency-category-card');
+        card.innerHTML = `
+        <form class="edit-category-form">
+          <div class="form-fields">
+            <div clas="category-form-input">
+              <div class="field-container">
+                <label>Category Name</label>
+                <input type="text" name="categoryName" value="${category.name}" required />
+              </div>
+            </div>
+            <div class="category-form-action">
+              <div class="form-actions">
+                <button type="submit" class="btn btn-success">Save</button>
+                <button type="button" class="btn btn-danger btn-cancel-edit">Cancel</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      `;
+
+        const form = card.querySelector('.edit-category-form');
+        const cancelBtn = card.querySelector('.btn-cancel-edit');
+
+        // save handler
+        form.addEventListener('submit', ev => {
+          ev.preventDefault();
+          const formData = new FormData(form);
+          category.name = formData.get('categoryName').trim();
+          category.updatedAt = new Date();
+
+          saveAppData(data);
+          renderCategories();
+          renderChecklist();
+        });
+
+        // cancel handler
+        cancelBtn.addEventListener('click', () => {
+          renderCategories(); // restore orig card
+        });
+      });
+    });
+  }
+
+  function deleteCategoryHandler() {
+    const deleteBtns = document.querySelectorAll('.btn-delete-category');
+
+    deleteBtns.forEach(deleteBtn => {
+      deleteBtn.addEventListener('click', e => {
+        const data = loadAppData();
+        let { categories, checklistItems } = data;
+        const categoryId = e.currentTarget.dataset.id;
+        const categoryItems = checklistItems.filter(i => i.categoryId === categoryId);
+
+        if (categoryItems.length > 0) {
+          showConfirmModal(
+            `This category has ${categoryItems.length} items.\nDo you really want to delete it?`,
+            () => {
+              proceedDeleteCategory(data, categoryId);
+            }
+          );
+        } else {
+          proceedDeleteCategory(data, categoryId);
+        }
+      });
+    });
+
+    function proceedDeleteCategory(data, categoryId) {
+      let { categories, checklistItems } = data;
+      data.categories = categories.filter(c => c.id !== categoryId);
+      data.checklistItems = checklistItems.filter(i => i.categoryId !== categoryId);
+
+      saveAppData(data);
+      renderCategories();
+      renderChecklist();
+    }
+  }
+
+  function showConfirmModal(message, onConfirm) {
+    const modal = document.querySelector('#confirmModal');
+    const messageBox = document.querySelector('#confirmMessage');
+    const btnYes = document.querySelector('#confirmYes');
+    const btnNo = document.querySelector('#confirmNo');
+
+    messageBox.textContent = message;
+    modal.classList.remove('hidden');
+
+    // remove old listeners
+    const newYes = btnYes.cloneNode(true);
+    btnYes.parentNode.replaceChild(newYes, btnYes);
+    const newNo = btnNo.cloneNode(true);
+    btnNo.parentNode.replaceChild(newNo, btnNo);
+
+    // attach fresh listeners
+    newYes.addEventListener('click', () => {
+      modal.classList.add('hidden');
+      onConfirm();
+    });
+    newNo.addEventListener('click', () => {
+      modal.classList.add('hidden');
+    });
+  }
 }

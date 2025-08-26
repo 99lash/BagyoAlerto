@@ -344,7 +344,7 @@ p {
 }
 
 main {
-  min-height: 100vh;  
+  min-height: 100vh;
 }
 
 /* 
@@ -814,8 +814,11 @@ nav {
   display: flex;
   gap: 10px;
 }
+
 @media (max-width: 768px) {
-  #middle{ display: none;}
+  #middle {
+    display: none;
+  }
 }
 
 
@@ -1649,7 +1652,7 @@ html.dark .arrow i {
   margin-top: var(--space-10);
 }
 
-.checklist-header > .card {
+.checklist-header>.card {
   gap: var(--space-3);
 }
 
@@ -1727,7 +1730,34 @@ html.dark .arrow i {
   justify-content: end;
 }
 
-.kit-form-action > .form-actions {
+.emergency-category-card {
+  flex-direction: row;
+}
+
+.edit-category-form {
+  flex: 1;
+}
+
+.category-form-input {
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-2);
+}
+
+.category-form-action {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+}
+
+.category-form-action>.form-actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  gap: var(--space-2);
+}
+
+.kit-form-action>.form-actions {
   display: flex;
   flex-direction: row;
   gap: var(--space-2);
@@ -1758,6 +1788,7 @@ html.dark .arrow i {
 .card-list-header h4 {
   font-weight: var(--font-weight-medium);
 }
+
 .card-list-body {
   display: flex;
   flex-direction: column;
@@ -1774,6 +1805,7 @@ html.dark .arrow i {
 .item-details {
   flex: 1;
 }
+
 /* mga resuable components hahah */
 
 input[type="text"] {
@@ -1844,6 +1876,13 @@ button {
   border-radius: var(--radius-sm);
   padding: var(--space-2);
   background-color: var(--background);
+  border: 1px solid var(--border);
+}
+
+.btn-delete-kit.disabled {
+  color: #aaa;
+  cursor: not-allowed;
+  pointer-events: none;
   border: 1px solid var(--border);
 }
 
@@ -2016,8 +2055,89 @@ button {
   padding: var(--space-2);
 }
 
+/* ===== Modal Base ===== */
+.modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.376);
+  z-index: 9999;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+/* ===== Modal Box ===== */
+.modal-content {
+  background: var(--background);
+  border-radius: 8px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 8px 20px var(--background);
+  animation: modalFadeIn 0.25s ease-out;
+}
+
+.modal-content p {
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  color: var(--secondary-foreground);
+}
+
+/* ===== Modal Actions ===== */
+.modal-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.modal-actions .btn {
+  padding: 0.5rem 1.25rem;
+  border-radius: 6px;
+  border: none;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+/* ===== Buttons ===== */
+.btn-danger {
+  background: #e53935;
+  color: #fff;
+}
+
+.btn-danger:hover {
+  background: #c62828;
+}
+
+.btn-secondary {
+  background: #f1f1f1;
+  color: #333;
+}
+
+.btn-secondary:hover {
+  background: #ddd;
+}
+
+/* ===== Animation ===== */
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /*=====  End of Checklist comment block  ======*/
-#burger{
+#burger {
   position: sticky;
   top: var(--space-1);
   display: flex;
@@ -2027,7 +2147,8 @@ button {
   border-radius: var(--radius-md);
   z-index: 1;
 }
-.burger-item{
+
+.burger-item {
   display: flex;
   flex-direction: column;
   gap: var(--space-2);
@@ -2045,16 +2166,17 @@ button {
   border-radius: var(--radius-md);
   transition: background-color 0.2s ease;
 }
-.burger-item a:active{
+
+.burger-item a:active {
   background-color: var(--accent-foreground);
 }
 
 .burger-item a:hover {
   background-color: var(--muted);
 }
+
 .burger-item a.active {
   background-color: var(--accent-foreground);
   transform: translateY(0);
   color: var(--accent);
 }
-
