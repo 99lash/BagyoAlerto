@@ -25,7 +25,7 @@ const appData = {
     },
     {
       id: '99d3a9c7-401d-488d-ad9f-fc52b6fba557',
-      name: 'Medical & Health',
+      name: 'Electronics',
       createdAt: '2025-08-13T10:55:08.801Z',
       updatedAt: '2025-08-13T10:55:08.801Z',
     },
