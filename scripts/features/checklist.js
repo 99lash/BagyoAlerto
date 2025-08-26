@@ -345,7 +345,7 @@ export const checklist = () => {
 
     initializeSelectedKit();
     deleteKitHandler();
-    editKitHandler(); // 👈 attach edit logic
+    editKitHandler();
   }
 
   function editKitHandler() {
