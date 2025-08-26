@@ -1894,6 +1894,10 @@ button {
   border: none;
 }
 
+.btn-delete-item.hidden {
+  visibility: hidden;
+}
+
 .btn-delete>i,
 .btn-edit>i {
   vertical-align: middle;
@@ -2062,7 +2066,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgba(0, 0, 0, 0.376);
+  background-color: var(--shadow-sm);
   z-index: 9999;
 }
 
@@ -2078,7 +2082,7 @@ button {
   width: 100%;
   max-width: 400px;
   text-align: center;
-  box-shadow: 0 8px 20px var(--background);
+  box-shadow: var(--shadow-md);
   animation: modalFadeIn 0.25s ease-out;
 }
 
@@ -2104,26 +2108,19 @@ button {
   transition: background 0.2s ease;
 }
 
-/* ===== Buttons ===== */
-.btn-danger {
-  background: #e53935;
-  color: #fff;
-}
-
 .btn-danger:hover {
-  background: #c62828;
+  background: #c6282894;  
 }
 
 .btn-secondary {
-  background: #f1f1f1;
-  color: #333;
+  background: var(--input-background);
+  color: var(--muted-foreground);
 }
 
 .btn-secondary:hover {
   background: #ddd;
 }
 
-/* ===== Animation ===== */
 @keyframes modalFadeIn {
   from {
     opacity: 0;

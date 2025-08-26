@@ -70,7 +70,7 @@ export const checklist = () => {
 
     const prevWidths = {};
     document.querySelectorAll('.progress-bar-fill-category').forEach(bar => {
-      console.log(bar.style.width);
+      // console.log(bar.style.width);
       prevWidths[bar.id] = bar.style.width || '0%';
     });
 
@@ -88,12 +88,12 @@ export const checklist = () => {
       items.forEach(item => {
         itemsTemplateHTML += `
         <li>
-          <div class="item-container">
+          <div class="item-container" data-id="${item.id}">
             <label class="item-details">
               <input type="checkbox" class="item" id="${item.id}" data-id="${item.id}" ${item.isChecked && 'checked' || ''} >
               ${item.name}
             </label>
-            <button class="btn-delete-item" data-id="${item.id}">
+            <button class="btn-delete-item hidden" data-delete-id="${item.id}">
               <i class="ph ph-trash"></i>
             </button>
           </div>
@@ -112,7 +112,7 @@ export const checklist = () => {
           <div class="category-actions">
             <button class="btn-check btn-check-category" data-id="${category.id}"><i class="ph ph-check"></i></button>
             <button class="btn-uncheck btn-uncheck-category" data-id="${category.id}"><i class="ph ph-x"></i></button>
-            <button class="btn-delete btn-delete-category" data-id="${category.id}"><i class="ph ph-trash"></i></button>
+            <button class="btn-delete btn-delete-category-items" data-id="${category.id}"><i class="ph ph-trash"></i></button>
           </div>
         </div>
 
@@ -139,7 +139,7 @@ export const checklist = () => {
       categories.forEach(category => {
         const progressBar = document.querySelector(`#category-progress-bar-fill-${category.id}`);
         progressBar.style.width = `${category.progressInPercent}%`;
-        console.log(progressBar);
+        // console.log(progressBar);
       });
     });
     // checklistTemplateHTML = '';
@@ -151,12 +151,29 @@ export const checklist = () => {
   }
 
   function deleteItemHandler() {
+    const itemsContainer = document.querySelectorAll('.item-container');
+    itemsContainer.forEach(itemContainer => {
+      let isHovered = false;
+      itemContainer.addEventListener('mouseover', e => {
+        isHovered = true;
+        const itemId = e.currentTarget.dataset.id;
+        // console.log(e.currentTarget, 'is hovered');
+        document.querySelector(`[data-delete-id="${itemId}"]`).classList.remove('hidden');
+      });
+      itemContainer.addEventListener('mouseout', e => {
+        isHovered = false;
+        const itemId = e.currentTarget.dataset.id;
+        // console.log(e.currentTarget, 'is no longer hovered');
+        document.querySelector(`[data-delete-id="${itemId}"]`).classList.add('hidden');
+      });
+    });
+
     const itemsDeleteBtn = document.querySelectorAll('.btn-delete-item');
     itemsDeleteBtn.forEach(itemDeleteBtn => {
       itemDeleteBtn.addEventListener('click', e => {
         const data = loadAppData();
         const { checklistItems } = data;
-        const itemId = e.currentTarget.dataset.id;
+        const itemId = e.currentTarget.dataset.deleteId;
         // console.log(itemId);
         data.checklistItems = checklistItems.filter(i => i.id !== itemId);
         saveAppData(data);
@@ -168,7 +185,7 @@ export const checklist = () => {
   }
 
   function deleteAllCategoryItemsHandler() {
-    const categoriesDeleteBtn = document.querySelectorAll('.btn-delete-category');
+    const categoriesDeleteBtn = document.querySelectorAll('.btn-delete-category-items');
     categoriesDeleteBtn.forEach(categoryDeleteBtn => {
       categoryDeleteBtn.addEventListener('click', e => {
         const data = loadAppData();
@@ -577,16 +594,14 @@ export const checklist = () => {
     deleteBtns.forEach(deleteBtn => {
       deleteBtn.addEventListener('click', e => {
         const data = loadAppData();
-        let { categories, checklistItems } = data;
+        let { checklistItems } = data;
         const categoryId = e.currentTarget.dataset.id;
         const categoryItems = checklistItems.filter(i => i.categoryId === categoryId);
 
         if (categoryItems.length > 0) {
           showConfirmModal(
             `This category has ${categoryItems.length} items.\nDo you really want to delete it?`,
-            () => {
-              proceedDeleteCategory(data, categoryId);
-            }
+            () => proceedDeleteCategory(data, categoryId)
           );
         } else {
           proceedDeleteCategory(data, categoryId);
@@ -595,10 +610,9 @@ export const checklist = () => {
     });
 
     function proceedDeleteCategory(data, categoryId) {
-      let { categories, checklistItems } = data;
+      let { categories, checklistItems } = loadAppData();
       data.categories = categories.filter(c => c.id !== categoryId);
       data.checklistItems = checklistItems.filter(i => i.categoryId !== categoryId);
-
       saveAppData(data);
       renderCategories();
       renderChecklist();
@@ -614,18 +628,17 @@ export const checklist = () => {
     messageBox.textContent = message;
     modal.classList.remove('hidden');
 
-    // remove old listeners
-    const newYes = btnYes.cloneNode(true);
-    btnYes.parentNode.replaceChild(newYes, btnYes);
-    const newNo = btnNo.cloneNode(true);
-    btnNo.parentNode.replaceChild(newNo, btnNo);
+    // // remove old listeners
+    // const newYes = btnYes.cloneNode(true);
+    // btnYes.parentNode.replaceChild(newYes, btnYes);
+    // const newNo = btnNo.cloneNode(true);
+    // btnNo.parentNode.replaceChild(newNo, btnNo);
 
-    // attach fresh listeners
-    newYes.addEventListener('click', () => {
+    btnYes.addEventListener('click', () => {
       modal.classList.add('hidden');
       onConfirm();
     });
-    newNo.addEventListener('click', () => {
+    btnNo.addEventListener('click', () => {
       modal.classList.add('hidden');
     });
   }
