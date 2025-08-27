@@ -1,5 +1,5 @@
 import { loadAppData, resetAppData, saveAppData } from '../core/appData.js';
-import { getAllChecklistKitVersions, getCurrentSelectedChecklist, getAllChecklistCategories, getAllChecklistItemsByCategories, getAllChecklistItems } from '../utils/checklistUtils.js';
+import { getAllChecklistKitVersions, getCurrentSelectedChecklist, getAllChecklistCategories, getAllChecklistItemsByCategories, getAllChecklistItems, isItemNameExist, isKitNameExist, isCategoryNameExist } from '../utils/checklistUtils.js';
 
 export const checklist = () => {
 
@@ -44,6 +44,15 @@ export const checklist = () => {
     const data = loadAppData();
     const today = new Date();
 
+    const itemNameMsg = document.querySelector('.item-name-msg');
+    if (isItemNameExist(itemName)) {
+      // console.log('Item Already Exist');
+      itemNameMsg.innerHTML = `<b>"${itemName}"</b> is already existing.`;
+      itemNameMsg.classList.remove('hidden');
+      return;
+    }
+    itemNameMsg.classList.add('hidden');
+
     checklistItems.push({
       id: crypto.randomUUID(),
       checklistVersionId: data.appSettings.selectedChecklistVersionId,
@@ -57,7 +66,8 @@ export const checklist = () => {
     data.checklistItems = checklistItems;
     saveAppData(data);
     renderChecklist();
-    addItemFormData.set('itemName', '');
+    // addItemFormData.set('itemName', '');
+    document.querySelector('#itemName').value = '';
     renderKitDetails();
     renderKitVersions();
     // console.log(checklistItems);
@@ -314,6 +324,15 @@ export const checklist = () => {
     const data = loadAppData();
     const today = new Date();
 
+    const kitNameMsg = document.querySelector('.kit-name-msg');
+    if (isKitNameExist(kitName)) {
+      // console.log('Kit Already Exist');
+      kitNameMsg.innerHTML = `<b>"${kitName}"</b> is already existing.`;
+      kitNameMsg.classList.remove('hidden');
+      return;
+    }
+    kitNameMsg.classList.add('hidden');
+
     checklistKitVersions.push({
       id: crypto.randomUUID(),
       name: kitName,
@@ -524,6 +543,15 @@ export const checklist = () => {
     const addCategoryFormData = new FormData(addCategoryForm);
     const categoryName = addCategoryFormData.get('categoryName');
     const today = new Date();
+
+    const categoryNameMsg = document.querySelector('.category-name-msg');
+    if (isCategoryNameExist(categoryName)) {
+      // console.log('Category Already Exist');
+      categoryNameMsg.innerHTML = `<b>"${categoryName}"</b> is already existing.`;
+      categoryNameMsg.classList.remove('hidden');
+      return;
+    }
+    categoryNameMsg.classList.add('hidden');
 
     categories.push({
       id: crypto.randomUUID(),

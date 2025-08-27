@@ -81,3 +81,18 @@ export const getAllChecklistItemsByCategories = () => {
     return grouped;
   }, {});
 };
+
+export const isCategoryNameExist = (categoryName = '') => {
+  const { categories } = loadAppData();
+  return categories.find(c => c.name.toLowerCase() === categoryName.toLowerCase());
+}
+
+export const isItemNameExist = (itemName = '') => {
+  const { checklistItems } = loadAppData();
+  return checklistItems.find(i => i.name === itemName);
+}
+
+export const isKitNameExist = (kitName = '') => {
+  const { checklistVersions } = loadAppData();
+  return checklistVersions.find(k => k.name.toLowerCase() === kitName.toLowerCase());
+}
