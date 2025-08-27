@@ -57,7 +57,7 @@ export const checklist = () => {
     data.checklistItems = checklistItems;
     saveAppData(data);
     renderChecklist();
-    e.target.reset();
+    addItemFormData.set('itemName', '');
     renderKitDetails();
     renderKitVersions();
     // console.log(checklistItems);
@@ -138,6 +138,10 @@ export const checklist = () => {
       // document.querySelector(`#category-progress-bar-fill-${category.id}`).style.width = `${progressInPercent}%`;
       categories.forEach(category => {
         const progressBar = document.querySelector(`#category-progress-bar-fill-${category.id}`);
+        if (!progressBar) {
+          console.log('Wala taena');
+          return;
+        }
         progressBar.style.width = `${category.progressInPercent}%`;
         // console.log(progressBar);
       });
@@ -617,7 +621,7 @@ export const checklist = () => {
     }
   }
 
-  function showConfirmModal(message = '', onConfirm = () => {}, { yesBtn = 'Yes, Delete', noBtn = 'Cancel' } = {}) {
+  function showConfirmModal(message = '', onConfirm = () => { }, { yesBtn = 'Yes, Delete', noBtn = 'Cancel' } = {}) {
     const modal = document.querySelector('#confirmModal');
     const messageBox = document.querySelector('#confirmMessage');
     const btnYes = document.querySelector('#confirmYes');
@@ -628,17 +632,17 @@ export const checklist = () => {
     btnNo.text = noBtn;
     modal.classList.remove('hidden');
 
-    // // remove old listeners
-    // const newYes = btnYes.cloneNode(true);
-    // btnYes.parentNode.replaceChild(newYes, btnYes);
-    // const newNo = btnNo.cloneNode(true);
-    // btnNo.parentNode.replaceChild(newNo, btnNo);
+    // remove old listeners
+    const newYes = btnYes.cloneNode(true);
+    btnYes.parentNode.replaceChild(newYes, btnYes);
+    const newNo = btnNo.cloneNode(true);
+    btnNo.parentNode.replaceChild(newNo, btnNo);
 
-    btnYes.addEventListener('click', () => {
+    newYes.addEventListener('click', () => {
       modal.classList.add('hidden');
       onConfirm();
     });
-    btnNo.addEventListener('click', () => {
+    newNo.addEventListener('click', () => {
       modal.classList.add('hidden');
     });
   }
@@ -715,7 +719,7 @@ export const checklist = () => {
         const onNo = () => resolve(false);
         if (btnNo) btnNo.addEventListener('click', onNo);
 
-        showConfirmModal(message, () => resolve(true), {yesBtn: 'Yes, Import'});
+        showConfirmModal(message, () => resolve(true), { yesBtn: 'Yes, Import' });
       } else {
         resolve(window.confirm(message));
       }
