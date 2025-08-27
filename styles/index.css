@@ -2135,8 +2135,8 @@ button {
 }
 
 .btn-secondary {
-  background: var(--input-background);
-  color: var(--muted-foreground);
+  background: var(--primary);
+  /* color: var(--muted-foreground); */
 }
 
 .btn-secondary:hover {
