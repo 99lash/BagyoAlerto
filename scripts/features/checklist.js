@@ -24,12 +24,28 @@ export const checklist = () => {
   });
 
   function renderKitDetails() {
-    const currentChecklist = getCurrentSelectedChecklist();
-    document.querySelector('.active-kit-progress').innerHTML = `${currentChecklist.totalCheckedItems} of ${currentChecklist.totalItems} completed (${currentChecklist.progressInPercent}%)`;
-    document.querySelector('.active-kit-description').innerHTML = currentChecklist.desc;
-    // document.querySelector('#active-kit-progress-bar-fill').style.width = currentChecklist.progressInPercent;
-    // console.log(parseInt(currentChecklist.progressInPercent));
-    document.querySelector('#active-kit-progress-bar-fill').style.width = `${currentChecklist.progressInPercent}%`;
+    const { totalCheckedItems, totalItems, progressInPercent, desc } = getCurrentSelectedChecklist();
+    document.querySelector('.active-kit-progress').innerHTML = `${totalCheckedItems} of ${totalItems} completed (${progressInPercent}%)`;
+    document.querySelector('.active-kit-description').innerHTML = desc;
+    // document.querySelector('#active-kit-progress-bar-fill').style.width = progressInPercent;
+    // console.log(parseInt(progressInPercent));
+    const headerProgressBar = document.querySelector('#active-kit-progress-bar-fill');
+    headerProgressBar.style.width = `${progressInPercent && progressInPercent || 1}%`;
+
+
+    if (progressInPercent <= 25) {
+      console.log('<=25');
+      headerProgressBar.style.backgroundColor = 'var(--readiness-needs-work)';
+    } else if (progressInPercent <= 50) {
+      console.log('<=50');
+      headerProgressBar.style.backgroundColor = 'var(--readiness-fair)';
+    } else if (progressInPercent <= 75) {
+      console.log('<=75');
+      headerProgressBar.style.backgroundColor = 'var(--readiness-good)';
+    } else {
+      console.log('<=100');
+      headerProgressBar.style.backgroundColor = 'var(--readiness-excellent)';
+    }
 
   }
 
@@ -131,7 +147,7 @@ export const checklist = () => {
           <div 
             class="progress-bar-fill progress-bar-fill-category"
             id="category-progress-bar-fill-${category.id}"
-            style="width: ${prevWidths[`category-progress-bar-fill-${category.id}`] || '0%'}">
+            style="width: ${prevWidths[`category-progress-bar-fill-${category.id}`] || '1%'}">
           </div>
         </div>
 
@@ -152,8 +168,25 @@ export const checklist = () => {
           console.log('Wala taena');
           return;
         }
-        progressBar.style.width = `${category.progressInPercent}%`;
-        // console.log(progressBar);
+        progressBar.style.width = `${category.progressInPercent && category.progressInPercent || 1}%`;
+        if (category.progressInPercent <= 25) {
+          console.log('<25');
+          console.log('meow1');
+          progressBar.style.backgroundColor = 'var(--readiness-needs-work)';
+        } else if (category.progressInPercent <= 50) {
+          console.log('<50');
+          console.log('meow2');
+          progressBar.style.backgroundColor = 'var(--readiness-fair)';
+        } else if (category.progressInPercent <= 75) {
+          console.log('<75');
+          console.log('meow3');
+          progressBar.style.backgroundColor = 'var(--readiness-good)';
+        } else {
+          console.log('meow4');
+          console.log('<100');
+          progressBar.style.backgroundColor = 'var(--readiness-excellent)';
+        }
+
       });
     });
     // checklistTemplateHTML = '';
@@ -280,7 +313,6 @@ export const checklist = () => {
         // console.log(itemCheckbox.checked);
         saveAppData(data);
         renderChecklist();
-        renderKitDetails();
         renderKitVersions();
       });
     });

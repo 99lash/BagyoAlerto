@@ -781,7 +781,7 @@ footer {
 header {
   position: sticky;
   background-color: var(--background);
-  box-shadow: 0 2px 4px var(--muted) ;
+  box-shadow: 0 2px 4px var(--muted);
   top: 0;
   z-index: 1;
 }
@@ -1315,7 +1315,7 @@ html.dark #right-side button {
   margin-bottom: var(--space-1);
 }
 
-.progress-bar {
+/* .progress-bar {
   height: 8px;
   width: 100%;
   background-color: #d1d1d6;
@@ -1326,10 +1326,26 @@ html.dark #right-side button {
 
 .progress-bar-fill {
   height: 100%;
-  background-color: var(--chart-2);
+  background-color: var(--accent);
   width: 0%;
   transition: width .5s ease-in-out;
   border-radius: var(--radius-full);
+} */
+
+.progress-bar {
+  height: 0.5rem;
+  background-color: var(--muted);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  margin-bottom: var(--space-4);
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background-color: var(--foreground);
+  width: 0%;
+  border-radius: var(--radius-full);
+  transition: width 0.3s ease-in-out;
 }
 
 .progress-list {
@@ -1555,7 +1571,7 @@ html.dark #right-side button {
 }
 
 
-.arrow .ph{
+.arrow .ph {
   font-size: 10px;
   font-weight: var(--font-weight-bold);
 }
@@ -2131,7 +2147,7 @@ button {
 }
 
 .btn-danger:hover {
-  background: #c6282894;  
+  background: #c6282894;
 }
 
 .btn-secondary {
@@ -2254,7 +2270,8 @@ button {
   flex-direction: column;
   padding-top: var(--space-5);
 }
-.guideDrops p{
+
+.guideDrops p {
   display: flex;
   align-items: center;
   margin: 0;
@@ -2264,6 +2281,7 @@ button {
 .guideDrops {
   display: none;
 }
+
 .guideDrops.open {
   display: block;
 }
