@@ -9,7 +9,7 @@ BagyoAlerto is a simple website application that supports mobile view and an ins
 - [Team Collaborators/Members](#team-members)
 - [Live Demo](#live-demo)
 - [Project Objectives](#project-objectives)
-- [Main Features](#app-features)
+- [Main Features](#features)
   - [Checklist Management](#features)
   - [User Experience & Design](#features)
   - [Weather Integration & Notifications](#features)
