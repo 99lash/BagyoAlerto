@@ -2021,6 +2021,11 @@ button {
   color: var(--primary-foreground);
 }
 
+.ph-upload-simple,
+.ph-download-simple {
+  font-size: var(--icon-size-sm);
+}
+
 /* Import Export group */
 .btn-group {
   display: flex;
