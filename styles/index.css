@@ -2285,3 +2285,17 @@ button {
 .guideDrops.open {
   display: block;
 }
+
+#install-card {
+  display: none;
+  margin-bottom: 2rem;
+  align-items: center;
+}
+
+#installBtn {
+  background-color: var(--background);
+  color: var(--info);
+  border: 2px var(--info);
+  border-style: dashed;
+  width: 70dvw;
+}

@@ -1,3 +1,5 @@
+import { installPWA } from "../utils/pwa.js";
+
 function setDrop() {
   const arrows = document.querySelectorAll('.arrowD');
 
@@ -18,4 +20,5 @@ function setDrop() {
 
 export const guide = () => {
   setDrop();
+  installPWA();
 }

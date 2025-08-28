@@ -1,47 +1,50 @@
-const CACHE_NAME = "bagyoalerto-v1";
-const ASSETS_TO_CACHE = [
+const CACHE_NAME = "bagyoalerto-cache-v1";
+const urlsToCache = [
   "/",
   "/index.html",
+  "/guide.html",
   "/checklist.html",
   "/emergency.html",
-  "/guide.html",
   "/styles/index.css",
   "/scripts/index.js",
   "/assets/img/apple-touch-icon.png"
 ];
 
-// Install event → cache assets
 self.addEventListener("install", (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(ASSETS_TO_CACHE);
+      console.log("📦 Caching app shell...");
+      return cache.addAll(urlsToCache);
     })
   );
 });
 
-// Activate event → clean old caches
 self.addEventListener("activate", (event) => {
   event.waitUntil(
-    caches.keys().then((keys) =>
+    caches.keys().then((cacheNames) =>
       Promise.all(
-        keys.map((key) => {
-          if (key !== CACHE_NAME) return caches.delete(key);
+        cacheNames.map((name) => {
+          if (name !== CACHE_NAME) {
+            console.log("🗑️ Deleting old cache:", name);
+            return caches.delete(name);
+          }
         })
       )
     )
   );
 });
 
-// Fetch event → serve from cache then network fallback
 self.addEventListener("fetch", (event) => {
   event.respondWith(
-    caches.match(event.request).then((cachedResponse) => {
-      return (
-        cachedResponse ||
-        fetch(event.request).catch(() =>
-          caches.match("/index.html") // fallback offline
-        )
-      );
-    })
+    fetch(event.request)
+      .then((response) => {
+        // clone and store in cache
+        const responseClone = response.clone();
+        caches.open(CACHE_NAME).then((cache) => {
+          cache.put(event.request, responseClone);
+        });
+        return response;
+      })
+      .catch(() => caches.match(event.request))
   );
 });

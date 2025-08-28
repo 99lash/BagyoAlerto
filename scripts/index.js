@@ -6,44 +6,14 @@ import { hamburger } from "./features/hamburger.js";
 import { checklist } from "./features/checklist.js";
 import { guide } from "./features/guide.js";
 
+//pang register ng service worker
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
     navigator.serviceWorker
       .register("/service-worker.js")
-      .then((reg) => console.log("SW registered:", reg))
-      .catch((err) => console.error("SW registration failed:", err));
+      .then((reg) => console.log("Service Worker registered:", reg.scope))
+      .catch((err) => console.log("Service Worker failed:", err));
   });
-
-  window.addEventListener("appinstalled", () => {
-    console.log("BagyoAlerto installed successfully!");
-    const installBtn = document.querySelector("#installBtn");
-    installBtn.style.display = "none";
-  });
-
-
-  let deferredPrompt;
-
-  window.addEventListener("beforeinstallprompt", (e) => {
-    // Prevent automatic mini-infobar sa Chrome
-    e.preventDefault();
-    deferredPrompt = e;
-
-    // Show your custom install button
-    const installBtn = document.querySelector("#installBtn");
-    installBtn.style.display = "block";
-
-    installBtn.addEventListener("click", async () => {
-      installBtn.style.display = "none";
-
-      if (deferredPrompt) {
-        deferredPrompt.prompt(); // Show browser A2HS prompt
-        const { outcome } = await deferredPrompt.userChoice;
-        console.log(`User response to install prompt: ${outcome}`);
-        deferredPrompt = null;
-      }
-    });
-  });
-
 }
 
 if (!loadAppData()) {
