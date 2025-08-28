@@ -3,7 +3,18 @@ import { dashboard } from "./features/dashboard.js";
 import { emergency } from "./features/emergency-contacts.js";
 import { resetAppData, loadAppData } from "./core/appData.js";
 import { hamburger } from "./features/hamburger.js";
-import {guide } from "./features/guide.js";
+import { checklist } from "./features/checklist.js";
+import { guide } from "./features/guide.js";
+
+//pang register ng service worker
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker
+      .register("/service-worker.js")
+      .then((reg) => console.log("Service Worker registered:", reg.scope))
+      .catch((err) => console.log("Service Worker failed:", err));
+  });
+}
 
 if (!loadAppData()) {
   //kapag walang data, initialized the fixed data.
@@ -19,6 +30,7 @@ switch (window.location.pathname.split('/').pop()) {
     break;
 
   case 'checklist.html':
+    checklist();
     break;
 
   case 'emergency.html':

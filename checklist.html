@@ -11,15 +11,20 @@
   <link rel="stylesheet" type="text/css"
     href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/regular/style.css" />
 </head>
+
 <body>
   <div class="app">
     <header>
       <div class="container">
         <nav>
           <div id="logo">
-            <img src="./assets/img/apple-touch-icon.png" alt="Logo">
-            BagyoAlerto
+            <a href="./checklist.html"
+              style="text-decoration: none; color: var(--primary); display: flex; align-items: center; gap: var(--space-2);">
+              <img src="./assets/img/apple-touch-icon.png" alt="Logo">
+              BagyoAlerto
+            </a>
           </div>
+
           <div id="middle">
             <a href="./index.html" id="dashboard"><i class="ph ph-house"></i>Dashboard</a>
             <a href="./checklist.html" id="checklist" class="active"><i class="ph ph-check-square"></i>Checklist</a>
@@ -36,17 +41,262 @@
     <main>
       <div class="container">
         <!-- MAIN CONTENT -->
-        Content
+        <section class="checklist-header">
+          <div class="card">
+            <div class="card-header checklist-top">
+              <div class="checklist-top-left">
+                <h3>Emergency Checklist</h3>
+                <p class="active-kit-progress">
+                  <!-- DYNAMIC DAPAT ITO -->
+                  0 of 24 items completed (0%)
+                </p>
+              </div>
+              <div class="checklist-top-right">
+                <label for="kitVersion">
+                  Selected Kit:
+                </label>
+                <select name="kitVersion" id="kitVersion">
+                  <!-- DYNAMIC DAPAT ANG OPTIONS -->
+                </select>
+              </div>
+            </div>
+            <div class="active-kit-description">
+              <!-- DYNAMIC DAPAT ITO -->
+              Essential items for one person (72-hour survival)
+            </div>
+            <!-- <progress value="20" max="100" class="active-kit-progress">Active Kit Progress Bar</progress> -->
+            <div class="progress-bar active-kit-progress">
+              <div class="progress-bar-fill" id="active-kit-progress-bar-fill"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="checklist-tabs">
+          <div class="actions-tablist">
+            <div class="actions-tablist-item active-tab" role="button">Manage Items</div>
+            <div class="actions-tablist-item" role="button">Manage Kits</div>
+            <div class="actions-tablist-item" role="button">Manage Categories</div>
+            <div class="actions-tablist-item" role="button">Quick Actions</div>
+          </div>
+          <!-- Dynamic content base on active tab -->
+          <!-- Manage Items Tab -->
+          <div class="actions-tablist-content active-tab-content">
+            <div class="card">
+              <form class="form" id="add-item-form">
+                <div class="form-header">
+                  <h3>Add Item</h3>
+                  <p>Add a custom item to your current emergency kit.</p>
+                </div>
+                <div class="form-fields">
+                  <div class="field-container">
+                    <label for="itemName">Item Name </label>
+                    <input type="text" name="itemName" id="itemName" placeholder="e.g., Rice sack" required>
+                    <span class="input-msg item-name-msg hidden"></span>
+                  </div>
+                  <div class="field-container">
+                    <label for="itemCategory">Item Category </label>
+                    <select name="itemCategory" id="itemCategory" required>
+                      <!-- dynamic options -->
+                      <!-- <option value="id-1" selected>Food & Water</option>
+                      <option value="id-2">Medical & Health</option>
+                      <option value="id-3">Documents</option> -->
+                    </select>
+                  </div>
+                  <button type="submit" class="submit-btn" id="addItem">+ Add Item</button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <!-- Manage Kits Tab -->
+          <div class="actions-tablist-content">
+            <div class="card">
+              <form class="form" id="add-kit-form">
+                <div class="form-header">
+                  <h3>Create New Kit</h3>
+                  <p>Create and manage specialized emergency kits for different scenarios.</p>
+                </div>
+                <div class="form-fields">
+                  <div class="field-container">
+                    <label for="kitName">Kit Name </label>
+                    <input type="text" name="kitName" id="kitName" placeholder="e.g., Office Kit" required>
+                    <span class="input-msg kit-name-msg hidden"></span>
+                  </div>
+                  <div class="field-container">
+                    <label for="kitDescription">Kit Description </label>
+                    <input type="text" name="kitDescription" id="kitDescription"
+                      placeholder="e.g., Emergency supplies for workplace" required>
+                  </div>
+                  <button type="submit" class="submit-btn" id="addKit">+ Create Kit</button>
+                </div>
+              </form>
+              <div class="card-list">
+                <div class="card-list-header">
+                  <h4>Your Emergency Kits</h4>
+                </div>
+                <div class="card-list-body emergency-kits-list">
+                  <!-- template list repeatable 'to' -->
+                  <!-- <div class="card emergency-kit-card">
+                    <div class="checklist-info">
+                      <h3 class="checklist-title">
+                        Ah List
+                      </h3>
+                      <p class="checklist-desc">
+                        Meows a lot
+                      </p>
+                      <div class="checklist-progress">
+                        <span>0 items</span> • <span>0 completed</span>
+                      </div>
+                    </div>
+
+                    <div class="checklist-actions">
+                      <span class="status-badge active">Active</span>
+                      <button class="btn-edit">
+                        <i class="ph ph-pencil"></i>
+                      </button>
+                      <button class="btn-delete">
+                        <i class="ph ph-trash"></i>
+                      </button>
+                    </div>
+                  </div> -->
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Manage Categories Tab -->
+          <div class="actions-tablist-content">
+            <div class="card">
+              <form class="form" id="add-category-form">
+                <div class="form-header">
+                  <h3>
+                    Create New Category
+                  </h3>
+                  <p>
+                    Create and manage custom categories to organize your emergency items
+                  </p>
+                </div>
+                <div class="form-fields">
+                  <div class="field-container">
+                    <label for="categoryName">Category Name </label>
+                    <input type="text" name="categoryName" id="categoryName" placeholder="e.g., Electronics">
+                    <span class="input-msg category-name-msg hidden"></span>
+                  </div>
+                  <button type="submit" class="submit-btn" id="addCategory">+ Create Category</button>
+                </div>
+              </form>
+              <div class="card-list">
+                <div class="card-list-header">
+                  <h4>Categories</h4>
+                </div>
+                <div class="card-list-body categories-list">
+                  <!-- template list repeatable 'to' -->
+                  <!-- <div class="card emergency-kit-card">
+                    <div class="checklist-info">
+                      <h3 class="checklist-title">
+                        Ah List
+                      </h3>
+                    </div>
+
+                    <div class="checklist-actions">
+                      <button class="btn-edit">
+                        <i class="ph ph-pencil"></i>
+                      </button>
+                      <button class="btn-delete">
+                        <i class="ph ph-trash"></i>
+                      </button>
+                    </div>
+                  </div> -->
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Actions Tab -->
+          <div class="actions-tablist-content">
+            <div class="actions-grid">
+              <!-- Bulk Actions -->
+              <div class="card">
+                <div class="card-header">
+                  <h4>Bulk Actions</h4>
+                  <p>Quick operations for your current checklist</p>
+                </div>
+                <div class="card-body bulk-actions">
+                  <button class="btn btn-check-all"><i class="ph ph-check"></i> Check All</button>
+                  <button class="btn btn-uncheck-all"><i class="ph ph-x"></i> Uncheck All</button>
+                  <button class="btn btn-delete-all"><i class="ph ph-trash"></i> Delete All</button>
+                </div>
+              </div>
+
+              <!-- Import & Export -->
+              <div class="card">
+                <div class="card-header">
+                  <h4>Import & Export</h4>
+                  <p>Backup and restore your checklists</p>
+                </div>
+                <div class="card-body import-export">
+                  <div class="btn-group">
+                    <button class="btn btn-export"><i class="ph ph-download-simple"></i> Export</button>
+                    <button class="btn btn-import"><i class="ph ph-upload-simple"></i> Import</button>
+                  </div>
+                  <p class="note">Export your checklists as JSON files to backup or share with others.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </section>
+
+        <section class="checklist-list">
+          <!-- <div class="category-card"> -->
+          <!-- Header -->
+          <!-- <div class="category-header">
+              <h3>Food & Water <span class="category-progress">(0 of 5 items, 0%)</span></h3>
+              <div class="category-actions">
+                <button class="btn-check"><i class="ph ph-check"></i></button>
+                <button class="btn-uncheck"><i class="ph ph-x"></i></button>
+                <button class="btn-delete"><i class="ph ph-trash"></i></button>
+              </div>
+            </div> -->
+
+          <!-- Progress bar -->
+          <!-- <div class="progress-bar">
+              <div class="progress-fill" style="width: 0%;"></div>
+            </div> -->
+
+          <!-- Items list -->
+          <!-- <ul class="category-items">
+              <li><label><input type="checkbox"> 3 days water supply (1 gallon per day)</label></li>
+              <li><label><input type="checkbox"> Canned goods (corned beef, sardines)</label></li>
+              <li><label><input type="checkbox"> Instant noodles</label></li>
+              <li><label><input type="checkbox"> Rice (3 days worth)</label></li>
+              <li><label><input type="checkbox"> Energy bars/biscuits</label></li>
+            </ul>
+          </div> -->
+
+        </section>
+      </div>
+      <div id="confirmModal" class="modal hidden">
+        <div class="modal-content">
+          <p id="confirmMessage">Are you sure?</p>
+          <div class="modal-actions">
+            <button id="confirmYes" class="btn btn-danger">Yes, Delete</button>
+            <button id="confirmNo" class="btn btn-secondary">Cancel</button>
+          </div>
+        </div>
       </div>
     </main>
     <footer>
       <div class="container">
-          <div class="footer-content">
-            <h3>BagyoAlerto</h3>
-            <p>Stay prepared, stay safe. Emergency preparedness for families & individuals in typhoon-prone areas</p>
-            <p>Privacy-first &middot; Offline-ready &middot; No account required</p>
-          </div>
+        <div class="footer-content">
+          <h3>BagyoAlerto</h3>
+          <p>Stay prepared, stay safe. Emergency preparedness for Filipino families & individuals in typhoon-prone areas
+          </p>
+          <p>Privacy-first &middot; Offline-ready &middot; No account required</p>
         </div>
+      </div>
     </footer>
   </div>
   <script src="./scripts/index.js" type="module"></script>

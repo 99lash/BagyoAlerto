@@ -25,7 +25,7 @@ const appData = {
     },
     {
       id: '99d3a9c7-401d-488d-ad9f-fc52b6fba557',
-      name: 'Medical & Health',
+      name: 'Electronics',
       createdAt: '2025-08-13T10:55:08.801Z',
       updatedAt: '2025-08-13T10:55:08.801Z',
     },
@@ -55,7 +55,24 @@ const appData = {
     },
   ],
   checklistItems: [
-    {}
+    {
+      id: '989ebfeb-a12f-459f-82d6-766c63d56657',
+      checklistVersionId: '54bdbb9b-a4d7-4356-88e8-dff9406eb6d9',
+      categoryId: 'cc891d39-5851-47d1-bc02-6deba2cdbe79',
+      name: 'Instant Noodles',
+      isChecked: false,
+      createdAt: '2025-08-13T10:55:08.801Z',
+      updatedAt: '2025-08-13T10:55:08.801Z'
+    },
+    {
+      id: '989ebfeb-a12f-429f-82d6-766c63d56657',
+      checklistVersionId: '54bdbb9b-a4d7-4356-88e8-dff9406eb6d9',
+      categoryId: 'cc891d39-5851-47d1-bc02-6deba2cdbe79',
+      name: 'Meow',
+      isChecked: true,
+      createdAt: '2025-08-13T10:55:08.801Z',
+      updatedAt: '2025-08-13T10:55:08.801Z'
+    },
   ],
   emergencyTypes: [
     // mga fixed/default emergency types sa PHperso
@@ -136,8 +153,9 @@ const appData = {
     { name: 'dark' }
   ],
   appSettings: {
-    theme: 'light', //default lang
-    selectedChecklistVersionId: '54bdbb9b-a4d7-4356-88e8-dff9406eb6d9',
+    //default lang
+    theme: 'light', 
+    selectedChecklistVersionId: 'cf6238ee-81db-4080-b7df-0e9a8ccf4da7',
     updatedAt: '2025-08-13T10:55:08.801Z'
   }
 }
