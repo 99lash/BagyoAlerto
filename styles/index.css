@@ -1614,11 +1614,12 @@ html.dark .arrow i {
   overflow: hidden;
   padding: var(--space-3);
   border-radius: var(--radius-md);
-  z-index: 1;
+  z-index: 1000; /* Higher z-index to ensure visibility */
+  max-width: calc(100vw - var(--space-2)); /* Prevent overflow */
 }
 
 .toast {
-  width: 21vw;
+  width: 28vw;
   height: 6vh;
   background-color: var(--muted);
   margin: var(--space-1) 0;
@@ -1660,6 +1661,43 @@ html.dark .arrow i {
 .toast i {
   font-size: var(--icon-size-md);
   margin: var(--space-4);
+}
+
+
+@media (max-width: 768px) {
+  #toastBox {
+    bottom: var(--space-2);
+    right: var(--space-2);
+    left: var(--space-2); 
+    padding: var(--space-2);
+  }
+  
+  .toast {
+    width: 100%; 
+    min-width: unset;
+    max-width: unset;
+    font-size: var(--font-size-xs); 
+    padding: var(--space-3) var(--space-2) var(--space-3) 0;
+    min-height: 60px; 
+  }
+  
+  .toast i {
+    font-size: var(--icon-size-sm); 
+    margin: var(--space-3);
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+  .toast {
+    font-size: 12px; 
+    min-height: 50px;
+  }
+  
+  .toast i {
+    font-size: 16px; 
+    margin: var(--space-2);
+  }
 }
 
 /*=============================================
