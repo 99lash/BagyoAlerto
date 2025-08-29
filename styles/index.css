@@ -452,7 +452,7 @@ progress {
   transition: background-color 0.2s ease-in-out;
 }
 
-.ph-download-simple {
+.download-icon-in-emergency-page {
   font-size: var(--font-size-lg);
 }
 
@@ -1638,14 +1638,16 @@ html.dark .arrow i {
   overflow: hidden;
   padding: var(--space-3);
   border-radius: var(--radius-md);
-  z-index: 1000; /* Higher z-index to ensure visibility */
-  max-width: calc(100vw - var(--space-2)); /* Prevent overflow */
+  z-index: 1000;
+  /* Higher z-index to ensure visibility */
+  max-width: calc(100vw - var(--space-2));
+  /* Prevent overflow */
 }
 
 .toast {
   width: 60%;
-  min-width: 280px; 
-  max-width: 400px; 
+  min-width: 280px;
+  max-width: 400px;
   height: 4vh;
   background-color: var(--muted);
   margin: var(--space-1) 0;
@@ -1694,22 +1696,22 @@ html.dark .arrow i {
   #toastBox {
     bottom: var(--space-2);
     right: var(--space-2);
-    left: var(--space-2); 
+    left: var(--space-2);
     padding: var(--space-2);
   }
-  
+
   .toast {
-    width: 40%; 
+    width: 40%;
     min-width: unset;
     max-width: unset;
     height: 2vh;
-    font-size: var(--font-size-xs); 
+    font-size: var(--font-size-xs);
     padding: var(--space-3) var(--space-2) var(--space-3) 0;
-    min-height: 60px; 
+    min-height: 60px;
   }
-  
+
   .toast i {
-    font-size: var(--icon-size-sm); 
+    font-size: var(--icon-size-sm);
     margin: var(--space-3);
   }
 }
@@ -1717,13 +1719,13 @@ html.dark .arrow i {
 /* Extra small screens */
 @media (max-width: 480px) {
   .toast {
-    width:100%; 
-    font-size: 12px; 
+    width: 100%;
+    font-size: 12px;
     min-height: 50px;
   }
-  
+
   .toast i {
-    font-size: 16px; 
+    font-size: 16px;
     margin: var(--space-2);
   }
 }
@@ -2085,11 +2087,6 @@ button {
   flex: 1;
   background-color: var(--primary);
   color: var(--primary-foreground);
-}
-
-.ph-upload-simple,
-.ph-download-simple {
-  font-size: var(--icon-size-sm);
 }
 
 /* Import Export group */
