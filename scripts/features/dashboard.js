@@ -170,6 +170,7 @@ function initKitSwitcher() {
   const overviewSubtext = document.querySelector(".overview-card:nth-child(3) .overview-subtext");
 
   if (!btn || !menu || !kitInfo || !overviewValue || !overviewSubtext) return;
+  
 
   menu.innerHTML = "";
   kits.forEach((kit, index) => {
