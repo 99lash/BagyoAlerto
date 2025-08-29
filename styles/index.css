@@ -723,20 +723,44 @@ progress {
 
 @media print {
 
-  .button {
-    border: 1px solid #000;
-    background: #fff !important;
-    color: #000 !important;
+  body,
+  html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .container {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  section,
+  .card,
+  .gov-grid,
+  .emergency-grid,
+  .local-grid {
+    page-break-inside: avoid;
+    break-inside: avoid;
+    margin: 0;
   }
 
   .card {
-    border: 1px solid #000;
-    box-shadow: none;
+    margin: 0;
+    padding: 8px;
   }
 
-  .emergency-contact {
-    page-break-inside: avoid;
-    margin-bottom: 1rem;
+  body {
+    font-size: 13px;
+    line-height: 1.2;
+  }
+
+  .alert-banner {
+    margin-bottom: 0%;
+    padding: 10px;
   }
 }
 
