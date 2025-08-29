@@ -1076,12 +1076,6 @@ html.dark #right-side button {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-#kit-dropdown-btn .arrow {
-  margin-left: 8px;
-  font-size: 12px;
-  color: var(--muted-foreground, #888);
-}
-
 #kit-dropdown-menu {
   position: absolute;
   top: 100%;
@@ -1099,6 +1093,13 @@ html.dark #right-side button {
   color: var(--primary, #333);
   user-select: none;
 }
+
+#kit-dropdown-btn .arrow {
+  margin-left: 8px;
+  font-size: 12px;
+  color: var(--muted-foreground, #888);
+}
+
 
 #kit-dropdown-menu[hidden] {
   display: none;

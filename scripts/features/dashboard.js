@@ -8,7 +8,7 @@ export const dashboard = async () => {
     const { data } = await getUserLocation();
     const { lat, lon } = data;
     const response = await getWeather(lat, lon);
-
+    
     renderAlertReminder(response);
     
     const appData = loadAppData();
@@ -155,7 +155,6 @@ function renderCategoryProgress(selectedKitId) {
     list.appendChild(li);
   }
 }
-
 
 
 function initKitSwitcher() {
