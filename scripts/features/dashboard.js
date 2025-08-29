@@ -43,6 +43,7 @@ function renderOverview(appData, weather) {
 
     const badge = overviewCards[0].querySelector(".badge");
     if (badge) {
+      // dito mo cchange yung percent badge sher para maging dyanmic.
       if (readinessPercent >= 80) badge.textContent = "Excellent"; // triny ko lang, wala pa to
       else if (readinessPercent >= 50) badge.textContent = "Good"; // triny ko lang, wala pa to
       else badge.textContent = "Needs Work"; // triny ko lang, wala pa to
