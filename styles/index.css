@@ -1614,12 +1614,15 @@ html.dark .arrow i {
   overflow: hidden;
   padding: var(--space-3);
   border-radius: var(--radius-md);
-  z-index: 1;
+  z-index: 1000; /* Higher z-index to ensure visibility */
+  max-width: calc(100vw - var(--space-2)); /* Prevent overflow */
 }
 
 .toast {
-  width: 21vw;
-  height: 6vh;
+  width: 60%;
+  min-width: 280px; 
+  max-width: 400px; 
+  height: 4vh;
   background-color: var(--muted);
   margin: var(--space-1) 0;
   font-size: var(--font-size-sm);
@@ -1627,7 +1630,7 @@ html.dark .arrow i {
   font-weight: var(--font-weight-bold);
   display: flex;
   align-items: center;
-  padding: var(--space-4) var(--space-1) var(--space-4) 0;
+  padding: var(--space-4) var(--space-3) var(--space-4) 0;
   border-radius: var(--radius-md);
   position: relative;
   transform: translateX(100%);
@@ -1660,6 +1663,45 @@ html.dark .arrow i {
 .toast i {
   font-size: var(--icon-size-md);
   margin: var(--space-4);
+}
+
+
+@media (max-width: 768px) {
+  #toastBox {
+    bottom: var(--space-2);
+    right: var(--space-2);
+    left: var(--space-2); 
+    padding: var(--space-2);
+  }
+  
+  .toast {
+    width: 40%; 
+    min-width: unset;
+    max-width: unset;
+    height: 2vh;
+    font-size: var(--font-size-xs); 
+    padding: var(--space-3) var(--space-2) var(--space-3) 0;
+    min-height: 60px; 
+  }
+  
+  .toast i {
+    font-size: var(--icon-size-sm); 
+    margin: var(--space-3);
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+  .toast {
+    width:100%; 
+    font-size: 12px; 
+    min-height: 50px;
+  }
+  
+  .toast i {
+    font-size: 16px; 
+    margin: var(--space-2);
+  }
 }
 
 /*=============================================
