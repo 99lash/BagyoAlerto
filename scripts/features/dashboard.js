@@ -7,21 +7,19 @@ export const dashboard = async () => {
   try {
     const { data } = await getUserLocation();
     const { lat, lon } = data;
-    const response = await getWeather(lat, lon);
-    
-    renderAlertReminder(response);
-    
+    // const response = await getWeather(lat, lon);
+    // renderAlertReminder(response);
     const appData = loadAppData();
-    
-    renderOverview(appData, response);
+
+    renderOverview(appData);
     initKitSwitcher();
-    resetAppData();
+    // resetAppData();
   } catch (error) {
     console.error(error);
   }
 };
 
-function renderOverview(appData, weather) {
+function renderOverview(appData, weather = {}) {
   if (!appData) return;
 
   const overviewCards = document.querySelectorAll(".overview-card");
@@ -124,7 +122,7 @@ function renderCategoryProgress(selectedKitId) {
   const categoryIds = Object.keys(categoryMap);
   for (let i = 0; i < categoryIds.length; i++) {
     const cat = categoryMap[categoryIds[i]];
-    const percent = cat.total > 0 ? Math.round((cat.current / cat.total) * 100) : 0; 
+    const percent = cat.total > 0 ? Math.round((cat.current / cat.total) * 100) : 0;
 
     const li = document.createElement("li");
 
@@ -170,7 +168,7 @@ function initKitSwitcher() {
   const overviewSubtext = document.querySelector(".overview-card:nth-child(3) .overview-subtext");
 
   if (!btn || !menu || !kitInfo || !overviewValue || !overviewSubtext) return;
-  
+
 
   menu.innerHTML = "";
   kits.forEach((kit, index) => {
@@ -197,40 +195,46 @@ function initKitSwitcher() {
   updateKitInfo(selectedId);
 
   btn.addEventListener("click", () => {
+    const appData = loadAppData();
     const expanded = btn.getAttribute("aria-expanded") === "true";
     btn.setAttribute("aria-expanded", !expanded);
     menu.hidden = expanded;
+    updateKitDropdown(appData);
   });
 
-  menu.querySelectorAll("li").forEach(option => {
-    option.addEventListener("click", () => {
-      const selectedKitId = option.dataset.value;
+  updateKitDropdown();
+  function updateKitDropdown(appData) {
+    menu.querySelectorAll("li").forEach(option => {
+      option.addEventListener("click", () => {
+        const selectedKitId = option.dataset.value;
 
-      menu.querySelectorAll("li").forEach(li => {
-        li.setAttribute("aria-selected", "false");
-        li.querySelector(".checkmark").style.visibility = "hidden";
+        menu.querySelectorAll("li").forEach(li => {
+          li.setAttribute("aria-selected", "false");
+          li.querySelector(".checkmark").style.visibility = "hidden";
+        });
+        option.setAttribute("aria-selected", "true");
+        option.querySelector(".checkmark").style.visibility = "visible";
+
+        const arrow = btn.querySelector(".arrow") || document.createElement("span");
+        arrow.classList.add("arrow");
+
+        const selectedKit = kits.find(k => k.id === selectedKitId);
+        btn.innerHTML = `${selectedKit.name} `;
+        btn.appendChild(arrow);
+
+        menu.hidden = true;
+        btn.setAttribute("aria-expanded", "false");
+
+        appData.appSettings.selectedChecklistVersionId = selectedKitId;
+        console.log(appData);
+
+        saveAppData(appData);
+
+        updateKitInfo(selectedKitId);
       });
-      option.setAttribute("aria-selected", "true");
-      option.querySelector(".checkmark").style.visibility = "visible";
-
-      const arrow = btn.querySelector(".arrow") || document.createElement("span");
-      arrow.classList.add("arrow");
-
-      const selectedKit = kits.find(k => k.id === selectedKitId);
-      btn.innerHTML = `${selectedKit.name} `;
-      btn.appendChild(arrow);
-
-      menu.hidden = true;
-      btn.setAttribute("aria-expanded", "false");
-
-      appData.appSettings.selectedChecklistVersionId = selectedKitId;
-      saveAppData(appData);
-
-      updateKitInfo(selectedKitId);
     });
-  });
+  }
 
-  
   document.addEventListener("click", (e) => {
     if (!btn.contains(e.target) && !menu.contains(e.target)) {
       menu.hidden = true;
