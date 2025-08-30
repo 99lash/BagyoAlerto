@@ -1949,10 +1949,26 @@ button {
   flex-direction: row;
 }
 
+.emergency-kit-card p,
+.emergency-kit-card span,
+.emergency-kit-card div {
+  word-wrap: break-word;     
+  overflow-wrap: anywhere;  
+  line-height: var(--line-height-normal);
+  white-space: normal;       /
+}
+
 .checklist-actions {
   display: flex;
   align-items: start;
   gap: var(--space-2);
+}
+
+.active-kit-description {
+  word-wrap: break-word;   
+  overflow-wrap: anywhere; 
+  white-space: normal;     
+  line-height: var(--line-height-normal);
 }
 
 .btn-edit {
