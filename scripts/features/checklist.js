@@ -627,6 +627,12 @@ export const checklist = () => {
     const today = new Date();
 
     const categoryNameMsg = document.querySelector('.category-name-msg');
+
+    if (categoryName === '') {
+    categoryNameMsg.innerHTML = `Category name cannot be empty.`;
+    categoryNameMsg.classList.remove('hidden');
+    return;
+    }
     if (categoryName.length > 20) {
       categoryNameMsg.innerHTML = `Category name must be 20 characters or less.`;
       categoryNameMsg.classList.remove('hidden');
