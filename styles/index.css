@@ -1888,10 +1888,15 @@ html.dark .arrow i {
   justify-content: space-between;
   align-items: center;
   padding-inline: var(--space-2);
+  gap: var(--space-2);   
 }
 
 .item-details {
-  flex: 1;
+  flex: 1 1 0;              
+  min-width: 0;             
+  white-space: normal;     
+  word-break: break-word;   
+  overflow-wrap: break-word; 
 }
 
 /* mga resuable components hahah */
