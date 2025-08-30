@@ -2229,7 +2229,7 @@ button {
 
 .btn-secondary {
   background: var(--primary);
-  /* color: var(--muted-foreground); */
+  color: var(--card);
 }
 
 .btn-secondary:hover {
