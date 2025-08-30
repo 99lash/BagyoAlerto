@@ -1062,14 +1062,6 @@ html.dark #right-side button {
   color: var(--muted-foreground);
 }
 
-.header-action {
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-  font-size: var(--font-size-sm);
-  color: var(--primary-foreground);
-}
-
 .header-action label {
   font-weight: var(--font-weight-medium);
   color: var(--primary);
@@ -1079,9 +1071,9 @@ html.dark #right-side button {
   position: relative;
   display: flex;
   align-items: center;
-  gap: var(--space-2);
-  font-size: var(--font-size-sm);
-  color: var(--primary-foreground);
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  max-width: 100%;
 }
 
 .header-action label {
@@ -1093,22 +1085,37 @@ html.dark #right-side button {
   padding: var(--space-2) var(--space-4);
   border-radius: var(--radius-md);
   border: 1px solid var(--border);
-  background: var(--input-background, #fff);
-  font-size: var(--font-size-sm, 14px);
-  color: var(--primary, #333);
+  background: var(--input-background);
+  font-size: var(--font-size-sm);
+  color: var(--primary);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-width: 150px;
-  user-select: none;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  width: auto;
+  max-width: 100%;
+  box-shadow: var(--shadow-sm);
+  gap: 8px;
+}
+
+@media (max-width: 480px) {
+  #kit-dropdown-btn {
+    min-width: unset;   
+    width: 100%;        
+    font-size: 12px;    
+    padding: var(--space-2) var(--space-3);
+  }
+
+  #kit-dropdown-menu {
+    min-width: unset;
+    width: 100%;     
+  }
 }
 
 #kit-dropdown-btn .arrow {
   margin-left: 8px;
   font-size: 12px;
-  color: var(--muted-foreground, #888);
+  color: var(--muted-foreground);
 }
 
 #kit-dropdown-menu {
@@ -1116,16 +1123,46 @@ html.dark #right-side button {
   top: 100%;
   right: 0;
   margin-top: 6px;
-  background: var(--card, #fff);
-  border: 1px solid var(--border, #ccc);
-  border-radius: var(--radius-md, 8px);
-  box-shadow: var(--shadow-sm, 0 2px 8px rgba(0, 0, 0, 0.1));
+}
+
+@media (max-width: 480px) {
+  .header-action {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  #kit-dropdown-btn {
+    width: 100%; 
+    justify-content: space-between;
+  }
+
+  #kit-dropdown-menu {
+    position: static;   
+    width: 100%;        
+    margin-top: 4px;
+  }
+
+  #kit-dropdown-menu li {
+    width: 100%;
+  }
+}
+
+#kit-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 6px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
   list-style: none;
   padding: 4px 0;
   width: 150px;
   z-index: 10;
-  font-size: var(--font-size-sm, 14px);
-  color: var(--primary, #333);
+  font-size: var(--font-size-sm);
+  color: var(--primary);
   user-select: none;
 }
 
@@ -1143,7 +1180,7 @@ html.dark #right-side button {
 }
 
 #kit-dropdown-menu li:hover {
-  background: var(--muted, #f0f0f0);
+  background: var(--muted);
 }
 
 
@@ -1160,7 +1197,6 @@ html.dark #right-side button {
   justify-content: space-between;
   align-items: center;
   position: relative;
-  /* Add this just in case */
 }
 
 .kit-info {
@@ -1282,7 +1318,7 @@ html.dark #right-side button {
 .bar-fill {
   width: 0%;
   height: 100%;
-  background-color: var(--warning);
+  background-color: var(--warning); /* PAAYOS NITO SA DARK THEME */
   transition: width 0.3s ease;
 }
 
@@ -2463,5 +2499,5 @@ button {
   color: var(--info);
   border: 2px var(--info);
   border-style: dashed;
-  width: 70dvw;
+  width: 100%;
 }

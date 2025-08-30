@@ -79,7 +79,38 @@ export const getAllChecklistItemsByCategories = () => {
     };
 
     return grouped;
+
   }, {});
+};
+
+export const getAllCategoryProgressByChecklistVersions = () => {
+  const { categories, checklistItems, checklistVersions } = loadAppData();
+
+  return checklistVersions.map(kit => {
+    const categoryProgress = categories.map(category => {
+      const items = checklistItems.filter(
+        item => item.checklistVersionId === kit.id && item.categoryId === category.id
+      );
+
+      const totalItems = items.length;
+      const totalCheckedItems = items.filter(item => item.isChecked).length;
+      const progressInPercent =
+        totalItems > 0 ? Number(((totalCheckedItems / totalItems) * 100).toFixed(2)) : 0;
+
+      return {
+        category,
+        items,
+        totalItems,
+        totalCheckedItems,
+        progressInPercent,
+      };
+    });
+
+    return {
+      kit,
+      categories: categoryProgress,
+    };
+  });
 };
 
 export const isCategoryNameExist = (categoryName = '') => {
