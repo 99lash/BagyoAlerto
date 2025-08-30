@@ -1,5 +1,7 @@
 import { loadAppData, resetAppData, saveAppData } from '../core/appData.js';
-import { getAllChecklistKitVersions, getCurrentSelectedChecklist, getAllChecklistCategories, getAllChecklistItemsByCategories, getAllChecklistItems, isItemNameExist, isKitNameExist, isCategoryNameExist } from '../utils/checklistUtils.js';
+import { getAllChecklistKitVersions, getCurrentSelectedChecklist,
+         getAllChecklistCategories, getAllChecklistItemsByCategories,
+         getAllChecklistItems, isItemNameExist, isKitNameExist, isCategoryNameExist } from '../utils/checklistUtils.js';
 
 export const checklist = () => {
 
@@ -59,8 +61,17 @@ export const checklist = () => {
     const categoryId = addItemFormData.get('itemCategory');
     const data = loadAppData();
     const today = new Date();
+    
 
     const itemNameMsg = document.querySelector('.item-name-msg');
+    if (itemName.length > 20) {
+      itemNameMsg.innerHTML = `Item name must be 20 characters or less.`;
+      itemNameMsg.classList.remove('hidden');
+      return;
+    } else {
+      itemNameMsg.innerHTML = ""; 
+      itemNameMsg.classList.add('hidden');
+    }
     if (isItemNameExist(itemName)) {
       // console.log('Item Already Exist');
       itemNameMsg.innerHTML = `<b>"${itemName}"</b> is already existing.`;
@@ -357,6 +368,11 @@ export const checklist = () => {
     const today = new Date();
 
     const kitNameMsg = document.querySelector('.kit-name-msg');
+    if (kitName.length > 20) {
+      kitNameMsg.innerHTML = `Kit name must be 20 characters or less.`;
+      kitNameMsg.classList.remove('hidden');
+      return;
+    }
     if (isKitNameExist(kitName)) {
       // console.log('Kit Already Exist');
       kitNameMsg.innerHTML = `<b>"${kitName}"</b> <br>is already existing.`;
@@ -577,6 +593,11 @@ export const checklist = () => {
     const today = new Date();
 
     const categoryNameMsg = document.querySelector('.category-name-msg');
+    if (categoryName.length > 20) {
+      categoryNameMsg.innerHTML = `Category name must be 20 characters or less.`;
+      categoryNameMsg.classList.remove('hidden');
+      return;
+    }
     if (isCategoryNameExist(categoryName)) {
       // console.log('Category Already Exist');
       categoryNameMsg.innerHTML = `<b>"${categoryName}"</b> is already existing.`;
