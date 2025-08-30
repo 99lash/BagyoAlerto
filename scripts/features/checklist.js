@@ -92,7 +92,7 @@ export const checklist = () => {
   renderChecklist();
   function renderChecklist() {
     const checklistItemsByCategories = getAllChecklistItemsByCategories();
-    // console.log(checklistItemsByCategories);
+    console.log(checklistItemsByCategories);
 
     const prevWidths = {};
     document.querySelectorAll('.progress-bar-fill-category').forEach(bar => {
@@ -106,6 +106,7 @@ export const checklist = () => {
 
     for (const list of Object.values(checklistItemsByCategories)) {
       const { category, items, progressInPercent, totalCheckedItems, totalItems } = list;
+      console.log(list);
       let itemsTemplateHTML = '';
       categories[categoryIndex++] = {
         id: category.id,
