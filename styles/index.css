@@ -2499,5 +2499,5 @@ button {
   color: var(--info);
   border: 2px var(--info);
   border-style: dashed;
-  width: 70dvw;
+  width: 100%;
 }
