@@ -70,6 +70,10 @@ const weatherSeverityMap = {
   danger: {
     conditions: [
       {
+        name: "Moderate or heavy rain with thunder",
+        desc: "Heavy rain bursts expected. Keep your checklist items nearby."
+      },
+      {
         name: "Heavy rain",
         desc: "Strong rainfall. Keep safe indoors and have your emergency kit ready."
       },
@@ -136,9 +140,9 @@ export const getWeather = async (lat, lon) => {
         desc: `Your country is not currently allowed and we hope to expand the scope in the future`
       }
     }
-    // console.log(current);
-    // console.log(location);
-    // console.log(forecast.forecastday[0].hour);
+    console.log(current);
+    console.log(location);
+    console.log(forecast.forecastday[0].hour);
 
     // TODO: update UI with weather info
     // GAB yung reminder alert mo, di pa tapos 'to hahaha initial lang.
@@ -155,32 +159,36 @@ export const getWeather = async (lat, lon) => {
     // console.log(weatherConditionWarningOrDangerToday);
     if (weatherConditionWarningOrDangerToday) {
       // console.log('danger || warning today');
+      console.log('here1')
       return weatherConditionWarningOrDangerToday;
     }
 
     // PRIO 2: display alert reminder kapag may paparating na ulan.
     // PRIO 2: Fixed version
-  for (const h of forecast.forecastday[0].hour) {
-    const forecastMatchDanger = weatherSeverityMap.danger.conditions.find((c) => 
-      c.name.toLowerCase() === h.condition.text.toLowerCase()
-    );
-    const forecastMatchWarning = weatherSeverityMap.warning.conditions.find((c) => 
-      c.name.toLowerCase() === h.condition.text.toLowerCase()
-    );
-    const forecastCondition = forecastMatchDanger ? 
-      { severity: 'danger', ...forecastMatchDanger, isLocationAllowed: true } : 
-      forecastMatchWarning ? 
-      { severity: 'warning', ...forecastMatchWarning, isLocationAllowed: true } : 
-      null;
-    
-    if (forecastCondition) {
-      return forecastCondition; // ✅ This properly exits the main function
+    for (const h of forecast.forecastday[0].hour) {
+      const forecastMatchDanger = weatherSeverityMap.danger.conditions.find((c) =>
+        c.name.toLowerCase() === h.condition.text.toLowerCase()
+      );
+      const forecastMatchWarning = weatherSeverityMap.warning.conditions.find((c) =>
+        c.name.toLowerCase() === h.condition.text.toLowerCase()
+      );
+      const forecastCondition = forecastMatchDanger ?
+        { severity: 'danger', ...forecastMatchDanger, isLocationAllowed: true } :
+        forecastMatchWarning ?
+          { severity: 'warning', ...forecastMatchWarning, isLocationAllowed: true } :
+          null;
+
+      if (forecastCondition) {
+        console.log('here2')
+        return forecastCondition; // ✅ This properly exits the main function
+      }
     }
-  }
     // PRIO 3: display alert reminder na normal day lang ngayon.
     const weatherConditionInfoToday = weatherSeverityMap.info.conditions.find((c) => c.name.toLowerCase() === current.condition.text.toLowerCase());
-    if (weatherConditionInfoToday)
+    if (weatherConditionInfoToday) {
+      console.log('here3')
       return { severity: 'info', ...weatherConditionInfoToday, isLocationAllowed: true };
+    }
   } catch (error) {
     console.error(error);
     renderAlertReminder({ isLocationAllowed: false })

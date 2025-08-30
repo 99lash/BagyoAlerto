@@ -18,8 +18,11 @@
       <div class="container">
         <nav>
           <div id="logo">
-            <img src="./assets/img/apple-touch-icon.png" alt="Logo">
-            BagyoAlerto
+            <a href="./index.html"
+              style="text-decoration: none; color: var(--primary); display: flex; align-items: center; gap: var(--space-2);">
+              <img src="./assets/img/apple-touch-icon.png" alt="Logo">
+              BagyoAlerto
+            </a>
           </div>
           <div id="middle">
             <a href="./index.html" id="dashboard" class="active"><i class="ph ph-house"></i>Dashboard</a>
@@ -42,6 +45,15 @@
           <div class="alert-inside-wrapper">
             <!-- THIS IS WHERE THE ALERT WILL GO -->
           </div>
+        </div>
+
+        <div class="info-card" id="install-card">
+          <h3 class="install-card-header">📲 Add BagyoAlerto to Home Screen</h3>
+          <p>Quick access like a native app!</p>
+          <button id="installBtn" class="btn">
+            <i class="ph ph-download-simple"></i>
+            Add to Home Screen
+          </button>
         </div>
 
         <div class="emergency-kit">
@@ -145,17 +157,17 @@
           </div>
         </div>
       </div>
-  </div>
-  </main>
-  <footer>
-    <div class="container">
-      <div class="footer-content">
-        <h3>BagyoAlerto</h3>
-        <p>Stay prepared, stay safe. Emergency preparedness for families & individuals in typhoon-prone areas</p>
-        <p>Privacy-first &middot; Offline-ready &middot; No account required</p>
+    </main>
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <h3>BagyoAlerto</h3>
+          <p>Stay prepared, stay safe. Emergency preparedness for Filipino families & individuals in typhoon-prone areas
+          </p>
+          <p>Privacy-first &middot; Offline-ready &middot; No account required</p>
+        </div>
       </div>
-    </div>
-  </footer>
+    </footer>
   </div>
   <script src="./scripts/index.js" type="module"></script>
 </body>

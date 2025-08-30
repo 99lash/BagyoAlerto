@@ -2,9 +2,11 @@ import { getUserLocation } from "../core/geolocation.js";
 import { getWeather } from "../core/weather.js";
 import { renderAlertReminder } from "./alert.js";
 import { loadAppData, saveAppData, resetAppData } from "../core/appData.js";
+import { installPWA } from "../utils/pwa.js"
 
 export const dashboard = async () => {
   try {
+    installPWA();
     const { data } = await getUserLocation();
     const { lat, lon } = data;
     // const response = await getWeather(lat, lon);
