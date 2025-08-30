@@ -359,7 +359,7 @@ export const checklist = () => {
     const kitNameMsg = document.querySelector('.kit-name-msg');
     if (isKitNameExist(kitName)) {
       // console.log('Kit Already Exist');
-      kitNameMsg.innerHTML = `<b>"${kitName}"</b> is already existing.`;
+      kitNameMsg.innerHTML = `<b>"${kitName}"</b> <br>is already existing.`;
       kitNameMsg.classList.remove('hidden');
       return;
     }

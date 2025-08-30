@@ -2249,8 +2249,13 @@ button {
 }
 
 .input-msg {
-  padding-inline: var(--space-2);
-  color: var(--error);
+  color: var(--danger, red);   
+  font-size: var(--font-size-sm, 0.875rem);
+  white-space: normal;        
+  word-break: break-word;      
+  overflow-wrap: break-word;  
+  min-width: 0;                
+  display: block;              
 }
 
 /*=====  End of Checklist comment block  ======*/
