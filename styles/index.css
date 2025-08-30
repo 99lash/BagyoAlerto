@@ -1888,10 +1888,15 @@ html.dark .arrow i {
   justify-content: space-between;
   align-items: center;
   padding-inline: var(--space-2);
+  gap: var(--space-2);   
 }
 
 .item-details {
-  flex: 1;
+  flex: 1 1 0;              
+  min-width: 0;             
+  white-space: normal;     
+  word-break: break-word;   
+  overflow-wrap: break-word; 
 }
 
 /* mga resuable components hahah */
@@ -1944,10 +1949,26 @@ button {
   flex-direction: row;
 }
 
+.emergency-kit-card p,
+.emergency-kit-card span,
+.emergency-kit-card div {
+  word-wrap: break-word;     
+  overflow-wrap: anywhere;  
+  line-height: var(--line-height-normal);
+  white-space: normal;       /
+}
+
 .checklist-actions {
   display: flex;
   align-items: start;
   gap: var(--space-2);
+}
+
+.active-kit-description {
+  word-wrap: break-word;   
+  overflow-wrap: anywhere; 
+  white-space: normal;     
+  line-height: var(--line-height-normal);
 }
 
 .btn-edit {
@@ -2224,7 +2245,7 @@ button {
 
 .btn-secondary {
   background: var(--primary);
-  /* color: var(--muted-foreground); */
+  color: var(--card);
 }
 
 .btn-secondary:hover {
@@ -2242,10 +2263,83 @@ button {
     transform: translateY(0);
   }
 }
+@media (max-width: 640px) {
+  .kit-form-input,
+  .category-form-input {
+    flex-direction: column; 
+  }
 
+  .kit-form-action,
+  .category-form-action > .form-actions {
+    flex-direction: column;
+    align-items: stretch; 
+  }
+
+  .actions-grid {
+    grid-template-columns: 1fr; 
+  }
+
+  .actions-tablist {
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  }
+
+  .emergency-kit-card {
+    flex-direction: column; 
+    gap: var(--space-2);
+  }
+
+  .checklist-actions {
+    justify-content: flex-start; 
+  }
+
+  .form {
+    padding: var(--space-3);
+  }
+
+  .card-list {
+    padding: var(--space-3);
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  .actions-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+
+  .kit-form-input,
+  .category-form-input {
+    flex-direction: column; 
+  }
+
+  .kit-form-action,
+  .category-form-action > .form-actions {
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+}
+
+@media (min-width: 1025px) {
+  .actions-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+
+  .emergency-kit-card {
+    flex-direction: row; 
+    align-items: flex-start;
+  }
+
+  .checklist-actions {
+    justify-content: flex-end;
+  }
+}
 .input-msg {
-  padding-inline: var(--space-2);
-  color: var(--error);
+  color: var(--danger, red);   
+  font-size: var(--font-size-sm, 0.875rem);
+  white-space: normal;        
+  word-break: break-word;      
+  overflow-wrap: break-word;  
+  min-width: 0;                
+  display: block;              
 }
 
 /*=====  End of Checklist comment block  ======*/
