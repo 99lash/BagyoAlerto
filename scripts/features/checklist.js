@@ -485,14 +485,48 @@ export const checklist = () => {
         form.addEventListener('submit', ev => {
           ev.preventDefault();
           const formData = new FormData(form);
-          kit.name = formData.get('kitName').trim();
-          kit.desc = formData.get('kitDescription').trim();
+
+          const kitName = formData.get('kitName').trim();
+          const kitDesc = formData.get('kitDescription').trim();
+
+          let errMsg = form.querySelector('.kit-name-msg');
+          if (!errMsg) {
+            errMsg = document.createElement('p');
+            errMsg.classList.add('kit-name-msg');
+            errMsg.style.color = 'red';
+            errMsg.style.fontSize = '14px';
+            form.querySelector('.kit-field-container').appendChild(errMsg);
+          }
+
+          
+          if (kitName.length > 20) {
+            errMsg.textContent = "Kit name must be 20 characters or less.";
+            return; 
+          }
+
+          let isDuplicate = false;
+          for(let i = 0; i < checklistVersions.length; i++) {
+            const k = checklistVersions[i];
+            if (k.name.toLowerCase() === kitName.toLowerCase() && k.id !== kit.id) {
+              isDuplicate = true;
+              break;
+            }
+          }
+          if (isDuplicate) {
+            errMsg.textContent = `"${kitName}" already exists.`;
+            return;
+          }
+
+          errMsg.textContent = "";
+          kit.name = kitName;
+          kit.desc = kitDesc;
           kit.updatedAt = new Date();
 
           saveAppData(data);
           renderKitVersions();
           renderKitDetails();
         });
+
 
         // cancel handler
         cancelBtn.addEventListener('click', () => {
