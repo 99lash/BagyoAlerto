@@ -122,7 +122,6 @@ export const checklist = () => {
       let itemsTemplateHTML = '';
       categories[categoryIndex++] = {
         id: category.id,
-        name:category.name,
         progressInPercent
       };
       items.forEach(item => {
