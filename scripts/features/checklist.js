@@ -2,6 +2,7 @@ import { loadAppData, resetAppData, saveAppData } from '../core/appData.js';
 import { getAllChecklistKitVersions, getCurrentSelectedChecklist,
          getAllChecklistCategories, getAllChecklistItemsByCategories,
          getAllChecklistItems, isItemNameExist, isKitNameExist, isCategoryNameExist } from '../utils/checklistUtils.js';
+import { showToast } from './toast.js';
 
 export const checklist = () => {
 
@@ -121,6 +122,7 @@ export const checklist = () => {
       let itemsTemplateHTML = '';
       categories[categoryIndex++] = {
         id: category.id,
+        name:category.name,
         progressInPercent
       };
       items.forEach(item => {
@@ -171,7 +173,6 @@ export const checklist = () => {
     `;
     }
     document.querySelector('.checklist-list').innerHTML = checklistTemplateHTML;
-
     requestAnimationFrame(() => {
       // document.querySelector(`#category-progress-bar-fill-${category.id}`).style.width = `${progressInPercent}%`;
       categories.forEach(category => {
@@ -193,7 +194,8 @@ export const checklist = () => {
           console.log('<75');
           console.log('meow3');
           progressBar.style.backgroundColor = 'var(--readiness-good)';
-        } else {
+        } 
+        else {
           console.log('meow4');
           console.log('<100');
           progressBar.style.backgroundColor = 'var(--readiness-excellent)';
@@ -263,14 +265,19 @@ export const checklist = () => {
       });
     })
   }
-
   function checkAllChecklistItemsByCategoryHandler() {
     const categoriesCheckBtn = document.querySelectorAll('.btn-check-category');
     categoriesCheckBtn.forEach(categoryCheckBtn => {
       categoryCheckBtn.addEventListener('click', e => {
         const data = loadAppData();
-        let { checklistItems, appSettings } = data;
+        let { checklistItems, appSettings, categories } = data;
         const categoryId = e.currentTarget.dataset.id;
+        
+        const category = categories.find(c => c.id === categoryId);
+        const categoryName = category ? category.name : 'Unknown Category';
+        
+        showToast('success', `Check all items at ${categoryName}`);
+        
         data.checklistItems = checklistItems.map(i => {
           if (i.categoryId === categoryId && i.checklistVersionId === appSettings.selectedChecklistVersionId) {
             i.isChecked = true;
@@ -290,8 +297,13 @@ export const checklist = () => {
     categoriesUncheckBtn.forEach(categoryCheckBtn => {
       categoryCheckBtn.addEventListener('click', e => {
         const data = loadAppData();
-        let { checklistItems, appSettings } = data;
+        let { checklistItems, appSettings, categories} = data;
         const categoryId = e.currentTarget.dataset.id;
+
+        const category = categories.find(c => c.id === categoryId);
+        const categoryName = category ? category.name : 'Unknown Category';
+
+        showToast('error',`Unchecked all items at ${categoryName}`);
         data.checklistItems = checklistItems.map(i => {
           if (i.categoryId === categoryId && i.checklistVersionId === appSettings.selectedChecklistVersionId) {
             i.isChecked = false;
@@ -670,7 +682,6 @@ export const checklist = () => {
         const categoryId = e.currentTarget.dataset.id;
         const category = categories.find(c => c.id === categoryId);
         if (!category) return;
-
         const card = e.currentTarget.closest('.emergency-category-card');
         card.innerHTML = `
         <form class="edit-category-form">
@@ -772,6 +783,7 @@ export const checklist = () => {
   /* Quick Actions */
   document.querySelector('.btn-check-all').addEventListener('click', e => {
     const data = loadAppData();
+    console.log("hi");
     const { checklistItems, appSettings } = data;
     // console.log(e.currentTarget);
     checklistItems.forEach(i => {
