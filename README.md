@@ -75,7 +75,7 @@ BagyoAlerto is a simple website application that supports mobile view and an ins
 
 ### Live Demo
 
-🔗 [https://bagyo-alerto.vercel.app](https://temporary-link-muna.com)
+🔗 [https://bagyoalerto.vercel.app](https://bagyoalerto.vercel.app)
 
 ---
 
